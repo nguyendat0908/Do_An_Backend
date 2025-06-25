@@ -2,9 +2,11 @@ package com.DatLeo.BookShop.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.FieldDefaults;
 
 import java.time.Instant;
 
@@ -13,17 +15,26 @@ import java.time.Instant;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Review {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    Integer id;
 
-    private Integer star;
-    private String comment;
-    private Instant createdAt;
-    private Integer quantity;
-    private Boolean isVerified;
+    Integer star;
+    String comment;
+    Instant createdAt;
+    Integer quantity;
+    Boolean isVerified;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
 
     @PrePersist
     public void handleBeforeCreate() {
