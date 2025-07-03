@@ -4,5 +4,5 @@ import com.DatLeo.BookShop.entity.User;
 
 public interface UserService {
 
-    User createUser(User user);
+    User handleCreateUser(User user);
 }
