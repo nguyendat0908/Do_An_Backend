@@ -1,5 +1,6 @@
 package com.DatLeo.BookShop.controller;
 
+import com.DatLeo.BookShop.dto.response.ResUserDTO;
 import com.DatLeo.BookShop.entity.User;
 import com.DatLeo.BookShop.service.UserService;
 import com.DatLeo.BookShop.util.annotation.CustomAnnotation;
@@ -20,20 +21,23 @@ public class UserController {
 
     @PostMapping("/users")
     @CustomAnnotation("Thêm mới người dùng thành công!")
-    public ResponseEntity<User> createUser (@RequestBody @Valid User user) {
-        return ResponseEntity.ok(this.userService.handleCreateUser(user));
+    public ResponseEntity<ResUserDTO> createUser (@RequestBody @Valid User user) {
+        User newUser = this.userService.handleCreateUser(user);
+        return ResponseEntity.ok(this.userService.convertToResUserDTO(newUser));
     }
 
     @GetMapping("/users/{id}")
     @CustomAnnotation("Thông tin chi tiết người dùng!")
-    public ResponseEntity<User> getUserById(@PathVariable("id") Integer id) {
-        return ResponseEntity.ok(this.userService.handleGetUserById(id));
+    public ResponseEntity<ResUserDTO> getUserById(@PathVariable("id") Integer id) {
+        User user = this.userService.handleGetUserById(id);
+        return ResponseEntity.ok(this.userService.convertToResUserDTO(user));
     }
 
     @PutMapping("/users")
     @CustomAnnotation("Cập nhật thông tin người dùng thành công!")
-    public ResponseEntity<User> updateUser(@RequestBody User user) {
-        return ResponseEntity.ok(this.userService.handleUpdateUser(user));
+    public ResponseEntity<ResUserDTO> updateUser(@RequestBody User user) {
+        User newUser = this.userService.handleUpdateUser(user);
+        return ResponseEntity.ok(this.userService.convertToResUserDTO(newUser));
     }
 
     @DeleteMapping("/users/{id}")

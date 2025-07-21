@@ -1,5 +1,6 @@
 package com.DatLeo.BookShop.service;
 
+import com.DatLeo.BookShop.dto.response.ResUserDTO;
 import com.DatLeo.BookShop.entity.User;
 
 public interface UserService {
@@ -11,4 +12,8 @@ public interface UserService {
     User handleUpdateUser(User user);
 
     void handleDeleteUser(Integer id);
+
+    boolean handleCheckEmailExisted(String email);
+
+    ResUserDTO convertToResUserDTO(User user);
 }

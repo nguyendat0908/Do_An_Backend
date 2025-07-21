@@ -1,34 +1,43 @@
 package com.DatLeo.BookShop.service.impl;
 
+import com.DatLeo.BookShop.dto.response.ResUserDTO;
 import com.DatLeo.BookShop.entity.User;
 import com.DatLeo.BookShop.exception.ApiException;
 import com.DatLeo.BookShop.exception.ApiMessage;
 import com.DatLeo.BookShop.repository.UserRepository;
 import com.DatLeo.BookShop.service.UserService;
+import com.DatLeo.BookShop.util.constant.GenderEnum;
+import com.DatLeo.BookShop.util.constant.SsoTypeEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
 import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
     private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 
-    public UserServiceImpl(UserRepository userRepository) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @Override
     public User handleCreateUser(User user) {
-        log.info("Lưu người dùng thành công! {}", user);
+        log.info("Lưu người dùng thành công!");
         boolean isCheckEmail = this.handleCheckEmailExisted(user.getEmail());
         if (isCheckEmail){
             log.error("Không lưu người dùng thành công! {}", ApiMessage.EMAIL_EXISTED);
             throw new ApiException(ApiMessage.EMAIL_EXISTED);
         }
+        String hashPassword = this.passwordEncoder.encode(user.getPassword());
+        user.setPassword(hashPassword);
         return this.userRepository.save(user);
     }
 
@@ -67,7 +76,30 @@ public class UserServiceImpl implements UserService {
         log.info("Xóa người dùng thành công với ID {}", id);
     }
 
+    @Override
     public boolean handleCheckEmailExisted(String email) {
         return this.userRepository.existsByEmail(email);
+    }
+
+    // Convert User to ResUserDTO
+    @Override
+    public ResUserDTO convertToResUserDTO(User user) {
+        ResUserDTO resUserDTO = new ResUserDTO();
+
+        resUserDTO.setId(user.getId());
+        resUserDTO.setName(user.getName());
+        resUserDTO.setEmail(user.getEmail());
+        resUserDTO.setAddress(user.getAddress());
+        resUserDTO.setPhone(user.getPhone());
+        resUserDTO.setAvatar(user.getAvatar());
+        resUserDTO.setSsoID(user.getSsoID());
+        resUserDTO.setGender(user.getGender());
+        resUserDTO.setSsoType(user.getSsoType());
+        resUserDTO.setActive(user.getActive());
+        resUserDTO.setRefreshToken(user.getRefreshToken());
+        resUserDTO.setCreatedAt(user.getCreatedAt());
+        resUserDTO.setUpdatedAt(user.getUpdatedAt());
+
+        return resUserDTO;
     }
 }
