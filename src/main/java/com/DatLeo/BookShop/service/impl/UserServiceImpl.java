@@ -1,20 +1,23 @@
 package com.DatLeo.BookShop.service.impl;
 
+import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
 import com.DatLeo.BookShop.dto.response.ResUserDTO;
 import com.DatLeo.BookShop.entity.User;
 import com.DatLeo.BookShop.exception.ApiException;
 import com.DatLeo.BookShop.exception.ApiMessage;
 import com.DatLeo.BookShop.repository.UserRepository;
 import com.DatLeo.BookShop.service.UserService;
-import com.DatLeo.BookShop.util.constant.GenderEnum;
-import com.DatLeo.BookShop.util.constant.SsoTypeEnum;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -101,5 +104,28 @@ public class UserServiceImpl implements UserService {
         resUserDTO.setUpdatedAt(user.getUpdatedAt());
 
         return resUserDTO;
+    }
+
+    @Override
+    public ResPaginationDTO handleGetUsers(Specification<User> spec, Pageable pageable) {
+
+        Page<User> pageUser = this.userRepository.findAll(spec, pageable);
+        ResPaginationDTO resPaginationDTO = new ResPaginationDTO();
+        ResPaginationDTO.Meta meta = new ResPaginationDTO.Meta();
+
+        meta.setPage(pageable.getPageNumber() + 1);
+        meta.setPageSize(pageable.getPageSize());
+        meta.setPages(pageUser.getTotalPages());
+        meta.setTotal(pageUser.getTotalElements());
+
+        resPaginationDTO.setMeta(meta);
+
+        List<ResUserDTO> listUserDTOs = pageUser.getContent().stream().map(item ->
+                this.convertToResUserDTO(item)).collect(Collectors.toList());
+
+        resPaginationDTO.setResult(listUserDTOs);
+        log.info("Hiển thị danh sách người dùng phân trang thành công!");
+
+        return resPaginationDTO;
     }
 }

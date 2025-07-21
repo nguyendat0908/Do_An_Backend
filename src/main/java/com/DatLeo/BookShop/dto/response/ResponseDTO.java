@@ -1,18 +1,21 @@
 package com.DatLeo.BookShop.dto.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 
 
 @Getter
 @Setter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResponseDTO <T>{
 
-    private int code;
-    private String error;
+    Integer code;
+    String error;
 
-    private Object message;
-    private T data;
+    Object message;
+    T data;
 }

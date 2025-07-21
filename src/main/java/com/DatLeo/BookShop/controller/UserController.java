@@ -1,11 +1,15 @@
 package com.DatLeo.BookShop.controller;
 
+import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
 import com.DatLeo.BookShop.dto.response.ResUserDTO;
 import com.DatLeo.BookShop.entity.User;
 import com.DatLeo.BookShop.service.UserService;
 import com.DatLeo.BookShop.util.annotation.CustomAnnotation;
 import com.DatLeo.BookShop.util.constant.ApiConstants;
+import com.turkraft.springfilter.boot.Filter;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +35,12 @@ public class UserController {
     public ResponseEntity<ResUserDTO> getUserById(@PathVariable("id") Integer id) {
         User user = this.userService.handleGetUserById(id);
         return ResponseEntity.ok(this.userService.convertToResUserDTO(user));
+    }
+
+    @GetMapping("/users")
+    @CustomAnnotation("Hiển thị danh sách thông tin người dùng!")
+    public ResponseEntity<ResPaginationDTO> getListUsers(@Filter Specification<User> spec, Pageable pageable) {
+        return ResponseEntity.ok(this.userService.handleGetUsers(spec, pageable));
     }
 
     @PutMapping("/users")
