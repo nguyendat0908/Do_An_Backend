@@ -2,6 +2,7 @@ package com.DatLeo.BookShop.dto.request;
 
 import com.DatLeo.BookShop.entity.Role;
 import com.DatLeo.BookShop.exception.ApiMessage;
+import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
@@ -29,7 +30,11 @@ public class ReqCreateUserDTO {
 
     String address;
     String phone;
+
+    @Nullable
     MultipartFile avatar;
+
     Boolean active;
+
     Role role;
 }

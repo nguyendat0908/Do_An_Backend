@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
         user.setPassword(reqCreateUserDTO.getPassword());
         user.setAddress(reqCreateUserDTO.getAddress());
         user.setPhone(reqCreateUserDTO.getPhone());
-        user.setActive(reqCreateUserDTO.getActive());
+        user.setActive(reqCreateUserDTO.getActive() != null ? reqCreateUserDTO.getActive() : false);
 
 
         if (reqCreateUserDTO.getAvatar() != null && !reqCreateUserDTO.getAvatar().isEmpty()) {
