@@ -1,11 +1,13 @@
 package com.DatLeo.BookShop.service.impl;
 
+import com.DatLeo.BookShop.dto.request.ReqCreateUserDTO;
 import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
 import com.DatLeo.BookShop.dto.response.ResUserDTO;
 import com.DatLeo.BookShop.entity.User;
 import com.DatLeo.BookShop.exception.ApiException;
 import com.DatLeo.BookShop.exception.ApiMessage;
 import com.DatLeo.BookShop.repository.UserRepository;
+import com.DatLeo.BookShop.service.FileService;
 import com.DatLeo.BookShop.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +17,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -24,23 +27,40 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final FileService fileService;
     private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, FileService fileService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.fileService = fileService;
     }
 
     @Override
-    public User handleCreateUser(User user) {
+    public User handleCreateUser(ReqCreateUserDTO reqCreateUserDTO) throws IOException {
         log.info("Lưu người dùng thành công!");
-        boolean isCheckEmail = this.handleCheckEmailExisted(user.getEmail());
+        boolean isCheckEmail = this.handleCheckEmailExisted(reqCreateUserDTO.getEmail());
         if (isCheckEmail){
             log.error("Không lưu người dùng thành công! {}", ApiMessage.EMAIL_EXISTED);
             throw new ApiException(ApiMessage.EMAIL_EXISTED);
         }
-        String hashPassword = this.passwordEncoder.encode(user.getPassword());
-        user.setPassword(hashPassword);
+        String hashPassword = this.passwordEncoder.encode(reqCreateUserDTO.getPassword());
+        reqCreateUserDTO.setPassword(hashPassword);
+
+        User user = new User();
+        user.setName(reqCreateUserDTO.getName());
+        user.setEmail(reqCreateUserDTO.getEmail());
+        user.setPassword(reqCreateUserDTO.getPassword());
+        user.setAddress(reqCreateUserDTO.getAddress());
+        user.setPhone(reqCreateUserDTO.getPhone());
+        user.setActive(reqCreateUserDTO.getActive());
+
+
+        if (reqCreateUserDTO.getAvatar() != null && !reqCreateUserDTO.getAvatar().isEmpty()) {
+            String avatarUrl = this.fileService.uploadImage(reqCreateUserDTO.getAvatar());
+            user.setAvatar(avatarUrl);
+        }
+
         return this.userRepository.save(user);
     }
 
