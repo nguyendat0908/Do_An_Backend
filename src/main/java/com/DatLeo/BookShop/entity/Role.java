@@ -1,5 +1,6 @@
 package com.DatLeo.BookShop.entity;
 
+import com.DatLeo.BookShop.exception.ApiMessage;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -23,7 +24,7 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    @NotBlank(message = "Tên vai trò không được để trống!")
+    @NotBlank(message = ApiMessage.NAME_NOT_NULL)
     String name;
 
     String description;

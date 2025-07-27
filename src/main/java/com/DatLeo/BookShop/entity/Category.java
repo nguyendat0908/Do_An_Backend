@@ -1,5 +1,6 @@
 package com.DatLeo.BookShop.entity;
 
+import com.DatLeo.BookShop.exception.ApiMessage;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
@@ -19,7 +20,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    @NotBlank(message = "Tên không được để trống!")
+    @NotBlank(message = ApiMessage.NAME_NOT_NULL)
     String name;
 
     @Column(columnDefinition = "TEXT")

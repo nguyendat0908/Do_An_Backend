@@ -1,5 +1,6 @@
 package com.DatLeo.BookShop.entity;
 
+import com.DatLeo.BookShop.exception.ApiMessage;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -25,7 +26,7 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    @NotBlank(message = "Tên sách không được để trống!")
+    @NotBlank(message = ApiMessage.NAME_NOT_NULL)
     String name;
 
     @Column(columnDefinition = "TEXT")
@@ -33,10 +34,10 @@ public class Book {
 
     Integer sold;
 
-    @NotBlank(message = "Số lượng sách không được để trống!")
+    @NotBlank(message = ApiMessage.QUANTITY_NOT_NULL)
     Integer quantity;
 
-    @NotBlank(message = "Giá sách không được để trống!")
+    @NotBlank(message = ApiMessage.PRICE_NOT_NULL)
     Double price;
 
     @JsonFormat(pattern = "dd-MM-yyyy")

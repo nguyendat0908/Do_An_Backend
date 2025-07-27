@@ -1,6 +1,8 @@
 package com.DatLeo.BookShop.entity;
 
+import com.DatLeo.BookShop.exception.ApiMessage;
 import com.DatLeo.BookShop.util.constant.StatusShipEnum;
+import com.cloudinary.Api;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AccessLevel;
@@ -21,13 +23,13 @@ public class Shipping {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    @NotBlank(message = "Tên người nhận hàng không được để trống!")
+    @NotBlank(message = ApiMessage.RECEIVER_NAME_NOT_NULL)
     String receiveName;
 
-    @NotBlank(message = "Địa chỉ người nhận hàng không được để trống!")
+    @NotBlank(message = ApiMessage.RECEIVER_ADDRESS_NOT_NULL)
     String receiveAddress;
 
-    @NotBlank(message = "Số điện thoại người nhận hàng không được để trống!")
+    @NotBlank(message = ApiMessage.RECEIVER_PHONE_NOT_NULL)
     String receivePhone;
 
     Double shippingFee;

@@ -1,10 +1,13 @@
 package com.DatLeo.BookShop.entity;
 
+import com.DatLeo.BookShop.exception.ApiMessage;
 import com.DatLeo.BookShop.util.constant.GenderEnum;
 import com.DatLeo.BookShop.util.constant.SsoTypeEnum;
+import com.cloudinary.Api;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -27,19 +30,22 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    @NotBlank(message = "Tên không được để trống!")
+    @NotBlank(message = ApiMessage.NAME_NOT_NULL)
     String name;
 
-    @NotBlank(message = "Email không được để trống!")
-    @Email(message = "Email không đúng định dạng!")
+    @NotBlank(message = ApiMessage.EMAIL_NOT_NULL)
+    @Email(message = ApiMessage.EMAIL_NOT_CORRECT_FORMAT)
     String email;
 
-    @NotBlank(message = "Mật khẩu không được để trống!")
-    @Size(min = 8, message = "Mật khẩu phải lớn hơn 8 ký tự!")
+    @NotBlank(message = ApiMessage.PASSWORD_NOT_NULL)
+    @Size(min = 8, message = ApiMessage.PASSWORD_MUST_BE_GREATER)
     String password;
 
     String address;
+
+    @Pattern(regexp = "^\\d{10}$", message = ApiMessage.PHONE_NUMBER_FORMAT)
     String phone;
+
     String avatar;
     String ssoID;
 
