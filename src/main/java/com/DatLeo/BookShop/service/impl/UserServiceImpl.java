@@ -6,6 +6,7 @@ import com.DatLeo.BookShop.dto.response.ResUserDTO;
 import com.DatLeo.BookShop.entity.User;
 import com.DatLeo.BookShop.exception.ApiException;
 import com.DatLeo.BookShop.exception.ApiMessage;
+import com.DatLeo.BookShop.exception.StorageException;
 import com.DatLeo.BookShop.repository.UserRepository;
 import com.DatLeo.BookShop.service.FileService;
 import com.DatLeo.BookShop.service.UserService;
@@ -37,7 +38,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User handleCreateUser(ReqCreateUserDTO reqCreateUserDTO) throws IOException {
+    public User handleCreateUser(ReqCreateUserDTO reqCreateUserDTO) throws IOException, StorageException {
         log.info("Lưu người dùng thành công!");
         boolean isCheckEmail = this.handleCheckEmailExisted(reqCreateUserDTO.getEmail());
         if (isCheckEmail){
@@ -72,7 +73,7 @@ public class UserServiceImpl implements UserService {
             throw new ApiException(ApiMessage.ID_USER_NOT_EXIST);
         }
         if (user.isPresent()) {
-            log.info("Thông tin người dùng với ID {}", user);
+            log.info("Thông tin người dùng với ID {}", user.get());
         }
         return user.get();
     }

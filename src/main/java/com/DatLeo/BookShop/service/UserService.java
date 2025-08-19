@@ -4,6 +4,7 @@ import com.DatLeo.BookShop.dto.request.ReqCreateUserDTO;
 import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
 import com.DatLeo.BookShop.dto.response.ResUserDTO;
 import com.DatLeo.BookShop.entity.User;
+import com.DatLeo.BookShop.exception.StorageException;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -11,7 +12,7 @@ import java.io.IOException;
 
 public interface UserService {
 
-    User handleCreateUser(ReqCreateUserDTO reqCreateUserDTO) throws IOException;
+    User handleCreateUser(ReqCreateUserDTO reqCreateUserDTO) throws IOException, StorageException;
 
     User handleGetUserById(Integer id);
 

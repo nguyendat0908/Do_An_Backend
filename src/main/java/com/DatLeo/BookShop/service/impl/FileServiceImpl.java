@@ -1,5 +1,6 @@
 package com.DatLeo.BookShop.service.impl;
 
+import com.DatLeo.BookShop.exception.StorageException;
 import com.DatLeo.BookShop.service.FileService;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
@@ -13,6 +14,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.Arrays;
+import java.util.List;
 import java.util.UUID;
 
 @Service
@@ -26,11 +29,21 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public String uploadImage(MultipartFile file) throws IOException {
+    public String uploadImage(MultipartFile file) throws IOException, StorageException {
 
         if (file == null || file.isEmpty()) {
             throw new IllegalArgumentException("File không được null hoặc rỗng");
         }
+
+        String fileName = file.getOriginalFilename();
+        List<String> allowedExtensions = Arrays.asList("jpg", "jpeg", "png");
+        boolean isValid = allowedExtensions.stream().anyMatch(item -> fileName.toLowerCase().endsWith(item));
+
+        if (!isValid) {
+            throw new StorageException(
+                    "File tải lên không đúng định dạng! Chỉ cho phép " + allowedExtensions.toString());
+        }
+
         String publicValue = generatePublicValue(file.getOriginalFilename());
         String extension = getFileName(file.getOriginalFilename())[1];
         File fileUpload = convert(file);

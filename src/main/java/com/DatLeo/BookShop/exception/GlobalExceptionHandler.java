@@ -32,8 +32,8 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ResponseDTO<Object>> handleIdException(Exception ex) {
         ResponseDTO<Object> res = new ResponseDTO<Object>();
         res.setCode(HttpStatus.BAD_REQUEST.value());
-        res.setError(ex.getMessage());
-        res.setMessage("Xảy ra ngoại lệ...");
+        res.setError("Xảy ra ngoại lệ...");
+        res.setMessage(ex.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(res);
     }
 

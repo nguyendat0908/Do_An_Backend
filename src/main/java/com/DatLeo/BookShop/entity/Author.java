@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
+import java.time.Instant;
 import java.util.List;
 
 @Entity
@@ -27,10 +28,26 @@ public class Author {
     String name;
 
     @Column(columnDefinition = "TEXT")
+    @Lob
     String description;
 
     String address;
+    String type;
+    String imageUrl;
 
     @OneToMany(mappedBy = "author", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     List<Book> books;
+
+    Instant createdAt;
+    Instant updatedAt;
+
+    @PrePersist
+    public void handleBeforeCreate() {
+        this.createdAt = Instant.now();
+    }
+
+    @PreUpdate
+    public void handleBeforeUpdate() {
+        this.updatedAt = Instant.now();
+    }
 }

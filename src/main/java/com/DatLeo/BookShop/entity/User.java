@@ -55,6 +55,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     SsoTypeEnum ssoType;
 
+    @Column(nullable = false)
     Boolean active;
 
     @Column(columnDefinition = "TEXT")

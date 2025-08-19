@@ -6,6 +6,7 @@ import com.DatLeo.BookShop.dto.response.ResUserDTO;
 import com.DatLeo.BookShop.entity.Role;
 import com.DatLeo.BookShop.entity.User;
 import com.DatLeo.BookShop.exception.FieldException;
+import com.DatLeo.BookShop.exception.StorageException;
 import com.DatLeo.BookShop.service.UserService;
 import com.DatLeo.BookShop.util.annotation.CustomAnnotation;
 import com.DatLeo.BookShop.util.constant.ApiConstants;
@@ -16,7 +17,6 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
@@ -32,7 +32,8 @@ public class UserController {
 
     @PostMapping("/users")
     @CustomAnnotation("Thêm mới người dùng thành công!")
-    public ResponseEntity<ResUserDTO> createUser (@Valid @ModelAttribute ReqCreateUserDTO reqCreateUserDTO, BindingResult bindingResult) throws IOException {
+    public ResponseEntity<ResUserDTO> createUser (
+            @Valid @ModelAttribute ReqCreateUserDTO reqCreateUserDTO, BindingResult bindingResult) throws IOException, StorageException {
 
         if (bindingResult.hasErrors()) {
             throw new FieldException(bindingResult);

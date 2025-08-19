@@ -2,8 +2,13 @@ package com.DatLeo.BookShop.exception;
 
 public class ApiMessage {
 
+    // User
     public static final String EMAIL_EXISTED = "Email người dùng đã tồn tại vui lòng chọn email khác.";
     public static final String ID_USER_NOT_EXIST = "Người dùng không tồn tại, vui lòng kiểm tra lại.";
+
+    // Author
+    public static final String NAME_EXISTED = "Tên tác giả đã tồn tại, vui lòng chọn tên khác.";
+    public static final String AUTHOR_NOT_EXIST = "Tác giả không tồn tại, vui lòng kiểm tra lại.";
 
     // Filed message
     public static final String NAME_NOT_NULL = "Tên không được để trống.";
