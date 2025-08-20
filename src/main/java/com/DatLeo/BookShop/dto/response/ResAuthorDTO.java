@@ -26,6 +26,7 @@ public class ResAuthorDTO {
     String type;
     Integer totalBooks;
     String imageUrl;
+    String imagePublicId;
     Instant createdAt;
     Instant updatedAt;
 }

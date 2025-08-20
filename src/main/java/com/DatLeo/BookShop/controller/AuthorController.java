@@ -1,6 +1,7 @@
 package com.DatLeo.BookShop.controller;
 
 import com.DatLeo.BookShop.dto.request.ReqCreateAuthorDTO;
+import com.DatLeo.BookShop.dto.request.ReqUpdateAuthorDTO;
 import com.DatLeo.BookShop.dto.response.ResAuthorDTO;
 import com.DatLeo.BookShop.entity.Author;
 import com.DatLeo.BookShop.exception.FieldException;
@@ -44,8 +45,11 @@ public class AuthorController {
 
     @PutMapping("/authors")
     @CustomAnnotation("Cập nhật thông tin tác giả thành công!")
-    public ResponseEntity<ResAuthorDTO> updateAuthor(Author author) {
-        Author newAuthor = this.authorService.handleUpdateAuthor(author);
+    public ResponseEntity<ResAuthorDTO> updateAuthor(@ModelAttribute ReqUpdateAuthorDTO req, BindingResult bindingResult) throws IOException, StorageException {
+        if (bindingResult.hasErrors()) {
+            throw new FieldException(bindingResult);
+        }
+        Author newAuthor = this.authorService.handleUpdateAuthor(req);
         return ResponseEntity.ok(this.authorService.convertToRes(newAuthor));
     }
 

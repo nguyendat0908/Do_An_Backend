@@ -2,6 +2,7 @@ package com.DatLeo.BookShop.service.impl;
 
 import com.DatLeo.BookShop.dto.request.ReqCreateUserDTO;
 import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
+import com.DatLeo.BookShop.dto.response.ResUploadDTO;
 import com.DatLeo.BookShop.dto.response.ResUserDTO;
 import com.DatLeo.BookShop.entity.User;
 import com.DatLeo.BookShop.exception.ApiException;
@@ -57,9 +58,10 @@ public class UserServiceImpl implements UserService {
         user.setActive(reqCreateUserDTO.getActive() != null ? reqCreateUserDTO.getActive() : false);
 
 
-        if (reqCreateUserDTO.getAvatar() != null && !reqCreateUserDTO.getAvatar().isEmpty()) {
-            String avatarUrl = this.fileService.uploadImage(reqCreateUserDTO.getAvatar());
-            user.setAvatar(avatarUrl);
+        if (reqCreateUserDTO.getImageUrl() != null && !reqCreateUserDTO.getImageUrl().isEmpty()) {
+            ResUploadDTO resUploadDTO = this.fileService.uploadImage(reqCreateUserDTO.getImageUrl());
+            user.setImageUrl(resUploadDTO.getUrl());
+            user.setImagePublicId(resUploadDTO.getPublicId());
         }
 
         return this.userRepository.save(user);
@@ -96,6 +98,11 @@ public class UserServiceImpl implements UserService {
             log.error("Người dùng với không tồn tại!");
             throw new ApiException(ApiMessage.ID_USER_NOT_EXIST);
         }
+
+        if (user.getImagePublicId() != null && !user.getImagePublicId().isEmpty()) {
+            fileService.deleteImage(user.getImagePublicId());
+        }
+
         this.userRepository.deleteById(id);
         log.info("Xóa người dùng thành công với ID {}", id);
     }
@@ -108,21 +115,22 @@ public class UserServiceImpl implements UserService {
     // Convert User to ResUserDTO
     @Override
     public ResUserDTO convertToResUserDTO(User user) {
-        ResUserDTO resUserDTO = new ResUserDTO();
-
-        resUserDTO.setId(user.getId());
-        resUserDTO.setName(user.getName());
-        resUserDTO.setEmail(user.getEmail());
-        resUserDTO.setAddress(user.getAddress());
-        resUserDTO.setPhone(user.getPhone());
-        resUserDTO.setAvatar(user.getAvatar());
-        resUserDTO.setSsoID(user.getSsoID());
-        resUserDTO.setGender(user.getGender());
-        resUserDTO.setSsoType(user.getSsoType());
-        resUserDTO.setActive(user.getActive());
-        resUserDTO.setRefreshToken(user.getRefreshToken());
-        resUserDTO.setCreatedAt(user.getCreatedAt());
-        resUserDTO.setUpdatedAt(user.getUpdatedAt());
+        ResUserDTO resUserDTO = ResUserDTO.builder()
+                .id(user.getId())
+                .name(user.getName())
+                .email(user.getEmail())
+                .address(user.getAddress())
+                .phone(user.getPhone())
+                .imageUrl(user.getImageUrl())
+                .imagePublicId(user.getImagePublicId())
+                .ssoID(user.getSsoID())
+                .gender(user.getGender())
+                .ssoType(user.getSsoType())
+                .active(user.getActive())
+                .refreshToken(user.getRefreshToken())
+                .createdAt(user.getCreatedAt())
+                .updatedAt(user.getUpdatedAt())
+                .build();
 
         return resUserDTO;
     }

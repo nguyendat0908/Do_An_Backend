@@ -1,5 +1,6 @@
 package com.DatLeo.BookShop.service.impl;
 
+import com.DatLeo.BookShop.dto.response.ResUploadDTO;
 import com.DatLeo.BookShop.exception.StorageException;
 import com.DatLeo.BookShop.service.FileService;
 import com.cloudinary.Cloudinary;
@@ -16,6 +17,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 @Service
@@ -29,7 +31,7 @@ public class FileServiceImpl implements FileService {
     }
 
     @Override
-    public String uploadImage(MultipartFile file) throws IOException, StorageException {
+    public ResUploadDTO uploadImage(MultipartFile file) throws IOException, StorageException {
 
         if (file == null || file.isEmpty()) {
             throw new IllegalArgumentException("File không được null hoặc rỗng");
@@ -50,10 +52,28 @@ public class FileServiceImpl implements FileService {
 
         log.info("Thông tin file upload: {}", fileUpload);
 
-        cloudinary.uploader().upload(fileUpload, ObjectUtils.asMap("public_id", publicValue));
+        Map resUploadDTO = cloudinary.uploader().upload(fileUpload, ObjectUtils.asMap("public_id", publicValue));
         cleanDisk(fileUpload);
 
-        return cloudinary.url().generate(StringUtils.join(publicValue, ".", extension));
+        String url = cloudinary.url().generate(publicValue + "." + extension);
+        String publicId = (String) resUploadDTO.get("public_id");
+
+        return new ResUploadDTO(url, publicId);
+    }
+
+    @Override
+    public void deleteImage(String publicId) {
+        if (publicId == null || publicId.isEmpty()) {
+            log.warn("Không có publicId để xóa ảnh");
+            return;
+        }
+        try {
+            Map result = cloudinary.uploader().destroy(publicId, ObjectUtils.emptyMap());
+            log.info("Đã xóa ảnh Cloudinary với publicId {} - Kết quả: {}", publicId, result);
+        } catch (IOException e) {
+            log.error("Lỗi khi xóa ảnh Cloudinary với publicId {}: {}", publicId, e.getMessage());
+            throw new RuntimeException("Không thể xóa ảnh trên Cloudinary", e);
+        }
     }
 
     private File convert(MultipartFile file) throws IOException {

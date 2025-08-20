@@ -22,18 +22,28 @@ public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     Integer id;
 
     @NotBlank(message = ApiMessage.NAME_NOT_NULL)
+    @Column(name = "name")
     String name;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "description", columnDefinition = "TEXT")
     @Lob
     String description;
 
+    @Column(name = "address")
     String address;
+
+    @Column(name = "type")
     String type;
+
+    @Column(name = "image_url")
     String imageUrl;
+
+    @Column(name = "image_public_id")
+    String imagePublicId;
 
     @OneToMany(mappedBy = "author", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     List<Book> books;

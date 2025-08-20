@@ -34,7 +34,7 @@ public class ReqCreateUserDTO {
     String phone;
 
     @Nullable
-    MultipartFile avatar;
+    MultipartFile imageUrl;
 
     Boolean active;
 

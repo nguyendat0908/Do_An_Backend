@@ -1,5 +1,6 @@
 package com.DatLeo.BookShop.controller;
 
+import com.DatLeo.BookShop.dto.response.ResUploadDTO;
 import com.DatLeo.BookShop.dto.response.ResponseDTO;
 import com.DatLeo.BookShop.exception.StorageException;
 import com.DatLeo.BookShop.service.FileService;
@@ -26,7 +27,7 @@ public class FileController {
 
     @PostMapping("/upload")
     @CustomAnnotation("Upload ảnh thành công!")
-    public ResponseEntity<ResponseDTO<String>> uploadImage(@RequestParam("file") MultipartFile file) throws IOException, StorageException {
+    public ResponseEntity<ResponseDTO<ResUploadDTO>> uploadImage(@RequestParam("file") MultipartFile file) throws IOException, StorageException {
         return ResponseEntity.ok(new ResponseDTO<>(this.fileService.uploadImage(file)));
     }
 }

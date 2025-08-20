@@ -1,7 +1,9 @@
 package com.DatLeo.BookShop.service.impl;
 
 import com.DatLeo.BookShop.dto.request.ReqCreateAuthorDTO;
+import com.DatLeo.BookShop.dto.request.ReqUpdateAuthorDTO;
 import com.DatLeo.BookShop.dto.response.ResAuthorDTO;
+import com.DatLeo.BookShop.dto.response.ResUploadDTO;
 import com.DatLeo.BookShop.entity.Author;
 import com.DatLeo.BookShop.entity.Book;
 import com.DatLeo.BookShop.exception.ApiException;
@@ -51,8 +53,9 @@ public class AuthorServiceImpl implements AuthorService {
         author.setType(reqCreateAuthorDTO.getType());
 
         if (reqCreateAuthorDTO.getImageUrl() != null && !reqCreateAuthorDTO.getImageUrl().isEmpty()) {
-            String avatarUrl = this.fileService.uploadImage(reqCreateAuthorDTO.getImageUrl());
-            author.setImageUrl(avatarUrl);
+            ResUploadDTO uploadResult = this.fileService.uploadImage(reqCreateAuthorDTO.getImageUrl());
+            author.setImageUrl(uploadResult.getUrl());
+            author.setImagePublicId(uploadResult.getPublicId());
         }
         log.info("Lưu tác giả thành công với id {}", author.getId());
         return this.authorRepository.save(author);
@@ -69,16 +72,29 @@ public class AuthorServiceImpl implements AuthorService {
     }
 
     @Override
-    public Author handleUpdateAuthor(Author author) {
-        Author currentAuthor = handleGetAuthorById(author.getId());
-        if (currentAuthor != null) {
-            currentAuthor.setName(author.getName());
-            currentAuthor.setAddress(author.getAddress());
-            currentAuthor.setType(author.getType());
-            currentAuthor.setDescription(author.getDescription());
-            currentAuthor.setImageUrl(author.getImageUrl());
-            this.authorRepository.save(currentAuthor);
+    public Author handleUpdateAuthor(ReqUpdateAuthorDTO req) throws IOException, StorageException {
+        Author currentAuthor = handleGetAuthorById(req.getId());
+        if (currentAuthor == null) {
+            throw new ApiException(ApiMessage.AUTHOR_NOT_EXIST);
         }
+
+        currentAuthor.setName(req.getName());
+        currentAuthor.setAddress(req.getAddress());
+        currentAuthor.setType(req.getType());
+        currentAuthor.setDescription(req.getDescription());
+
+        if (req.getImageUrl() != null && !req.getImageUrl().isEmpty()) {
+            // Xóa ảnh cũ
+            if (currentAuthor.getImagePublicId() != null) {
+                this.fileService.deleteImage(currentAuthor.getImagePublicId());
+            }
+            ResUploadDTO resUploadDTO = this.fileService.uploadImage(req.getImageUrl());
+            currentAuthor.setImageUrl(resUploadDTO.getUrl());
+            currentAuthor.setImagePublicId(resUploadDTO.getPublicId());
+        }
+
+        this.authorRepository.save(currentAuthor);
+
         log.info("Cập nhật tác giả thành công {}", currentAuthor);
         return currentAuthor;
     }
@@ -89,6 +105,9 @@ public class AuthorServiceImpl implements AuthorService {
         if (author == null) {
             log.error("Tác giả không tồn tại với ID {}", id);
             throw new ApiException(ApiMessage.AUTHOR_NOT_EXIST);
+        }
+        if (author.getImageUrl() != null && !author.getImageUrl().isEmpty()) {
+            this.fileService.deleteImage(author.getImagePublicId());
         }
         this.authorRepository.deleteById(id);
         log.info("Xóa tác giả thành công với ID {}", id);
@@ -105,6 +124,7 @@ public class AuthorServiceImpl implements AuthorService {
                 .type(author.getType())
                 .totalBooks(this.bookRepository.countBooksByAuthorId(author.getId()))
                 .imageUrl(author.getImageUrl())
+                .imagePublicId(author.getImagePublicId())
                 .createdAt(author.getCreatedAt())
                 .updatedAt(author.getUpdatedAt())
                 .build();

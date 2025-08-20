@@ -10,6 +10,7 @@ import java.time.Instant;
 
 @Setter
 @Getter
+@Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -21,7 +22,8 @@ public class ResUserDTO {
     String email;
     String address;
     String phone;
-    String avatar;
+    String imageUrl;
+    String imagePublicId;
     String ssoID;
     GenderEnum gender;
     SsoTypeEnum ssoType;

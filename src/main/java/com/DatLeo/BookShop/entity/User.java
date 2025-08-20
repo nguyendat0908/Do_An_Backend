@@ -28,37 +28,50 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     Integer id;
 
     @NotBlank(message = ApiMessage.NAME_NOT_NULL)
+    @Column(name = "name")
     String name;
 
     @NotBlank(message = ApiMessage.EMAIL_NOT_NULL)
     @Email(message = ApiMessage.EMAIL_NOT_CORRECT_FORMAT)
+    @Column(name = "email")
     String email;
 
     @NotBlank(message = ApiMessage.PASSWORD_NOT_NULL)
     @Size(min = 8, message = ApiMessage.PASSWORD_MUST_BE_GREATER)
+    @Column(name = "password")
     String password;
 
     String address;
 
     @Pattern(regexp = "^\\d{10}$", message = ApiMessage.PHONE_NUMBER_FORMAT)
+    @Column(name = "phone")
     String phone;
 
-    String avatar;
+    @Column(name = "image_url")
+    String imageUrl;
+
+    @Column(name = "image_public_id")
+    String imagePublicId;
+
+    @Column(name = "sso_id")
     String ssoID;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "gender")
     GenderEnum gender;
 
     @Enumerated(EnumType.STRING)
+    @Column(name = "sso_type")
     SsoTypeEnum ssoType;
 
-    @Column(nullable = false)
+    @Column(name = "active", nullable = false)
     Boolean active;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "refresh_token", columnDefinition = "TEXT")
     String refreshToken;
 
     @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

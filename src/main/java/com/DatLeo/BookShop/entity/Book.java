@@ -24,25 +24,32 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     Integer id;
 
     @NotBlank(message = ApiMessage.NAME_NOT_NULL)
+    @Column(name = "name")
     String name;
 
-    @Column(columnDefinition = "TEXT")
+    @Column(name = "description", columnDefinition = "TEXT")
     String description;
 
+    @Column(name = "sold")
     Integer sold;
 
     @NotBlank(message = ApiMessage.QUANTITY_NOT_NULL)
+    @Column(name = "quantity")
     Integer quantity;
 
     @NotBlank(message = ApiMessage.PRICE_NOT_NULL)
+    @Column(name = "price")
     Double price;
 
     @JsonFormat(pattern = "dd-MM-yyyy")
+    @Column(name = "publication_date")
     LocalDate publicationDate;
 
+    @Column(name = "image")
     String image;
 
     @ManyToOne
