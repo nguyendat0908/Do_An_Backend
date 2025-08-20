@@ -3,13 +3,18 @@ package com.DatLeo.BookShop.controller;
 import com.DatLeo.BookShop.dto.request.ReqCreateAuthorDTO;
 import com.DatLeo.BookShop.dto.request.ReqUpdateAuthorDTO;
 import com.DatLeo.BookShop.dto.response.ResAuthorDTO;
+import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
 import com.DatLeo.BookShop.entity.Author;
+import com.DatLeo.BookShop.entity.User;
 import com.DatLeo.BookShop.exception.FieldException;
 import com.DatLeo.BookShop.exception.StorageException;
 import com.DatLeo.BookShop.service.AuthorService;
 import com.DatLeo.BookShop.util.annotation.CustomAnnotation;
 import com.DatLeo.BookShop.util.constant.ApiConstants;
+import com.turkraft.springfilter.boot.Filter;
 import jakarta.validation.Valid;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
@@ -51,6 +56,12 @@ public class AuthorController {
         }
         Author newAuthor = this.authorService.handleUpdateAuthor(req);
         return ResponseEntity.ok(this.authorService.convertToRes(newAuthor));
+    }
+
+    @GetMapping("/authors")
+    @CustomAnnotation("Hiển thị danh sách thông tin tác giả!")
+    public ResponseEntity<ResPaginationDTO> getListAuthors(@Filter Specification<Author> spec, Pageable pageable) {
+        return ResponseEntity.ok(this.authorService.handleGetAuthors(spec, pageable));
     }
 
     @DeleteMapping("/authors/{id}")

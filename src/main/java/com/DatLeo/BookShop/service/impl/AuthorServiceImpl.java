@@ -3,9 +3,12 @@ package com.DatLeo.BookShop.service.impl;
 import com.DatLeo.BookShop.dto.request.ReqCreateAuthorDTO;
 import com.DatLeo.BookShop.dto.request.ReqUpdateAuthorDTO;
 import com.DatLeo.BookShop.dto.response.ResAuthorDTO;
+import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
 import com.DatLeo.BookShop.dto.response.ResUploadDTO;
+import com.DatLeo.BookShop.dto.response.ResUserDTO;
 import com.DatLeo.BookShop.entity.Author;
 import com.DatLeo.BookShop.entity.Book;
+import com.DatLeo.BookShop.entity.User;
 import com.DatLeo.BookShop.exception.ApiException;
 import com.DatLeo.BookShop.exception.ApiMessage;
 import com.DatLeo.BookShop.exception.StorageException;
@@ -17,12 +20,16 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -57,7 +64,7 @@ public class AuthorServiceImpl implements AuthorService {
             author.setImageUrl(uploadResult.getUrl());
             author.setImagePublicId(uploadResult.getPublicId());
         }
-        log.info("Lưu tác giả thành công với id {}", author.getId());
+        log.info("Lưu tác giả thành công với tên {}", reqCreateAuthorDTO.getName());
         return this.authorRepository.save(author);
     }
 
@@ -111,6 +118,29 @@ public class AuthorServiceImpl implements AuthorService {
         }
         this.authorRepository.deleteById(id);
         log.info("Xóa tác giả thành công với ID {}", id);
+    }
+
+    @Override
+    public ResPaginationDTO handleGetAuthors(Specification<Author> spec, Pageable pageable) {
+
+        Page<Author> pageAuthor = this.authorRepository.findAll(spec, pageable);
+        ResPaginationDTO resPaginationDTO = new ResPaginationDTO();
+        ResPaginationDTO.Meta meta = new ResPaginationDTO.Meta();
+
+        meta.setPage(pageable.getPageNumber() + 1);
+        meta.setPageSize(pageable.getPageSize());
+        meta.setPages(pageAuthor.getTotalPages());
+        meta.setTotal(pageAuthor.getTotalElements());
+
+        resPaginationDTO.setMeta(meta);
+
+        List<ResAuthorDTO> listUserDTOs = pageAuthor.getContent().stream().map(item ->
+                this.convertToRes(item)).collect(Collectors.toList());
+
+        resPaginationDTO.setResult(listUserDTOs);
+        log.info("Hiển thị danh sách tác giả phân trang thành công!");
+
+        return resPaginationDTO;
     }
 
     @Override
