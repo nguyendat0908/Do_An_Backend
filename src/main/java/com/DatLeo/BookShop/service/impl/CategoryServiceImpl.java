@@ -41,8 +41,8 @@ public class CategoryServiceImpl implements CategoryService {
     public Category handleUpdateCategory(Category category) {
         Category currentCategory = handleGetCategoryById(category.getId());
         if (currentCategory != null) {
-            currentCategory.setName(category.getName());
-            currentCategory.setDescription(category.getDescription());
+            currentCategory.setName(category.getName() != null ? category.getName() : currentCategory.getName());
+            currentCategory.setDescription(category.getDescription()  != null ? category.getDescription() : currentCategory.getDescription());
         }
         return this.categoryRepository.save(currentCategory);
     }

@@ -14,6 +14,10 @@ public class ApiMessage {
     public static final String CATEGORY_NAME_EXISTED = "Tên danh mục đã tồn tại, vui lòng chọn tên khác.";
     public static final String CATEGORY_NOT_EXIST = "Danh mục không tồn tại, vui lòng kiểm tra lại.";
 
+    // Book
+    public static final String BOOK_NAME_EXISTED = "Tên sách đã tồn tại, vui lòng chọn tên khác.";
+    public static final String BOOK_NOT_EXIST = "Sách không tồn tại, vui lòng kiểm tra lại.";
+
     // Filed message
     public static final String NAME_NOT_NULL = "Tên không được để trống.";
     public static final String EMAIL_NOT_NULL = "Email không được để trống.";

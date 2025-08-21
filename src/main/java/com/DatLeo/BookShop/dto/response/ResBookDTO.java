@@ -1,10 +1,6 @@
 package com.DatLeo.BookShop.dto.response;
 
-import com.DatLeo.BookShop.exception.ApiMessage;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
-import jakarta.persistence.Column;
-import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
@@ -27,4 +23,26 @@ public class ResBookDTO {
     LocalDate publicationDate;
     String imageUrl;
     String imagePublicId;
+    AuthorDTO author;
+    CategoryDTO category;
+
+    @Setter
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @FieldDefaults(level = AccessLevel.PRIVATE)
+    public static class AuthorDTO {
+        Integer id;
+        String name;
+    }
+
+    @Setter
+    @Getter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    @FieldDefaults(level = AccessLevel.PRIVATE)
+    public static class CategoryDTO {
+        Integer id;
+        String name;
+    }
 }

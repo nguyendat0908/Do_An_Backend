@@ -1,6 +1,5 @@
 package com.DatLeo.BookShop.dto.request;
 
-import com.DatLeo.BookShop.entity.Book;
 import com.DatLeo.BookShop.exception.ApiMessage;
 import jakarta.annotation.Nullable;
 import jakarta.persistence.*;
@@ -9,7 +8,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.time.Instant;
 
 @Setter
 @Getter

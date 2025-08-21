@@ -10,6 +10,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -37,15 +38,16 @@ public class Book {
     @Column(name = "sold")
     Integer sold = 0;
 
-    @NotBlank(message = ApiMessage.QUANTITY_NOT_NULL)
+    @NotNull(message = ApiMessage.QUANTITY_NOT_NULL)
     @Column(name = "quantity")
     Integer quantity;
 
-    @NotBlank(message = ApiMessage.PRICE_NOT_NULL)
+    @NotNull(message = ApiMessage.PRICE_NOT_NULL)
     @Column(name = "price")
     Double price;
 
     @JsonFormat(pattern = "dd-MM-yyyy")
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     @Column(name = "publication_date")
     LocalDate publicationDate;
 

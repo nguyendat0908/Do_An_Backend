@@ -6,6 +6,7 @@ import com.DatLeo.BookShop.service.CategoryService;
 import com.DatLeo.BookShop.util.annotation.CustomAnnotation;
 import com.DatLeo.BookShop.util.constant.ApiConstants;
 import com.turkraft.springfilter.boot.Filter;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,7 @@ public class CategoryController {
 
     @PostMapping("/categories")
     @CustomAnnotation("Thêm mới danh mục thành công!")
-    public ResponseEntity<Category> createCategory(@RequestBody Category category) {
+    public ResponseEntity<Category> createCategory(@Valid @RequestBody Category category) {
         return ResponseEntity.ok(this.categoryService.handleCreateCategory(category));
     }
 
