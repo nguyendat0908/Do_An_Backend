@@ -7,8 +7,12 @@ public class ApiMessage {
     public static final String ID_USER_NOT_EXIST = "Người dùng không tồn tại, vui lòng kiểm tra lại.";
 
     // Author
-    public static final String NAME_EXISTED = "Tên tác giả đã tồn tại, vui lòng chọn tên khác.";
+    public static final String AUTHOR_NAME_EXISTED = "Tên tác giả đã tồn tại, vui lòng chọn tên khác.";
     public static final String AUTHOR_NOT_EXIST = "Tác giả không tồn tại, vui lòng kiểm tra lại.";
+
+    // Category
+    public static final String CATEGORY_NAME_EXISTED = "Tên danh mục đã tồn tại, vui lòng chọn tên khác.";
+    public static final String CATEGORY_NOT_EXIST = "Danh mục không tồn tại, vui lòng kiểm tra lại.";
 
     // Filed message
     public static final String NAME_NOT_NULL = "Tên không được để trống.";

@@ -50,8 +50,8 @@ public class AuthorServiceImpl implements AuthorService {
 
         boolean isCheckByName = this.authorRepository.existsByName(reqCreateAuthorDTO.getName());
         if (isCheckByName) {
-            log.error("Không lưu người dùng thành công {}", ApiMessage.NAME_EXISTED);
-            throw new ApiException(ApiMessage.NAME_EXISTED);
+            log.error("Không lưu người dùng thành công {}", ApiMessage.AUTHOR_NAME_EXISTED);
+            throw new ApiException(ApiMessage.AUTHOR_NAME_EXISTED);
         }
         Author author = new Author();
         author.setName(reqCreateAuthorDTO.getName());
@@ -134,10 +134,10 @@ public class AuthorServiceImpl implements AuthorService {
 
         resPaginationDTO.setMeta(meta);
 
-        List<ResAuthorDTO> listUserDTOs = pageAuthor.getContent().stream().map(item ->
+        List<ResAuthorDTO> listAuthorDTOs = pageAuthor.getContent().stream().map(item ->
                 this.convertToRes(item)).collect(Collectors.toList());
 
-        resPaginationDTO.setResult(listUserDTOs);
+        resPaginationDTO.setResult(listAuthorDTOs);
         log.info("Hiển thị danh sách tác giả phân trang thành công!");
 
         return resPaginationDTO;

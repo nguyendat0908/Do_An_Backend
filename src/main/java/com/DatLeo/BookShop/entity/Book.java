@@ -35,7 +35,7 @@ public class Book {
     String description;
 
     @Column(name = "sold")
-    Integer sold;
+    Integer sold = 0;
 
     @NotBlank(message = ApiMessage.QUANTITY_NOT_NULL)
     @Column(name = "quantity")
@@ -50,7 +50,10 @@ public class Book {
     LocalDate publicationDate;
 
     @Column(name = "image")
-    String image;
+    String imageUrl;
+
+    @Column(name = "image_public_id")
+    String imagePublicId;
 
     @ManyToOne
     @JoinColumn(name = "author_id")
