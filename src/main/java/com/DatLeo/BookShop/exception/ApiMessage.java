@@ -18,6 +18,13 @@ public class ApiMessage {
     public static final String BOOK_NAME_EXISTED = "Tên sách đã tồn tại, vui lòng chọn tên khác.";
     public static final String BOOK_NOT_EXIST = "Sách không tồn tại, vui lòng kiểm tra lại.";
 
+    // Discount
+    public static final String DISCOUNT_CODE_EXISTED = "Tên mã giảm giá đã tồn tại, vui lòng chọn tên khác.";
+    public static final String DISCOUNT_NOT_EXIST = "Mã giảm giá không tồn tại, vui lòng kiểm tra lại.";
+    public static final String DISCOUNT_COUNT_NOT_NULL = "Số lượng mã không được để trống.";
+    public static final String DISCOUNT_END_DATE = "Ngày kết thúc không được để trống.";
+    public static final String DISCOUNT_START_DATE = "Ngày bắt đầu không được để trống.";
+
     // Filed message
     public static final String NAME_NOT_NULL = "Tên không được để trống.";
     public static final String EMAIL_NOT_NULL = "Email không được để trống.";

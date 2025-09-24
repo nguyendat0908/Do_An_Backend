@@ -1,8 +1,7 @@
 package com.DatLeo.BookShop.service.impl;
 
-import com.DatLeo.BookShop.dto.response.ResAuthorDTO;
+import com.DatLeo.BookShop.dto.response.ResCategoryDTO;
 import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
-import com.DatLeo.BookShop.entity.Author;
 import com.DatLeo.BookShop.entity.Category;
 import com.DatLeo.BookShop.exception.ApiException;
 import com.DatLeo.BookShop.exception.ApiMessage;
@@ -60,7 +59,7 @@ public class CategoryServiceImpl implements CategoryService {
 
         resPaginationDTO.setMeta(meta);
 
-        List<Category> listCategoryDTOs = pageCategory.getContent();
+        List<ResCategoryDTO> listCategoryDTOs = pageCategory.stream().map(item -> convertToDo(item)).toList();
 
         resPaginationDTO.setResult(listCategoryDTOs);
         log.info("Hiển thị danh sách danh mục phân trang thành công!");
@@ -85,5 +84,14 @@ public class CategoryServiceImpl implements CategoryService {
             throw new ApiException(ApiMessage.CATEGORY_NOT_EXIST);
         }
         this.categoryRepository.deleteById(id);
+    }
+
+    @Override
+    public ResCategoryDTO convertToDo(Category category) {
+        return ResCategoryDTO.builder()
+                .id(category.getId())
+                .name(category.getName())
+                .description(category.getDescription())
+                .build();
     }
 }

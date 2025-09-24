@@ -1,6 +1,8 @@
 package com.DatLeo.BookShop.entity;
 
 import com.DatLeo.BookShop.exception.ApiMessage;
+import com.DatLeo.BookShop.util.constant.DiscountType;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -19,23 +21,42 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class Discount {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     Integer id;
 
     @NotBlank(message = ApiMessage.CODE_NOT_NULL)
+    @Column(name = "code")
     String code;
 
-    Boolean type;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "type")
+    DiscountType type;
+
+    @Column(name = "value")
     Double value;
-    Double minValue;
+
+    @Column(name = "min_value")
+    Double minValue = 0.0;
+
+    @Column(name = "start_date")
+    @NotNull(message = ApiMessage.DISCOUNT_START_DATE)
     LocalDate startDate;
+
+    @Column(name = "end_date")
+    @NotNull(message = ApiMessage.DISCOUNT_END_DATE)
     LocalDate endDate;
-    Boolean active;
+
+    @Column(name = "usage_limit")
+    @NotNull(message = ApiMessage.DISCOUNT_COUNT_NOT_NULL)
     Integer usageLimit;
-    Integer usedCount;
+
+    @Column(name = "used_count")
+    Integer usedCount = 0;
 
     @OneToMany(mappedBy = "discount", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     List<Order> orders;
