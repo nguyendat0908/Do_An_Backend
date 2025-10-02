@@ -153,7 +153,6 @@ public class UserServiceImpl implements UserService {
                 this.convertToResUserDTO(item)).collect(Collectors.toList());
 
         resPaginationDTO.setResult(listUserDTOs);
-        log.info("Hiển thị danh sách người dùng phân trang thành công!");
 
         return resPaginationDTO;
     }

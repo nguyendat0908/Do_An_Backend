@@ -1,105 +1,334 @@
-2025-09-24 00:02:26 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.UserServiceImpl - Lưu người dùng thành công!
-2025-09-24 00:02:26 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.FileServiceImpl - Thông tin file upload: 5554bdeb-8d27-483f-bb41-dda05d3b2f47-anh-testjpg
-2025-09-24 00:02:29 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.FileServiceImpl - Thông tin file path: 5554bdeb-8d27-483f-bb41-dda05d3b2f47-anh-testjpg
-2025-09-24 00:02:29 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:03:36 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=8, name=Test vcav, email=va@gmail.com, password=$2a$10$KpT.3X8Ed2R6r9qybtxYz.o.gxXKkk2Sj4Qz6pRdlYRVq8rGvGj7q, address=vsdvds, phone=0987654321, imageUrl=http://res.cloudinary.com/dnwzqsthm/image/upload/8cdfe518-6a7f-4029-b9aa-10a3fb7be8ca-anh-test.jpg, imagePublicId=8cdfe518-6a7f-4029-b9aa-10a3fb7be8ca-anh-test, ssoID=null, gender=null, ssoType=null, active=false, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-23T17:02:29.269875Z, updatedAt=null)
-2025-09-24 00:05:24 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:05:24 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:16:54 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:16:54 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:18:48 WARN  [http-nio-8888-exec-7] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.DatLeo.BookShop.exception.FieldException: Validation failed]
-2025-09-24 00:19:32 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.UserServiceImpl - Lưu người dùng thành công!
-2025-09-24 00:19:32 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:19:44 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:19:48 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:19:50 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:19:51 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:19:54 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:20:00 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:20:01 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:20:02 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:20:03 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:20:03 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:20:15 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:20:17 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:20:39 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Lưu người dùng thành công!
-2025-09-24 00:20:39 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:20:41 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:20:42 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:20:44 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:20:45 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:20:50 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:20:51 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:20:52 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:20:53 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:20:55 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:20:58 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:21:02 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:21:03 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:21:04 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:21:08 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:21:09 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:21:11 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:21:12 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:21:16 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:21:21 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:21:31 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=2, name=Người dùng 1, email=user1@gmail.com, password=$2a$10$J2bepHobuhpibX7o.doQY.o5BhK4kaFfJSP1HMg9QUS7kqhfWjlLq, address=Thái Bình, phone=0981319648, imageUrl=http://res.cloudinary.com/dnwzqsthm/image/upload/9d906d11-d247-486b-a634-f6ef5a83cea5-anh-test.jpg, imagePublicId=9d906d11-d247-486b-a634-f6ef5a83cea5-anh-test, ssoID=null, gender=null, ssoType=null, active=true, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-08-20T16:41:26.624454Z, updatedAt=null)
-2025-09-24 00:21:41 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=7, name=csdcsd, email=csdcds@gmail.com, password=$2a$10$IPLUftnwEfAPEepSu4Xq8O6kzUWbI6YA6y.k2zl/3E1PpWMI73UO6, address=bfdbdfbd, phone=0987654321, imageUrl=null, imagePublicId=null, ssoID=null, gender=null, ssoType=null, active=false, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-23T16:03:25.921402Z, updatedAt=null)
-2025-09-24 00:21:41 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Xóa người dùng thành công với ID 7
-2025-09-24 00:21:41 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:22:10 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=2, name=Người dùng 1, email=user1@gmail.com, password=$2a$10$J2bepHobuhpibX7o.doQY.o5BhK4kaFfJSP1HMg9QUS7kqhfWjlLq, address=Thái Bình, phone=0981319648, imageUrl=http://res.cloudinary.com/dnwzqsthm/image/upload/9d906d11-d247-486b-a634-f6ef5a83cea5-anh-test.jpg, imagePublicId=9d906d11-d247-486b-a634-f6ef5a83cea5-anh-test, ssoID=null, gender=null, ssoType=null, active=true, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-08-20T16:41:26.624454Z, updatedAt=null)
-2025-09-24 00:28:34 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=2, name=Người dùng 1, email=user1@gmail.com, password=$2a$10$J2bepHobuhpibX7o.doQY.o5BhK4kaFfJSP1HMg9QUS7kqhfWjlLq, address=Thái Bình, phone=0981319648, imageUrl=http://res.cloudinary.com/dnwzqsthm/image/upload/9d906d11-d247-486b-a634-f6ef5a83cea5-anh-test.jpg, imagePublicId=9d906d11-d247-486b-a634-f6ef5a83cea5-anh-test, ssoID=null, gender=null, ssoType=null, active=true, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-08-20T16:41:26.624454Z, updatedAt=null)
-2025-09-24 00:28:42 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=3, name=Người dùng 2, email=nguoidung2@gmail.com, password=$2a$10$I4qTsxBjbsqcvnWGt.zHbOVCgMsSf.4vg6x6ajlJrxEG8aW2Itnha, address=Thái Bình, phone=0981319648, imageUrl=http://res.cloudinary.com/dnwzqsthm/image/upload/572411ac-87cf-40ca-aa65-d83ee62b30ee-test.png, imagePublicId=572411ac-87cf-40ca-aa65-d83ee62b30ee-test, ssoID=null, gender=null, ssoType=null, active=true, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-09T16:07:18.379797Z, updatedAt=null)
-2025-09-24 00:28:46 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=5, name=test mới, email=test@gmail.com, password=$2a$10$hZNHF8Dj7uQfNCZ37ci1DehLYAnk.2CAaD20kN0XsL6DcO256RRlO, address=bdfbdfbdfbd, phone=0987654321, imageUrl=null, imagePublicId=null, ssoID=null, gender=null, ssoType=null, active=true, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-23T16:02:21.282379Z, updatedAt=null)
-2025-09-24 00:28:50 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=6, name=314fds, email=vsdvsd@gmail.com, password=$2a$10$O07UdfT14QIl3p0lpb6Hr.LlWGJY82qRXQGSGoRXo1vznRLp2GBrS, address=bdfbdbd, phone=0987654321, imageUrl=null, imagePublicId=null, ssoID=null, gender=null, ssoType=null, active=false, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-23T16:03:02.947859Z, updatedAt=null)
-2025-09-24 00:28:52 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=8, name=Test vcav, email=va@gmail.com, password=$2a$10$KpT.3X8Ed2R6r9qybtxYz.o.gxXKkk2Sj4Qz6pRdlYRVq8rGvGj7q, address=vsdvds, phone=0987654321, imageUrl=http://res.cloudinary.com/dnwzqsthm/image/upload/8cdfe518-6a7f-4029-b9aa-10a3fb7be8ca-anh-test.jpg, imagePublicId=8cdfe518-6a7f-4029-b9aa-10a3fb7be8ca-anh-test, ssoID=null, gender=null, ssoType=null, active=false, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-23T17:02:29.269875Z, updatedAt=null)
-2025-09-24 00:28:54 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=6, name=314fds, email=vsdvsd@gmail.com, password=$2a$10$O07UdfT14QIl3p0lpb6Hr.LlWGJY82qRXQGSGoRXo1vznRLp2GBrS, address=bdfbdbd, phone=0987654321, imageUrl=null, imagePublicId=null, ssoID=null, gender=null, ssoType=null, active=false, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-23T16:03:02.947859Z, updatedAt=null)
-2025-09-24 00:28:57 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=9, name=Tên người dùng, email=nguoidung@gmail.com, password=$2a$10$7Qd8Hs6ScfjkeIiw5xDPj.gvpStvAgraKEshtvQqvFMIas00zxD6m, address=vdsvsd, phone=0987654321, imageUrl=null, imagePublicId=null, ssoID=null, gender=null, ssoType=null, active=false, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-23T17:19:32.776183Z, updatedAt=null)
-2025-09-24 00:28:59 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=10, name=nguoi 10, email=nguoi@gmail.com, password=$2a$10$HwdD8pGOmtGHOvi7Gfwkku5LQVTsTVMAiTa6Su9mYoZZgpAFTELDm, address=vvsvs, phone=0987654321, imageUrl=null, imagePublicId=null, ssoID=null, gender=null, ssoType=null, active=false, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-23T17:20:39.190289Z, updatedAt=null)
-2025-09-24 00:29:51 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=5, name=test mới, email=test@gmail.com, password=$2a$10$hZNHF8Dj7uQfNCZ37ci1DehLYAnk.2CAaD20kN0XsL6DcO256RRlO, address=bdfbdfbdfbd, phone=0987654321, imageUrl=null, imagePublicId=null, ssoID=null, gender=null, ssoType=null, active=true, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-23T16:02:21.282379Z, updatedAt=null)
-2025-09-24 00:29:55 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=9, name=Tên người dùng, email=nguoidung@gmail.com, password=$2a$10$7Qd8Hs6ScfjkeIiw5xDPj.gvpStvAgraKEshtvQqvFMIas00zxD6m, address=vdsvsd, phone=0987654321, imageUrl=null, imagePublicId=null, ssoID=null, gender=null, ssoType=null, active=false, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-23T17:19:32.776183Z, updatedAt=null)
-2025-09-24 00:29:58 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=8, name=Test vcav, email=va@gmail.com, password=$2a$10$KpT.3X8Ed2R6r9qybtxYz.o.gxXKkk2Sj4Qz6pRdlYRVq8rGvGj7q, address=vsdvds, phone=0987654321, imageUrl=http://res.cloudinary.com/dnwzqsthm/image/upload/8cdfe518-6a7f-4029-b9aa-10a3fb7be8ca-anh-test.jpg, imagePublicId=8cdfe518-6a7f-4029-b9aa-10a3fb7be8ca-anh-test, ssoID=null, gender=null, ssoType=null, active=false, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-23T17:02:29.269875Z, updatedAt=null)
-2025-09-24 00:30:01 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=4, name=ĐẠT TEST, email=dat@gmail.com, password=$2a$10$F4uUwSOavztPfFS8ZKNgHu6Ua.ESqb3iB45pKSnbbcD68dvIVLIG2, address=Thái Bình, phone=0987654321, imageUrl=http://res.cloudinary.com/dnwzqsthm/image/upload/5ee9d573-d086-4847-977a-38a9211f6323-anh-test.jpg, imagePublicId=5ee9d573-d086-4847-977a-38a9211f6323-anh-test, ssoID=null, gender=null, ssoType=null, active=true, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-23T16:00:59.746685Z, updatedAt=null)
-2025-09-24 00:30:08 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=3, name=Người dùng 2, email=nguoidung2@gmail.com, password=$2a$10$I4qTsxBjbsqcvnWGt.zHbOVCgMsSf.4vg6x6ajlJrxEG8aW2Itnha, address=Thái Bình, phone=0981319648, imageUrl=http://res.cloudinary.com/dnwzqsthm/image/upload/572411ac-87cf-40ca-aa65-d83ee62b30ee-test.png, imagePublicId=572411ac-87cf-40ca-aa65-d83ee62b30ee-test, ssoID=null, gender=null, ssoType=null, active=true, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-09T16:07:18.379797Z, updatedAt=null)
-2025-09-24 00:30:13 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=2, name=Người dùng 1, email=user1@gmail.com, password=$2a$10$J2bepHobuhpibX7o.doQY.o5BhK4kaFfJSP1HMg9QUS7kqhfWjlLq, address=Thái Bình, phone=0981319648, imageUrl=http://res.cloudinary.com/dnwzqsthm/image/upload/9d906d11-d247-486b-a634-f6ef5a83cea5-anh-test.jpg, imagePublicId=9d906d11-d247-486b-a634-f6ef5a83cea5-anh-test, ssoID=null, gender=null, ssoType=null, active=true, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-08-20T16:41:26.624454Z, updatedAt=null)
-2025-09-24 00:30:17 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=9, name=Tên người dùng, email=nguoidung@gmail.com, password=$2a$10$7Qd8Hs6ScfjkeIiw5xDPj.gvpStvAgraKEshtvQqvFMIas00zxD6m, address=vdsvsd, phone=0987654321, imageUrl=null, imagePublicId=null, ssoID=null, gender=null, ssoType=null, active=false, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-23T17:19:32.776183Z, updatedAt=null)
-2025-09-24 00:39:11 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:39:12 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:39:35 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:39:36 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:39:39 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:39:40 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:39:41 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:39:43 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:39:46 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:39:47 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:39:48 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:39:49 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:39:51 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:39:52 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:39:57 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=2, name=Người dùng 1, email=user1@gmail.com, password=$2a$10$J2bepHobuhpibX7o.doQY.o5BhK4kaFfJSP1HMg9QUS7kqhfWjlLq, address=Thái Bình, phone=0981319648, imageUrl=http://res.cloudinary.com/dnwzqsthm/image/upload/9d906d11-d247-486b-a634-f6ef5a83cea5-anh-test.jpg, imagePublicId=9d906d11-d247-486b-a634-f6ef5a83cea5-anh-test, ssoID=null, gender=null, ssoType=null, active=true, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-08-20T16:41:26.624454Z, updatedAt=null)
-2025-09-24 00:40:02 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=3, name=Người dùng 2, email=nguoidung2@gmail.com, password=$2a$10$I4qTsxBjbsqcvnWGt.zHbOVCgMsSf.4vg6x6ajlJrxEG8aW2Itnha, address=Thái Bình, phone=0981319648, imageUrl=http://res.cloudinary.com/dnwzqsthm/image/upload/572411ac-87cf-40ca-aa65-d83ee62b30ee-test.png, imagePublicId=572411ac-87cf-40ca-aa65-d83ee62b30ee-test, ssoID=null, gender=null, ssoType=null, active=true, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-09T16:07:18.379797Z, updatedAt=null)
-2025-09-24 00:40:05 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=6, name=314fds, email=vsdvsd@gmail.com, password=$2a$10$O07UdfT14QIl3p0lpb6Hr.LlWGJY82qRXQGSGoRXo1vznRLp2GBrS, address=bdfbdbd, phone=0987654321, imageUrl=null, imagePublicId=null, ssoID=null, gender=null, ssoType=null, active=false, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-23T16:03:02.947859Z, updatedAt=null)
-2025-09-24 00:40:13 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:40:13 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:40:13 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:40:16 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=2, name=Người dùng 1, email=user1@gmail.com, password=$2a$10$J2bepHobuhpibX7o.doQY.o5BhK4kaFfJSP1HMg9QUS7kqhfWjlLq, address=Thái Bình, phone=0981319648, imageUrl=http://res.cloudinary.com/dnwzqsthm/image/upload/9d906d11-d247-486b-a634-f6ef5a83cea5-anh-test.jpg, imagePublicId=9d906d11-d247-486b-a634-f6ef5a83cea5-anh-test, ssoID=null, gender=null, ssoType=null, active=true, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-08-20T16:41:26.624454Z, updatedAt=null)
-2025-09-24 00:40:19 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=3, name=Người dùng 2, email=nguoidung2@gmail.com, password=$2a$10$I4qTsxBjbsqcvnWGt.zHbOVCgMsSf.4vg6x6ajlJrxEG8aW2Itnha, address=Thái Bình, phone=0981319648, imageUrl=http://res.cloudinary.com/dnwzqsthm/image/upload/572411ac-87cf-40ca-aa65-d83ee62b30ee-test.png, imagePublicId=572411ac-87cf-40ca-aa65-d83ee62b30ee-test, ssoID=null, gender=null, ssoType=null, active=true, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-09T16:07:18.379797Z, updatedAt=null)
-2025-09-24 00:40:25 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:40:25 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:40:26 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:40:43 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:40:43 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:40:43 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:40:57 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=2, name=Người dùng 1, email=user1@gmail.com, password=$2a$10$J2bepHobuhpibX7o.doQY.o5BhK4kaFfJSP1HMg9QUS7kqhfWjlLq, address=Thái Bình, phone=0981319648, imageUrl=http://res.cloudinary.com/dnwzqsthm/image/upload/9d906d11-d247-486b-a634-f6ef5a83cea5-anh-test.jpg, imagePublicId=9d906d11-d247-486b-a634-f6ef5a83cea5-anh-test, ssoID=null, gender=null, ssoType=null, active=true, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-08-20T16:41:26.624454Z, updatedAt=null)
-2025-09-24 00:40:59 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=8, name=Test vcav, email=va@gmail.com, password=$2a$10$KpT.3X8Ed2R6r9qybtxYz.o.gxXKkk2Sj4Qz6pRdlYRVq8rGvGj7q, address=vsdvds, phone=0987654321, imageUrl=http://res.cloudinary.com/dnwzqsthm/image/upload/8cdfe518-6a7f-4029-b9aa-10a3fb7be8ca-anh-test.jpg, imagePublicId=8cdfe518-6a7f-4029-b9aa-10a3fb7be8ca-anh-test, ssoID=null, gender=null, ssoType=null, active=false, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-23T17:02:29.269875Z, updatedAt=null)
-2025-09-24 00:41:01 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=5, name=test mới, email=test@gmail.com, password=$2a$10$hZNHF8Dj7uQfNCZ37ci1DehLYAnk.2CAaD20kN0XsL6DcO256RRlO, address=bdfbdfbdfbd, phone=0987654321, imageUrl=null, imagePublicId=null, ssoID=null, gender=null, ssoType=null, active=true, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-23T16:02:21.282379Z, updatedAt=null)
-2025-09-24 00:42:28 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:42:28 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:42:28 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
-2025-09-24 00:42:33 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=2, name=Người dùng 1, email=user1@gmail.com, password=$2a$10$J2bepHobuhpibX7o.doQY.o5BhK4kaFfJSP1HMg9QUS7kqhfWjlLq, address=Thái Bình, phone=0981319648, imageUrl=http://res.cloudinary.com/dnwzqsthm/image/upload/9d906d11-d247-486b-a634-f6ef5a83cea5-anh-test.jpg, imagePublicId=9d906d11-d247-486b-a634-f6ef5a83cea5-anh-test, ssoID=null, gender=null, ssoType=null, active=true, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-08-20T16:41:26.624454Z, updatedAt=null)
-2025-09-24 00:43:42 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2025-09-24 00:43:42 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
-2025-09-24 00:43:42 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-09-24 00:43:42 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown initiated...
-2025-09-24 00:43:42 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-2 - Shutdown completed.
+2025-10-02 00:01:17 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:01:17 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:01:18 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:03:07 INFO  [http-nio-8888-exec-1] c.D.B.s.impl.CategoryServiceImpl - Hiển thị danh sách danh mục phân trang thành công!
+2025-10-02 00:03:07 INFO  [http-nio-8888-exec-3] c.D.B.s.impl.CategoryServiceImpl - Hiển thị danh sách danh mục phân trang thành công!
+2025-10-02 00:03:08 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:03:08 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:03:08 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:08:03 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:08:03 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:08:03 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:08:56 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:08:56 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:08:56 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:14:49 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.FileServiceImpl - Đã xóa ảnh Cloudinary với publicId 9cceb148-02f8-484b-98f6-22df8ae16b17-anh-test - Kết quả: {result=ok}
+2025-10-02 00:14:49 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.AuthorServiceImpl - Xóa tác giả thành công với ID 7
+2025-10-02 00:14:49 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:14:53 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.FileServiceImpl - Đã xóa ảnh Cloudinary với publicId 92fd9cdb-0039-468a-86af-619aab109475-anh-test - Kết quả: {result=ok}
+2025-10-02 00:14:53 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.AuthorServiceImpl - Xóa tác giả thành công với ID 8
+2025-10-02 00:14:53 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:29:35 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:29:35 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:29:36 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:29:55 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:29:55 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:29:55 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:30:32 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.AuthorServiceImpl - Lưu tác giả thành công với tên bsbs
+2025-10-02 00:30:32 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:30:39 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.AuthorServiceImpl - Lưu tác giả thành công với tên ds
+2025-10-02 00:30:39 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:30:41 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:30:43 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:31:12 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.AuthorServiceImpl - Lưu tác giả thành công với tên cấccasccấccasccấccassđvdsvsd
+2025-10-02 00:31:12 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:31:14 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:31:31 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.AuthorServiceImpl - Cập nhật tác giả thành công Author(id=12, name=cấccasccấccasccấccassđvdsvsd, description=, address=vds, type=vdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvv, imageUrl=null, imagePublicId=null, books=[], createdAt=2025-10-01T17:31:12.513871Z, updatedAt=2025-10-01T17:31:31.492118800Z)
+2025-10-02 00:31:31 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:31:36 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:31:37 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:32:11 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:32:13 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:32:30 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.AuthorServiceImpl - Cập nhật tác giả thành công Author(id=12, name=cấccasccấccasccấccdvsdvdsvdsassđvdsvsd, description=, address=vds, type=vdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvvvdsvvv, imageUrl=null, imagePublicId=null, books=[], createdAt=2025-10-01T17:31:12.513871Z, updatedAt=2025-10-01T17:32:30.778000300Z)
+2025-10-02 00:32:30 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:32:35 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:32:36 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:32:38 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:33:52 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:33:56 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.AuthorServiceImpl - Xóa tác giả thành công với ID 12
+2025-10-02 00:33:56 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:34:00 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:34:00 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:34:02 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:36:54 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:36:59 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.AuthorServiceImpl - Lưu tác giả thành công với tên vf
+2025-10-02 00:36:59 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:37:01 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:37:02 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:37:28 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.AuthorServiceImpl - Xóa tác giả thành công với ID 13
+2025-10-02 00:37:28 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:37:30 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:37:31 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:43:29 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:43:31 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:43:34 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:43:35 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:43:36 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:43:38 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:43:41 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:43:42 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 00:43:42 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 00:43:42 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 00:43:43 INFO  [http-nio-8888-exec-4] c.D.B.s.impl.CategoryServiceImpl - Hiển thị danh sách danh mục phân trang thành công!
+2025-10-02 00:43:43 INFO  [http-nio-8888-exec-5] c.D.B.s.impl.CategoryServiceImpl - Hiển thị danh sách danh mục phân trang thành công!
+2025-10-02 00:43:52 INFO  [http-nio-8888-exec-7] c.D.B.s.impl.CategoryServiceImpl - Hiển thị danh sách danh mục phân trang thành công!
+2025-10-02 00:43:57 INFO  [http-nio-8888-exec-10] c.D.B.s.impl.CategoryServiceImpl - Hiển thị danh sách danh mục phân trang thành công!
+2025-10-02 00:43:59 INFO  [http-nio-8888-exec-3] c.D.B.s.impl.CategoryServiceImpl - Hiển thị danh sách danh mục phân trang thành công!
+2025-10-02 00:44:01 INFO  [http-nio-8888-exec-2] c.D.B.s.impl.CategoryServiceImpl - Hiển thị danh sách danh mục phân trang thành công!
+2025-10-02 00:44:07 INFO  [http-nio-8888-exec-5] c.D.B.s.impl.CategoryServiceImpl - Hiển thị danh sách danh mục phân trang thành công!
+2025-10-02 00:44:09 INFO  [http-nio-8888-exec-8] c.D.B.s.impl.CategoryServiceImpl - Hiển thị danh sách danh mục phân trang thành công!
+2025-10-02 00:44:09 INFO  [http-nio-8888-exec-6] c.D.B.s.impl.CategoryServiceImpl - Hiển thị danh sách danh mục phân trang thành công!
+2025-10-02 00:44:12 INFO  [http-nio-8888-exec-10] c.D.B.s.impl.CategoryServiceImpl - Hiển thị danh sách danh mục phân trang thành công!
+2025-10-02 00:44:15 INFO  [http-nio-8888-exec-1] c.D.B.s.impl.CategoryServiceImpl - Hiển thị danh sách danh mục phân trang thành công!
+2025-10-02 00:44:15 INFO  [http-nio-8888-exec-3] c.D.B.s.impl.CategoryServiceImpl - Hiển thị danh sách danh mục phân trang thành công!
+2025-10-02 00:44:16 INFO  [http-nio-8888-exec-2] c.D.B.s.impl.CategoryServiceImpl - Hiển thị danh sách danh mục phân trang thành công!
+2025-10-02 00:44:19 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:44:19 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:44:20 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:44:21 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 00:44:21 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 00:44:21 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 00:44:22 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 00:44:25 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 00:44:28 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 00:44:31 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 00:44:32 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 00:44:34 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 00:44:35 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 00:44:37 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 00:48:36 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 00:48:36 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 00:48:37 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 00:48:52 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 00:48:53 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 00:54:43 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:54:43 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:54:44 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:54:45 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:54:47 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:54:50 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:54:52 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:54:55 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:54:56 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:54:59 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:55:01 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:55:03 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:55:08 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:55:10 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:55:13 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:55:17 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:58:48 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:58:49 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:59:10 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:59:13 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:59:15 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:59:19 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:59:21 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 00:59:22 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 01:00:30 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 01:00:31 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 01:01:04 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-02 01:01:04 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-10-02 01:01:04 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-02 01:01:04 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-10-02 01:01:04 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-10-02 15:26:21 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-10-02 15:26:21 INFO  [restartedMain] c.D.BookShop.BookShopApplication - Starting BookShopApplication using Java 22 with PID 14192 (D:\Do_An\BACK-END\BookShop\target\classes started by nguye in D:\Do_An\BACK-END\BookShop)
+2025-10-02 15:26:21 DEBUG [restartedMain] c.D.BookShop.BookShopApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-10-02 15:26:21 INFO  [restartedMain] c.D.BookShop.BookShopApplication - No active profile set, falling back to 1 default profile: "default"
+2025-10-02 15:26:21 INFO  [restartedMain] o.s.b.d.restart.ChangeableUrls - The Class-Path manifest attribute in C:\Users\nguye\.m2\repository\io\github\cdimascio\java-dotenv\5.2.2\java-dotenv-5.2.2.jar referenced one or more files that do not exist: file:/C:/Users/nguye/.m2/repository/io/github/cdimascio/java-dotenv/5.2.2/kotlin-stdlib-1.4.0.jar,file:/C:/Users/nguye/.m2/repository/io/github/cdimascio/java-dotenv/5.2.2/kotlin-stdlib-common-1.4.0.jar,file:/C:/Users/nguye/.m2/repository/io/github/cdimascio/java-dotenv/5.2.2/annotations-13.0.jar
+2025-10-02 15:26:21 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-10-02 15:26:21 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-10-02 15:26:23 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-02 15:26:23 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 125 ms. Found 5 JPA repository interfaces.
+2025-10-02 15:26:24 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8888 (http)
+2025-10-02 15:26:24 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+2025-10-02 15:26:24 INFO  [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-10-02 15:26:24 INFO  [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-10-02 15:26:24 INFO  [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-10-02 15:26:24 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3505 ms
+2025-10-02 15:26:25 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-02 15:26:25 INFO  [restartedMain] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-10-02 15:26:25 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-10-02 15:26:26 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-02 15:26:26 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-02 15:26:27 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@d7ec35
+2025-10-02 15:26:27 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-02 15:26:27 INFO  [restartedMain] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 9.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-02 15:26:29 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-02 15:26:29 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-02 15:26:30 INFO  [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-02 15:26:31 WARN  [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-02 15:26:31 WARN  [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: e1819160-2ef0-41fe-8cc4-d5ba9206dd2b
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-10-02 15:26:31 INFO  [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-10-02 15:26:33 INFO  [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-10-02 15:26:33 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+2025-10-02 15:26:33 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8888 (http) with context path '/'
+2025-10-02 15:26:33 INFO  [restartedMain] c.D.BookShop.BookShopApplication - Started BookShopApplication in 13.398 seconds (process running for 14.638)
+2025-10-02 15:26:53 INFO  [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-02 15:26:53 INFO  [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-10-02 15:26:53 INFO  [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-10-02 15:26:53 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 15:26:53 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 15:26:53 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 15:26:55 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 15:27:00 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.AuthorServiceImpl - Xóa tác giả thành công với ID 11
+2025-10-02 15:27:00 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 15:27:03 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.AuthorServiceImpl - Hiển thị danh sách tác giả phân trang thành công!
+2025-10-02 15:27:15 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:27:15 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:27:16 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:27:24 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=9, name=Tên người dùng, email=nguoidung@gmail.com, password=$2a$10$7Qd8Hs6ScfjkeIiw5xDPj.gvpStvAgraKEshtvQqvFMIas00zxD6m, address=vdsvsd, phone=0987654321, imageUrl=null, imagePublicId=null, ssoID=null, gender=null, ssoType=null, active=false, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-09-23T17:19:32.776183Z, updatedAt=null)
+2025-10-02 15:27:27 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:27:28 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:28:37 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:28:40 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:28:44 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:28:46 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:28:47 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:28:49 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:28:51 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=12, name=re, email=ba@gmail.com, password=$2a$10$HioRjW2hq1rTq2a/REjCve8UJ7p5k2KJSIug8fBFEltn21MiZYHWq, address=sdvsv, phone=0987654321, imageUrl=null, imagePublicId=null, ssoID=null, gender=null, ssoType=null, active=false, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-10-01T09:53:04.477552Z, updatedAt=null)
+2025-10-02 15:28:51 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Xóa người dùng thành công với ID 12
+2025-10-02 15:28:51 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:28:53 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:28:54 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:28:55 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:30:19 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-02 15:30:19 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-10-02 15:30:19 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-02 15:30:19 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-10-02 15:30:19 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-10-02 15:55:39 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-10-02 15:55:39 INFO  [restartedMain] c.D.BookShop.BookShopApplication - Starting BookShopApplication using Java 22 with PID 23208 (D:\Do_An\BACK-END\BookShop\target\classes started by nguye in D:\Do_An\BACK-END\BookShop)
+2025-10-02 15:55:39 DEBUG [restartedMain] c.D.BookShop.BookShopApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-10-02 15:55:39 INFO  [restartedMain] c.D.BookShop.BookShopApplication - No active profile set, falling back to 1 default profile: "default"
+2025-10-02 15:55:39 INFO  [restartedMain] o.s.b.d.restart.ChangeableUrls - The Class-Path manifest attribute in C:\Users\nguye\.m2\repository\io\github\cdimascio\java-dotenv\5.2.2\java-dotenv-5.2.2.jar referenced one or more files that do not exist: file:/C:/Users/nguye/.m2/repository/io/github/cdimascio/java-dotenv/5.2.2/kotlin-stdlib-1.4.0.jar,file:/C:/Users/nguye/.m2/repository/io/github/cdimascio/java-dotenv/5.2.2/kotlin-stdlib-common-1.4.0.jar,file:/C:/Users/nguye/.m2/repository/io/github/cdimascio/java-dotenv/5.2.2/annotations-13.0.jar
+2025-10-02 15:55:39 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-10-02 15:55:39 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-10-02 15:55:41 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-02 15:55:41 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 129 ms. Found 5 JPA repository interfaces.
+2025-10-02 15:55:42 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8888 (http)
+2025-10-02 15:55:42 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+2025-10-02 15:55:42 INFO  [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-10-02 15:55:42 INFO  [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-10-02 15:55:42 INFO  [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-10-02 15:55:42 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3004 ms
+2025-10-02 15:55:42 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-02 15:55:43 INFO  [restartedMain] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-10-02 15:55:43 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-10-02 15:55:43 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-02 15:55:43 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-02 15:55:44 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3fb5a21b
+2025-10-02 15:55:44 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-02 15:55:44 INFO  [restartedMain] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 9.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-02 15:55:45 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-02 15:55:45 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-02 15:55:46 INFO  [restartedMain] o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-02 15:55:47 WARN  [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-02 15:55:47 WARN  [restartedMain] o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 4ab4e853-b413-4cc7-b1dd-7c7f7ae47a5c
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2025-10-02 15:55:47 INFO  [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2025-10-02 15:55:48 INFO  [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-10-02 15:55:48 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+2025-10-02 15:55:48 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8888 (http) with context path '/'
+2025-10-02 15:55:48 INFO  [restartedMain] c.D.BookShop.BookShopApplication - Started BookShopApplication in 10.61 seconds (process running for 11.872)
+2025-10-02 15:56:17 INFO  [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-02 15:56:17 INFO  [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-10-02 15:56:17 INFO  [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2025-10-02 15:56:18 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:56:18 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:56:18 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:56:31 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:56:32 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:56:35 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:56:37 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:56:48 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:56:57 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:56:58 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:57:03 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=11, name=csd, email=cd@gmail.com, password=$2a$10$w4AUDWBExHimqpFEefXpaOqq83x/kfGnp0N5LND317QfmIWQuk9bO, address=vsd, phone=0987654321, imageUrl=null, imagePublicId=null, ssoID=null, gender=null, ssoType=null, active=false, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-10-01T09:42:09.521973Z, updatedAt=null)
+2025-10-02 15:57:03 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Xóa người dùng thành công với ID 11
+2025-10-02 15:57:03 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:57:10 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:57:18 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:57:18 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 15:57:19 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:08:01 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:08:01 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:08:01 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:08:23 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Lưu người dùng thành công!
+2025-10-02 16:08:23 ERROR [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Không lưu người dùng thành công! Email người dùng đã tồn tại vui lòng chọn email khác.
+2025-10-02 16:08:23 WARN  [http-nio-8888-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [com.DatLeo.BookShop.exception.ApiException: Email người dùng đã tồn tại vui lòng chọn email khác.]
+2025-10-02 16:08:28 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Lưu người dùng thành công!
+2025-10-02 16:08:28 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:08:32 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:08:50 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.UserServiceImpl - Lưu người dùng thành công!
+2025-10-02 16:08:50 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:08:54 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:08:55 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:08:57 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:18:28 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:18:28 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:18:29 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:18:33 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:18:33 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:18:34 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:18:39 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:18:41 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=14, name=olui, email=okd@gmail.com, password=$2a$10$qaVHfd4Sjs5V2T1hSFPkUuEt2pN5sRAEHPGpHM1KhfXTCOuFnpVDu, address=csacs, phone=0987654321, imageUrl=null, imagePublicId=null, ssoID=null, gender=null, ssoType=null, active=false, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-10-02T09:08:50.846625Z, updatedAt=null)
+2025-10-02 16:18:41 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Xóa người dùng thành công với ID 14
+2025-10-02 16:18:41 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:18:45 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:18:46 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:18:47 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:18:50 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:18:56 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=13, name=ccsdcsd, email=test1@gmail.com, password=$2a$10$6XFT4kjtOSzRpU74VDigROuk.qczyBFg1eHfzqN/BvC.NEl2Z.3NC, address=vsvsbs, phone=0987654321, imageUrl=null, imagePublicId=null, ssoID=null, gender=null, ssoType=null, active=false, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-10-02T09:08:28.148209Z, updatedAt=null)
+2025-10-02 16:18:56 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.UserServiceImpl - Cập nhật thông tin người dùng thành công User(id=13, name=ccsdcsd, email=test1@gmail.com, password=$2a$10$6XFT4kjtOSzRpU74VDigROuk.qczyBFg1eHfzqN/BvC.NEl2Z.3NC, address=vsvsbs, phone=0987654321, imageUrl=null, imagePublicId=null, ssoID=null, gender=null, ssoType=null, active=true, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-10-02T09:08:28.148209Z, updatedAt=2025-10-02T09:18:56.067172700Z)
+2025-10-02 16:18:56 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:18:57 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:19:07 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:19:09 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:19:11 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:19:15 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:19:16 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:19:33 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Lưu người dùng thành công!
+2025-10-02 16:19:33 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:19:38 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:19:39 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:19:44 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Thông tin người dùng với ID User(id=15, name=v cxvcx, email=x@gmail.com, password=$2a$10$lIdaymynmw4uooRWRTSxLOkD1olQOs2.kzQTkikuqnOD3s7hlS5eW, address=vbvxb x, phone=0987654321, imageUrl=null, imagePublicId=null, ssoID=null, gender=null, ssoType=null, active=false, refreshToken=null, orders=[], role=null, cart=null, reviews=[], createdAt=2025-10-02T09:19:33.357123Z, updatedAt=null)
+2025-10-02 16:19:44 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.UserServiceImpl - Xóa người dùng thành công với ID 15
+2025-10-02 16:19:44 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:19:45 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:19:47 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:19:48 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:20:03 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:20:05 INFO  [http-nio-8888-exec-6] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:20:09 INFO  [http-nio-8888-exec-9] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:20:11 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:20:12 INFO  [http-nio-8888-exec-1] c.D.B.service.impl.UserServiceImpl - Hiển thị danh sách người dùng phân trang thành công!
+2025-10-02 16:35:57 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-02 16:35:57 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-10-02 16:35:57 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-02 16:35:57 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-10-02 16:35:57 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

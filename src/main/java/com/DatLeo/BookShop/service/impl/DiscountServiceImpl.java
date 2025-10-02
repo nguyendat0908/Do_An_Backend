@@ -76,7 +76,6 @@ public class DiscountServiceImpl implements DiscountService {
         resPaginationDTO.setMeta(meta);
         List<Discount> listDiscount = pageDiscount.getContent();
         resPaginationDTO.setResult(listDiscount);
-        log.info("Hiển thị danh sách mã giảm giá phân trang thành công!");
 
         return resPaginationDTO;
     }

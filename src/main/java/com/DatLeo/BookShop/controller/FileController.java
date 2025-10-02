@@ -26,7 +26,7 @@ public class FileController {
     }
 
     @PostMapping("/upload")
-    @CustomAnnotation("Upload ảnh thành công!")
+    @CustomAnnotation("Upload ảnh thành công.")
     public ResponseEntity<ResponseDTO<ResUploadDTO>> uploadImage(@RequestParam("file") MultipartFile file) throws IOException, StorageException {
         return ResponseEntity.ok(new ResponseDTO<>(this.fileService.uploadImage(file)));
     }

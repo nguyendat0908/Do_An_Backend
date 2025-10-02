@@ -153,7 +153,6 @@ public class BookServiceImpl implements BookService {
                 this.convertToResBookDTO(item)).collect(Collectors.toList());
 
         resPaginationDTO.setResult(listBookDTOs);
-        log.info("Hiển thị danh sách sách phân trang thành công!");
 
         return resPaginationDTO;
     }

@@ -31,7 +31,7 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    @CustomAnnotation("Thêm mới người dùng thành công!")
+    @CustomAnnotation("Thêm mới người dùng thành công.")
     public ResponseEntity<ResUserDTO> createUser (
             @Valid @ModelAttribute ReqCreateUserDTO reqCreateUserDTO, BindingResult bindingResult) throws IOException, StorageException {
 
@@ -43,27 +43,27 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    @CustomAnnotation("Thông tin chi tiết người dùng!")
+    @CustomAnnotation("Thông tin chi tiết người dùng.")
     public ResponseEntity<ResUserDTO> getUserById(@PathVariable("id") Integer id) {
         User user = this.userService.handleGetUserById(id);
         return ResponseEntity.ok(this.userService.convertToResUserDTO(user));
     }
 
     @GetMapping("/users")
-    @CustomAnnotation("Hiển thị danh sách thông tin người dùng!")
+    @CustomAnnotation("Hiển thị danh sách thông tin người dùng.")
     public ResponseEntity<ResPaginationDTO> getListUsers(@Filter Specification<User> spec, Pageable pageable) {
         return ResponseEntity.ok(this.userService.handleGetUsers(spec, pageable));
     }
 
     @PutMapping("/users")
-    @CustomAnnotation("Cập nhật thông tin người dùng thành công!")
+    @CustomAnnotation("Cập nhật thông tin người dùng thành công.")
     public ResponseEntity<ResUserDTO> updateUser(@RequestBody User user) {
         User newUser = this.userService.handleUpdateUser(user);
         return ResponseEntity.ok(this.userService.convertToResUserDTO(newUser));
     }
 
     @DeleteMapping("/users/{id}")
-    @CustomAnnotation("Xóa người dùng thành công!")
+    @CustomAnnotation("Xóa người dùng thành công.")
     public ResponseEntity<Void> deleteUser(@PathVariable("id") Integer id) {
         this.userService.handleDeleteUser(id);
         return ResponseEntity.ok(null);

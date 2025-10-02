@@ -62,7 +62,6 @@ public class CategoryServiceImpl implements CategoryService {
         List<ResCategoryDTO> listCategoryDTOs = pageCategory.stream().map(item -> convertToDo(item)).toList();
 
         resPaginationDTO.setResult(listCategoryDTOs);
-        log.info("Hiển thị danh sách danh mục phân trang thành công!");
 
         return resPaginationDTO;
     }

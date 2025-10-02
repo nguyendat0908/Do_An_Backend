@@ -5,7 +5,6 @@ import com.DatLeo.BookShop.dto.request.ReqUpdateAuthorDTO;
 import com.DatLeo.BookShop.dto.response.ResAuthorDTO;
 import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
 import com.DatLeo.BookShop.entity.Author;
-import com.DatLeo.BookShop.entity.User;
 import com.DatLeo.BookShop.exception.FieldException;
 import com.DatLeo.BookShop.exception.StorageException;
 import com.DatLeo.BookShop.service.AuthorService;
@@ -32,7 +31,7 @@ public class AuthorController {
     }
 
     @PostMapping("/authors")
-    @CustomAnnotation("Thêm mới tác giả thành công!")
+    @CustomAnnotation("Thêm mới tác giả thành công.")
     public ResponseEntity<ResAuthorDTO> createAuthor(@Valid @ModelAttribute ReqCreateAuthorDTO req, BindingResult bindingResult) throws IOException, StorageException {
         if (bindingResult.hasErrors()) {
             throw new FieldException(bindingResult);
@@ -42,14 +41,14 @@ public class AuthorController {
     }
 
     @GetMapping("/authors/{id}")
-    @CustomAnnotation("Thông tin chi tiết tác giả!")
+    @CustomAnnotation("Thông tin chi tiết tác giả.")
     public ResponseEntity<ResAuthorDTO> getAuthorById(@PathVariable("id") Integer id) {
         Author author = this.authorService.handleGetAuthorById(id);
         return ResponseEntity.ok(this.authorService.convertToRes(author));
     }
 
     @PutMapping("/authors")
-    @CustomAnnotation("Cập nhật thông tin tác giả thành công!")
+    @CustomAnnotation("Cập nhật thông tin tác giả thành công.")
     public ResponseEntity<ResAuthorDTO> updateAuthor(@ModelAttribute ReqUpdateAuthorDTO req, BindingResult bindingResult) throws IOException, StorageException {
         if (bindingResult.hasErrors()) {
             throw new FieldException(bindingResult);
@@ -59,13 +58,13 @@ public class AuthorController {
     }
 
     @GetMapping("/authors")
-    @CustomAnnotation("Hiển thị danh sách thông tin tác giả!")
+    @CustomAnnotation("Hiển thị danh sách thông tin tác giả.")
     public ResponseEntity<ResPaginationDTO> getListAuthors(@Filter Specification<Author> spec, Pageable pageable) {
         return ResponseEntity.ok(this.authorService.handleGetAuthors(spec, pageable));
     }
 
     @DeleteMapping("/authors/{id}")
-    @CustomAnnotation("Xóa người dùng thành công!")
+    @CustomAnnotation("Xóa người dùng thành công")
     public ResponseEntity<Void> deleteAuthor(@PathVariable("id") Integer id) {
         this.authorService.handleDeleteAuthor(id);
         return ResponseEntity.ok(null);

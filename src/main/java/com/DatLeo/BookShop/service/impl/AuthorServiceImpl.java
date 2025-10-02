@@ -138,7 +138,6 @@ public class AuthorServiceImpl implements AuthorService {
                 this.convertToRes(item)).collect(Collectors.toList());
 
         resPaginationDTO.setResult(listAuthorDTOs);
-        log.info("Hiển thị danh sách tác giả phân trang thành công!");
 
         return resPaginationDTO;
     }

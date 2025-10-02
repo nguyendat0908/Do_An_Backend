@@ -25,31 +25,31 @@ public class CategoryController {
     }
 
     @PostMapping("/categories")
-    @CustomAnnotation("Thêm mới danh mục thành công!")
+    @CustomAnnotation("Thêm mới danh mục thành công.")
     public ResponseEntity<ResCategoryDTO> createCategory(@Valid @RequestBody Category category) {
         return ResponseEntity.ok(categoryService.convertToDo(categoryService.handleCreateCategory(category)));
     }
 
     @GetMapping("/categories/{id}")
-    @CustomAnnotation("Thông tin chi tiết danh mục!")
+    @CustomAnnotation("Thông tin chi tiết danh mục.")
     public ResponseEntity<ResCategoryDTO> getCategoryById(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(categoryService.convertToDo(categoryService.handleGetCategoryById(id)));
     }
 
     @PutMapping("/categories")
-    @CustomAnnotation("Cập nhật thông tin danh mục thành công!")
+    @CustomAnnotation("Cập nhật thông tin danh mục thành công.")
     public ResponseEntity<ResCategoryDTO> updateCategory(@RequestBody Category category) {
         return ResponseEntity.ok(categoryService.convertToDo(categoryService.handleUpdateCategory(category)));
     }
 
     @GetMapping("/categories")
-    @CustomAnnotation("Hiển thị danh sách thông tin danh mục!")
+    @CustomAnnotation("Hiển thị danh sách thông tin danh mục.")
     public ResponseEntity<ResPaginationDTO> getListCategories(@Filter Specification<Category> spec, Pageable pageable) {
         return ResponseEntity.ok(this.categoryService.handleGetCategories(spec, pageable));
     }
 
     @DeleteMapping("/categories/{id}")
-    @CustomAnnotation("Xóa danh mục thành công!")
+    @CustomAnnotation("Xóa danh mục thành công.")
     public ResponseEntity<Void> deleteCategory(@PathVariable("id") Integer id) {
         this.categoryService.handleDeleteCategory(id);
         return ResponseEntity.ok(null);

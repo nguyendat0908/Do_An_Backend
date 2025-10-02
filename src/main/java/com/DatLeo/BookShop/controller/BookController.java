@@ -32,7 +32,7 @@ public class BookController {
     }
 
     @PostMapping("/books")
-    @CustomAnnotation("Thêm mới sách thành công!")
+    @CustomAnnotation("Thêm mới sách thành công.")
     public ResponseEntity<ResBookDTO> createBook(@Valid @ModelAttribute ReqCreateBookDTO req, BindingResult bindingResult) throws IOException, StorageException {
         if (bindingResult.hasErrors()) {
             throw new FieldException(bindingResult);
@@ -41,19 +41,19 @@ public class BookController {
     }
 
     @GetMapping("/books/{id}")
-    @CustomAnnotation("Thông tin chi tiết sách!")
+    @CustomAnnotation("Thông tin chi tiết sách.")
     public ResponseEntity<ResBookDTO> getBookById(@PathVariable("id") Integer id) {
         return ResponseEntity.ok(this.bookService.handleGetBookById(id));
     }
 
     @GetMapping("/books")
-    @CustomAnnotation("Hiển thị danh sách thông tin sách!")
+    @CustomAnnotation("Hiển thị danh sách thông tin sách.")
     public ResponseEntity<ResPaginationDTO> getBookById(@Filter Specification<Book> spec, Pageable pageable) {
         return ResponseEntity.ok(this.bookService.handleGetAllBooks(spec, pageable));
     }
 
     @PutMapping("/books")
-    @CustomAnnotation("Cập nhật thông tin sách thành công!")
+    @CustomAnnotation("Cập nhật thông tin sách thành công.")
     public ResponseEntity<ResBookDTO> updateBook(@ModelAttribute ReqUpdateBookDTO req, BindingResult bindingResult) throws IOException, StorageException {
         if (bindingResult.hasErrors()) {
             throw new FieldException(bindingResult);
@@ -62,7 +62,7 @@ public class BookController {
     }
 
     @DeleteMapping("/books/{id}")
-    @CustomAnnotation("Xóa sách thành công!")
+    @CustomAnnotation("Xóa sách thành công.")
     public ResponseEntity<Void> deleteBook(@PathVariable("id") Integer id) {
         this.bookService.handleDeleteBookById(id);
         return ResponseEntity.ok(null);
