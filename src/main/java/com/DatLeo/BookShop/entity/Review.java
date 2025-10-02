@@ -24,7 +24,6 @@ public class Review {
 
     Integer star;
     String comment;
-    Instant createdAt;
     Integer quantity;
     Boolean isVerified;
 
@@ -36,8 +35,16 @@ public class Review {
     @JoinColumn(name = "book_id")
     private Book book;
 
+    Instant createdAt;
+    Instant updatedAt;
+
     @PrePersist
     public void handleBeforeCreate() {
         this.createdAt = Instant.now();
+    }
+
+    @PreUpdate
+    public void handleBeforeUpdate() {
+        this.updatedAt = Instant.now();
     }
 }

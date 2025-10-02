@@ -9,7 +9,9 @@ import com.DatLeo.BookShop.repository.DiscountRepository;
 import com.DatLeo.BookShop.service.DiscountService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -64,6 +66,10 @@ public class DiscountServiceImpl implements DiscountService {
 
     @Override
     public ResPaginationDTO handleGetDiscounts(Specification<Discount> spec, Pageable pageable) {
+
+        pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
+                Sort.by(Sort.Direction.DESC, "createdAt"));
+
         Page<Discount> pageDiscount = this.discountRepository.findAll(spec, pageable);
         ResPaginationDTO resPaginationDTO = new ResPaginationDTO();
         ResPaginationDTO.Meta meta = new ResPaginationDTO.Meta();

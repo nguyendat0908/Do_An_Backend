@@ -9,7 +9,9 @@ import com.DatLeo.BookShop.repository.CategoryRepository;
 import com.DatLeo.BookShop.service.CategoryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -48,6 +50,10 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public ResPaginationDTO handleGetCategories(Specification<Category> spec, Pageable pageable) {
+
+        pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
+                Sort.by(Sort.Direction.DESC, "createdAt"));
+
         Page<Category> pageCategory = this.categoryRepository.findAll(spec, pageable);
         ResPaginationDTO resPaginationDTO = new ResPaginationDTO();
         ResPaginationDTO.Meta meta = new ResPaginationDTO.Meta();

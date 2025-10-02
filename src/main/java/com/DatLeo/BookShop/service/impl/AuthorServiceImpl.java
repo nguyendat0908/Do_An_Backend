@@ -21,7 +21,9 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -122,6 +124,9 @@ public class AuthorServiceImpl implements AuthorService {
 
     @Override
     public ResPaginationDTO handleGetAuthors(Specification<Author> spec, Pageable pageable) {
+
+        pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
+                Sort.by(Sort.Direction.DESC, "createdAt"));
 
         Page<Author> pageAuthor = this.authorRepository.findAll(spec, pageable);
         ResPaginationDTO resPaginationDTO = new ResPaginationDTO();

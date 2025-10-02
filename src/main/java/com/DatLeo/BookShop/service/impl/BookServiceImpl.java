@@ -18,7 +18,9 @@ import com.DatLeo.BookShop.service.CategoryService;
 import com.DatLeo.BookShop.service.FileService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 
@@ -137,6 +139,9 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public ResPaginationDTO handleGetAllBooks(Specification<Book> spec, Pageable pageable) {
+
+        pageable = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
+                Sort.by(Sort.Direction.DESC, "createdAt"));
 
         Page<Book> pageBook = this.bookRepository.findAll(spec, pageable);
         ResPaginationDTO resPaginationDTO = new ResPaginationDTO();
