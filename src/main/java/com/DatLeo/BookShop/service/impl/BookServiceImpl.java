@@ -66,7 +66,6 @@ public class BookServiceImpl implements BookService {
         if (reqCreateBookDTO.getImageUrl() != null && !reqCreateBookDTO.getImageUrl().isEmpty()) {
             ResUploadDTO uploadResult = this.fileService.uploadImage(reqCreateBookDTO.getImageUrl());
             book.setImageUrl(uploadResult.getUrl());
-            book.setImagePublicId(uploadResult.getPublicId());
         }
 
         Author author = this.authorService.handleGetAuthorById(reqCreateBookDTO.getAuthorId());
@@ -116,7 +115,6 @@ public class BookServiceImpl implements BookService {
             }
             ResUploadDTO resUploadDTO = this.fileService.uploadImage(reqUpdateBookDTO.getImageUrl());
             currentBook.setImageUrl(resUploadDTO.getUrl());
-            currentBook.setImagePublicId(resUploadDTO.getPublicId());
         }
         this.bookRepository.save(currentBook);
         log.info("Cập nhật sách thành công với ID {}", currentBook.getId());

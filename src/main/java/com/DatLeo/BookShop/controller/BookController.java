@@ -5,7 +5,6 @@ import com.DatLeo.BookShop.dto.request.ReqUpdateBookDTO;
 import com.DatLeo.BookShop.dto.response.ResBookDTO;
 import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
 import com.DatLeo.BookShop.entity.Book;
-import com.DatLeo.BookShop.entity.Category;
 import com.DatLeo.BookShop.exception.FieldException;
 import com.DatLeo.BookShop.exception.StorageException;
 import com.DatLeo.BookShop.service.BookService;

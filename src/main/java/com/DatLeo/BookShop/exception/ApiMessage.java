@@ -38,4 +38,9 @@ public class ApiMessage {
     public static final String RECEIVER_ADDRESS_NOT_NULL = "Địa chỉ người nhận hàng không được để trống.";
     public static final String RECEIVER_PHONE_NOT_NULL = "Số điện thoại người nhận hàng không được để trống.";
     public static final String PHONE_NUMBER_FORMAT = "Số điện thoại phải có 10 chữ số.";
+
+    // Upload file
+    public static final String FILE_EMPTY = "File tải lên trống.";
+    public static final String ERROR_FILE_MIMETYPE = "File không đúng định dạng cho phép (jpeg, png, jpg).";
+    public static final String ERROR_FILE_SIZE = "File quá kích thước cho phép <2MB.";
 }

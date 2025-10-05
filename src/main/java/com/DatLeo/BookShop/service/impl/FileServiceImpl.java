@@ -56,9 +56,8 @@ public class FileServiceImpl implements FileService {
         cleanDisk(fileUpload);
 
         String url = cloudinary.url().generate(publicValue + "." + extension);
-        String publicId = (String) resUploadDTO.get("public_id");
 
-        return new ResUploadDTO(url, publicId);
+        return new ResUploadDTO(url);
     }
 
     @Override

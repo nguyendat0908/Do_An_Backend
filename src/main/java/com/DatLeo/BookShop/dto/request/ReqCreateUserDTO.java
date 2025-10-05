@@ -2,15 +2,12 @@ package com.DatLeo.BookShop.dto.request;
 
 import com.DatLeo.BookShop.entity.Role;
 import com.DatLeo.BookShop.exception.ApiMessage;
-import jakarta.annotation.Nullable;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.multipart.MultipartFile;
 
 
 @Getter
@@ -33,8 +30,7 @@ public class ReqCreateUserDTO {
     @Pattern(regexp = "^\\d{10}$", message = ApiMessage.PHONE_NUMBER_FORMAT)
     String phone;
 
-    @Nullable
-    MultipartFile imageUrl;
+    String imageUrl;
 
     Boolean active;
 

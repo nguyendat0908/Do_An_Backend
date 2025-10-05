@@ -64,7 +64,6 @@ public class AuthorServiceImpl implements AuthorService {
         if (reqCreateAuthorDTO.getImageUrl() != null && !reqCreateAuthorDTO.getImageUrl().isEmpty()) {
             ResUploadDTO uploadResult = this.fileService.uploadImage(reqCreateAuthorDTO.getImageUrl());
             author.setImageUrl(uploadResult.getUrl());
-            author.setImagePublicId(uploadResult.getPublicId());
         }
         log.info("Lưu tác giả thành công với tên {}", reqCreateAuthorDTO.getName());
         return this.authorRepository.save(author);
@@ -99,7 +98,6 @@ public class AuthorServiceImpl implements AuthorService {
             }
             ResUploadDTO resUploadDTO = this.fileService.uploadImage(req.getImageUrl());
             currentAuthor.setImageUrl(resUploadDTO.getUrl());
-            currentAuthor.setImagePublicId(resUploadDTO.getPublicId());
         }
 
         this.authorRepository.save(currentAuthor);

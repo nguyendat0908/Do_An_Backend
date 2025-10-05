@@ -55,9 +55,6 @@ public class User {
     @Column(name = "image_url")
     String imageUrl;
 
-    @Column(name = "image_public_id")
-    String imagePublicId;
-
     @Column(name = "sso_id")
     String ssoID;
 
@@ -96,7 +93,6 @@ public class User {
     public void handleBeforeCreate() {
         this.createdAt = Instant.now();
     }
-
     @PreUpdate
     public void handleBeforeUpdate() {
         this.updatedAt = Instant.now();
