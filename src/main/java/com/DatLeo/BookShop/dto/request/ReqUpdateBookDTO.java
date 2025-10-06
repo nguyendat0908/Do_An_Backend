@@ -3,7 +3,6 @@ package com.DatLeo.BookShop.dto.request;
 import jakarta.persistence.Lob;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.multipart.MultipartFile;
 
 @Setter
 @Getter
@@ -16,5 +15,5 @@ public class ReqUpdateBookDTO {
     String description;
     Integer quantity;
     Double price;
-    MultipartFile imageUrl;
+    String imageUrl;
 }

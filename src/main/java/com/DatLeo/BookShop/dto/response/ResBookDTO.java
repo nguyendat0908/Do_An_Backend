@@ -15,6 +15,7 @@ import java.time.LocalDate;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ResBookDTO {
 
+    Integer id;
     String name;
     String description;
     Integer sold = 0;

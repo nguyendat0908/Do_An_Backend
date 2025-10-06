@@ -16,7 +16,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 
 @RestController
 @RequestMapping(ApiConstants.API_MAPPING_PREFIX)
@@ -31,7 +30,7 @@ public class UserController {
     @PostMapping("/users")
     @CustomAnnotation("Thêm mới người dùng thành công.")
     public ResponseEntity<?> createUser (
-            @Valid @ModelAttribute ReqCreateUserDTO reqCreateUserDTO, BindingResult bindingResult) throws IOException, StorageException {
+            @Valid @ModelAttribute ReqCreateUserDTO reqCreateUserDTO, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             throw new FieldException(bindingResult);

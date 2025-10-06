@@ -11,18 +11,19 @@ import com.DatLeo.BookShop.entity.Category;
 import com.DatLeo.BookShop.exception.ApiException;
 import com.DatLeo.BookShop.exception.ApiMessage;
 import com.DatLeo.BookShop.exception.StorageException;
+import com.DatLeo.BookShop.repository.AuthorRepository;
 import com.DatLeo.BookShop.repository.BookRepository;
-import com.DatLeo.BookShop.service.AuthorService;
-import com.DatLeo.BookShop.service.BookService;
-import com.DatLeo.BookShop.service.CategoryService;
-import com.DatLeo.BookShop.service.FileService;
+import com.DatLeo.BookShop.service.*;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,26 +32,26 @@ import java.util.stream.Collectors;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
     private final FileService fileService;
-    private final AuthorService authorService;
+    private final AuthorRepository authorRepository;
     private final CategoryService categoryService;
+    private final MinioService  minioService;
 
-    public BookServiceImpl(BookRepository bookRepository,
-                           FileService fileService,
-                           AuthorService authorService,
-                           CategoryService categoryService
-    ) {
-        this.bookRepository = bookRepository;
-        this.fileService = fileService;
-        this.authorService = authorService;
-        this.categoryService = categoryService;
-    }
+    @Value("${minio.bucket-product}")
+    private String bucketProduct;
+
+    @Value("${minio.max-file-size-bytes}")
+    private Long maxFileSizeBytes;
+
+    @Value("#{'${minio.allowed-image-mimetypes}'.split(',')}")
+    private List<String> allowedImageMimetypes;
 
     @Override
-    public ResBookDTO handleCreateBook(ReqCreateBookDTO reqCreateBookDTO) throws IOException, StorageException {
+    public ResBookDTO handleCreateBook(ReqCreateBookDTO reqCreateBookDTO) {
         boolean isCheckNameExist = this.bookRepository.existsByName(reqCreateBookDTO.getName());
         if (isCheckNameExist) {
             log.error("Thêm mới sách không thành công, {}", ApiMessage.BOOK_NAME_EXISTED);
@@ -62,13 +63,9 @@ public class BookServiceImpl implements BookService {
         book.setQuantity(reqCreateBookDTO.getQuantity());
         book.setDescription(reqCreateBookDTO.getDescription());
         book.setPublicationDate(reqCreateBookDTO.getPublicationDate());
+        book.setImageUrl(reqCreateBookDTO.getImageUrl());
 
-        if (reqCreateBookDTO.getImageUrl() != null && !reqCreateBookDTO.getImageUrl().isEmpty()) {
-            ResUploadDTO uploadResult = this.fileService.uploadImage(reqCreateBookDTO.getImageUrl());
-            book.setImageUrl(uploadResult.getUrl());
-        }
-
-        Author author = this.authorService.handleGetAuthorById(reqCreateBookDTO.getAuthorId());
+        Author author = this.authorRepository.findById(reqCreateBookDTO.getAuthorId()).orElseThrow(() -> new ApiException(ApiMessage.AUTHOR_NOT_EXIST));
         if (author != null) {
             book.setAuthor(author);
         }
@@ -84,16 +81,13 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public ResBookDTO handleGetBookById(Integer id) {
-        Optional<Book> book = this.bookRepository.findById(id);
-        if (book.isEmpty()) {
-            throw new ApiException(ApiMessage.BOOK_NOT_EXIST);
-        }
-        ResBookDTO resBookDTO = convertToResBookDTO(book.get());
+        Book book = this.bookRepository.findById(id).orElseThrow(() -> new ApiException(ApiMessage.BOOK_NOT_EXIST));
+        ResBookDTO resBookDTO = convertToResBookDTO(book);
         return resBookDTO;
     }
 
     @Override
-    public ResBookDTO handleUpdateBook(ReqUpdateBookDTO reqUpdateBookDTO) throws IOException, StorageException {
+    public ResBookDTO handleUpdateBook(ReqUpdateBookDTO reqUpdateBookDTO) throws Exception {
         Book currentBook = this.bookRepository.findById(reqUpdateBookDTO.getId()).orElse(null);
         if (currentBook == null) {
             throw new ApiException(ApiMessage.BOOK_NOT_EXIST);
@@ -108,14 +102,20 @@ public class BookServiceImpl implements BookService {
         currentBook.setQuantity(currentBook.getQuantity() + reqUpdateBookDTO.getQuantity());
         currentBook.setDescription(reqUpdateBookDTO.getDescription());
 
-        if (reqUpdateBookDTO.getImageUrl() != null && !reqUpdateBookDTO.getImageUrl().isEmpty()) {
-            // Xóa ảnh cũ
-            if (currentBook.getImagePublicId() != null) {
-                this.fileService.deleteImage(currentBook.getImagePublicId());
-            }
-            ResUploadDTO resUploadDTO = this.fileService.uploadImage(reqUpdateBookDTO.getImageUrl());
-            currentBook.setImageUrl(resUploadDTO.getUrl());
+        String oldImage = currentBook.getImageUrl();
+        String newImage = reqUpdateBookDTO.getImageUrl();
+
+        if ((newImage == null || newImage.isBlank()) && oldImage != null && !oldImage.isBlank()) {
+            minioService.deleteFromMinio(bucketProduct, oldImage);
+            currentBook.setImageUrl(null);
         }
+        else if (newImage != null && !newImage.isBlank() && !newImage.equals(oldImage)) {
+            if (oldImage != null && !oldImage.isBlank()) {
+                minioService.deleteFromMinio(bucketProduct, oldImage);
+            }
+            currentBook.setImageUrl(newImage);
+        }
+
         this.bookRepository.save(currentBook);
         log.info("Cập nhật sách thành công với ID {}", currentBook.getId());
         return convertToResBookDTO(currentBook);
@@ -123,13 +123,9 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public void handleDeleteBookById(Integer id) {
-        Book currentBook = this.bookRepository.findById(id).orElse(null);
-        if (currentBook == null) {
-            log.error("Xóa sách không thành công, {}", ApiMessage.BOOK_NOT_EXIST);
-            throw new ApiException(ApiMessage.BOOK_NOT_EXIST);
-        }
-        if (currentBook.getImageUrl() != null && !currentBook.getImageUrl().isEmpty()) {
-            this.fileService.deleteImage(currentBook.getImagePublicId());
+        Book currentBook = this.bookRepository.findById(id).orElseThrow(() ->  new ApiException(ApiMessage.BOOK_NOT_EXIST));
+        if (currentBook.getImageUrl() != null && !currentBook.getImageUrl().isBlank()) {
+            this.fileService.deleteImage(currentBook.getImageUrl());
         }
         this.bookRepository.deleteById(id);
         log.info("Xóa sách thành công với ID {}", id);
@@ -162,15 +158,27 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public ResBookDTO convertToResBookDTO(Book book) {
+
+        String imageUrl = null;
+
+        if (book.getImageUrl() != null && !book.getImageUrl().isBlank()){
+            try {
+                imageUrl = minioService.getUrlFromMinio(bucketProduct, book.getImageUrl());
+
+            } catch (Exception e) {
+                log.error("Lỗi khi tạo presigned URL cho avatar author {}", book.getId(), e);
+            }
+        }
+
         ResBookDTO resBookDTO = new ResBookDTO();
+        resBookDTO.setId(book.getId());
         resBookDTO.setName(book.getName());
         resBookDTO.setDescription(book.getDescription());
         resBookDTO.setSold(book.getSold());
         resBookDTO.setQuantity(book.getQuantity());
         resBookDTO.setPrice(book.getPrice());
         resBookDTO.setPublicationDate(book.getPublicationDate());
-        resBookDTO.setImageUrl(book.getImageUrl());
-        resBookDTO.setImagePublicId(book.getImagePublicId());
+        resBookDTO.setImageUrl(imageUrl);
 
         ResBookDTO.AuthorDTO authorDTO = new ResBookDTO.AuthorDTO();
         authorDTO.setName(book.getAuthor().getName());
@@ -184,5 +192,21 @@ public class BookServiceImpl implements BookService {
         resBookDTO.setCategory(categoryDTO);
 
         return resBookDTO;
+    }
+
+    @Override
+    public ResUploadDTO uploadAvatar(MultipartFile imageUrl) {
+        String mimeType = imageUrl.getContentType();
+        long fileSize = imageUrl.getSize();
+        String folderPath = "main-product";
+
+        if (fileSize > maxFileSizeBytes) {
+            throw new ApiException(ApiMessage.ERROR_FILE_SIZE);
+        }
+        if (!allowedImageMimetypes.contains(mimeType)) {
+            throw new ApiException(ApiMessage.ERROR_FILE_MIMETYPE);
+        }
+
+        return minioService.uploadToMinio(imageUrl, bucketProduct, folderPath);
     }
 }

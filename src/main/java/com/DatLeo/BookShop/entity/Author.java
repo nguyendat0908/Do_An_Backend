@@ -42,9 +42,6 @@ public class Author {
     @Column(name = "image_url")
     String imageUrl;
 
-    @Column(name = "image_public_id")
-    String imagePublicId;
-
     @OneToMany(mappedBy = "author", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     List<Book> books;
 

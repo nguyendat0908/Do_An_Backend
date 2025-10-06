@@ -4,25 +4,29 @@ import com.DatLeo.BookShop.dto.request.ReqCreateBookDTO;
 import com.DatLeo.BookShop.dto.request.ReqUpdateBookDTO;
 import com.DatLeo.BookShop.dto.response.ResBookDTO;
 import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
+import com.DatLeo.BookShop.dto.response.ResUploadDTO;
 import com.DatLeo.BookShop.entity.Author;
 import com.DatLeo.BookShop.entity.Book;
 import com.DatLeo.BookShop.exception.StorageException;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
 public interface BookService {
 
-    ResBookDTO handleCreateBook(ReqCreateBookDTO reqCreateBookDTO) throws IOException, StorageException;
+    ResBookDTO handleCreateBook(ReqCreateBookDTO reqCreateBookDTO);
 
     ResBookDTO handleGetBookById(Integer id);
 
-    ResBookDTO handleUpdateBook(ReqUpdateBookDTO reqUpdateBookDTO) throws IOException, StorageException;
+    ResBookDTO handleUpdateBook(ReqUpdateBookDTO reqUpdateBookDTO) throws Exception;
 
     void handleDeleteBookById(Integer id);
 
     ResPaginationDTO handleGetAllBooks(Specification<Book> spec, Pageable pageable);
 
     ResBookDTO convertToResBookDTO(Book book);
+
+    ResUploadDTO uploadAvatar(MultipartFile imageUrl);
 }

@@ -73,7 +73,6 @@ public class UserServiceImpl implements UserService {
     public ResUserDTO handleGetUserById(Integer id) {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new ApiException(ApiMessage.ID_USER_NOT_EXIST));
-        log.info("Thông tin người dùng với ID {}", user.getId());
         return convertToResUserDTO(user);
     }
 

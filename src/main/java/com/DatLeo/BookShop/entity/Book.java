@@ -55,9 +55,6 @@ public class Book {
     @Column(name = "image")
     String imageUrl;
 
-    @Column(name = "image_public_id")
-    String imagePublicId;
-
     @ManyToOne
     @JoinColumn(name = "author_id")
     Author author;

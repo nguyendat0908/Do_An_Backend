@@ -35,7 +35,5 @@ public class ReqCreateBookDTO {
 
     Integer authorId;
     Integer categoryId;
-
-    @Nullable
-    MultipartFile imageUrl;
+    String imageUrl;
 }

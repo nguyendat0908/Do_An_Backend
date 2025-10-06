@@ -99,4 +99,10 @@ public class CategoryServiceImpl implements CategoryService {
                 .description(category.getDescription())
                 .build();
     }
+
+    @Override
+    public List<ResCategoryDTO> getCategories() {
+        List<Category> categories = this.categoryRepository.findAll();
+        return categories.stream().map(item -> convertToDo(item)).toList();
+    }
 }

@@ -54,4 +54,10 @@ public class CategoryController {
         this.categoryService.handleDeleteCategory(id);
         return ResponseEntity.ok(null);
     }
+
+    @GetMapping("/list-categories")
+    @CustomAnnotation("Danh sách thông tin danh mục.")
+    public ResponseEntity<?> getCategories() {
+        return ResponseEntity.ok(this.categoryService.getCategories());
+    }
 }

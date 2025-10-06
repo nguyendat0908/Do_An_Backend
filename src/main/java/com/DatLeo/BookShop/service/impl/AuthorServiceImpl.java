@@ -16,16 +16,20 @@ import com.DatLeo.BookShop.repository.AuthorRepository;
 import com.DatLeo.BookShop.repository.BookRepository;
 import com.DatLeo.BookShop.service.AuthorService;
 import com.DatLeo.BookShop.service.FileService;
+import com.DatLeo.BookShop.service.MinioService;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.OneToMany;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -35,20 +39,24 @@ import java.util.stream.Collectors;
 
 @Slf4j
 @Service
+@RequiredArgsConstructor
 public class AuthorServiceImpl implements AuthorService {
 
     private final AuthorRepository authorRepository;
     private final BookRepository bookRepository;
-    private final FileService fileService;
+    private final MinioService minioService;
 
-    public AuthorServiceImpl(AuthorRepository authorRepository, BookRepository bookRepository, FileService fileService) {
-        this.authorRepository = authorRepository;
-        this.bookRepository = bookRepository;
-        this.fileService = fileService;
-    }
+    @Value("${minio.bucket-avatar}")
+    private String bucketAvatar;
+
+    @Value("${minio.max-file-size-bytes}")
+    private Long maxFileSizeBytes;
+
+    @Value("#{'${minio.allowed-image-mimetypes}'.split(',')}")
+    private List<String> allowedImageMimetypes;
 
     @Override
-    public Author handleCreateAuthor(ReqCreateAuthorDTO reqCreateAuthorDTO) throws IOException, StorageException {
+    public ResAuthorDTO handleCreateAuthor(ReqCreateAuthorDTO reqCreateAuthorDTO) throws IOException, StorageException {
 
         boolean isCheckByName = this.authorRepository.existsByName(reqCreateAuthorDTO.getName());
         if (isCheckByName) {
@@ -60,61 +68,57 @@ public class AuthorServiceImpl implements AuthorService {
         author.setDescription(reqCreateAuthorDTO.getDescription());
         author.setAddress(reqCreateAuthorDTO.getAddress());
         author.setType(reqCreateAuthorDTO.getType());
+        author.setImageUrl(reqCreateAuthorDTO.getImageUrl());
 
-        if (reqCreateAuthorDTO.getImageUrl() != null && !reqCreateAuthorDTO.getImageUrl().isEmpty()) {
-            ResUploadDTO uploadResult = this.fileService.uploadImage(reqCreateAuthorDTO.getImageUrl());
-            author.setImageUrl(uploadResult.getUrl());
-        }
         log.info("Lưu tác giả thành công với tên {}", reqCreateAuthorDTO.getName());
-        return this.authorRepository.save(author);
+        this.authorRepository.save(author);
+        return convertToRes(author);
     }
 
     @Override
-    public Author handleGetAuthorById(Integer id) {
-        Optional<Author> optionalAuthor = this.authorRepository.findById(id);
-        if (optionalAuthor.isEmpty()) {
-            log.error("Tác giả không tồn tại với ID {}", id);
-            throw new ApiException(ApiMessage.AUTHOR_NOT_EXIST);
-        }
-        return optionalAuthor.get();
+    public ResAuthorDTO handleGetAuthorById(Integer id) {
+        Author optionalAuthor = this.authorRepository.findById(id).orElseThrow(() -> new ApiException(ApiMessage.AUTHOR_NOT_EXIST));
+        return convertToRes(optionalAuthor);
     }
 
     @Override
-    public Author handleUpdateAuthor(ReqUpdateAuthorDTO req) throws IOException, StorageException {
-        Author currentAuthor = handleGetAuthorById(req.getId());
-        if (currentAuthor == null) {
-            throw new ApiException(ApiMessage.AUTHOR_NOT_EXIST);
-        }
+    public ResAuthorDTO handleUpdateAuthor(ReqUpdateAuthorDTO req) throws Exception {
+        Author currentAuthor = this.authorRepository.findById(req.getId()).orElseThrow(() -> new ApiException(ApiMessage.AUTHOR_NOT_EXIST));
 
         currentAuthor.setName(req.getName());
         currentAuthor.setAddress(req.getAddress());
         currentAuthor.setType(req.getType());
         currentAuthor.setDescription(req.getDescription());
 
-        if (req.getImageUrl() != null && !req.getImageUrl().isEmpty()) {
-            // Xóa ảnh cũ
-            if (currentAuthor.getImagePublicId() != null) {
-                this.fileService.deleteImage(currentAuthor.getImagePublicId());
+        String oldImage = currentAuthor.getImageUrl();
+        String newImage = req.getImageUrl();
+
+        if ((newImage == null || newImage.isBlank()) && oldImage != null && !oldImage.isBlank()) {
+            minioService.deleteFromMinio(bucketAvatar, oldImage);
+            currentAuthor.setImageUrl(null);
+        }
+        else if (newImage != null && !newImage.isBlank() && !newImage.equals(oldImage)) {
+            if (oldImage != null && !oldImage.isBlank()) {
+                minioService.deleteFromMinio(bucketAvatar, oldImage);
             }
-            ResUploadDTO resUploadDTO = this.fileService.uploadImage(req.getImageUrl());
-            currentAuthor.setImageUrl(resUploadDTO.getUrl());
+            currentAuthor.setImageUrl(newImage);
         }
 
         this.authorRepository.save(currentAuthor);
 
         log.info("Cập nhật tác giả thành công {}", currentAuthor);
-        return currentAuthor;
+        return convertToRes(currentAuthor);
     }
 
     @Override
     public void handleDeleteAuthor(Integer id) {
-        Author author = handleGetAuthorById(id);
-        if (author == null) {
-            log.error("Tác giả không tồn tại với ID {}", id);
-            throw new ApiException(ApiMessage.AUTHOR_NOT_EXIST);
-        }
-        if (author.getImageUrl() != null && !author.getImageUrl().isEmpty()) {
-            this.fileService.deleteImage(author.getImagePublicId());
+        Author currentAuthor = this.authorRepository.findById(id).orElseThrow(() -> new ApiException(ApiMessage.AUTHOR_NOT_EXIST));
+        if (currentAuthor.getImageUrl() != null && !currentAuthor.getImageUrl().isBlank()){
+            try {
+                minioService.deleteFromMinio(bucketAvatar, currentAuthor.getImageUrl());
+            } catch (Exception e) {
+                log.error("Lỗi khi tạo presigned URL cho avatar author {}", currentAuthor.getId(), e);
+            }
         }
         this.authorRepository.deleteById(id);
         log.info("Xóa tác giả thành công với ID {}", id);
@@ -148,6 +152,17 @@ public class AuthorServiceImpl implements AuthorService {
     @Override
     public ResAuthorDTO convertToRes(Author author) {
 
+        String imageUrl = null;
+
+        if (author.getImageUrl() != null && !author.getImageUrl().isBlank()){
+            try {
+                imageUrl = minioService.getUrlFromMinio(bucketAvatar, author.getImageUrl());
+
+            } catch (Exception e) {
+                log.error("Lỗi khi tạo presigned URL cho avatar author {}", author.getId(), e);
+            }
+        }
+
         ResAuthorDTO resAuthorDTO = ResAuthorDTO.builder()
                 .id(author.getId())
                 .name(author.getName())
@@ -155,12 +170,34 @@ public class AuthorServiceImpl implements AuthorService {
                 .address(author.getAddress())
                 .type(author.getType())
                 .totalBooks(this.bookRepository.countBooksByAuthorId(author.getId()))
-                .imageUrl(author.getImageUrl())
-                .imagePublicId(author.getImagePublicId())
+                .imageUrl(imageUrl)
                 .createdAt(author.getCreatedAt())
                 .updatedAt(author.getUpdatedAt())
                 .build();
 
         return resAuthorDTO;
+    }
+
+    @Override
+    public ResUploadDTO uploadAvatar(MultipartFile imageUrl) {
+        String mimeType = imageUrl.getContentType();
+        long fileSize = imageUrl.getSize();
+        String folderPath = "author-avatar";
+
+        if (fileSize > maxFileSizeBytes) {
+            throw new ApiException(ApiMessage.ERROR_FILE_SIZE);
+        }
+        if (!allowedImageMimetypes.contains(mimeType)) {
+            throw new ApiException(ApiMessage.ERROR_FILE_MIMETYPE);
+        }
+
+        return minioService.uploadToMinio(imageUrl, bucketAvatar, folderPath);
+    }
+
+    @Override
+    public List<ResAuthorDTO> getListAuthors() {
+        List<Author> authorList = this.authorRepository.findAll();
+        List<ResAuthorDTO> authorDTOS = authorList.stream().map(iterm -> this.convertToRes(iterm)).collect(Collectors.toList());
+        return authorDTOS;
     }
 }

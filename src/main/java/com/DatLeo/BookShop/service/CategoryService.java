@@ -6,6 +6,8 @@ import com.DatLeo.BookShop.entity.Category;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
+import java.util.List;
+
 public interface CategoryService {
 
     Category handleCreateCategory(Category category);
@@ -14,4 +16,5 @@ public interface CategoryService {
     Category handleGetCategoryById(Integer id);
     void handleDeleteCategory(Integer id);
     ResCategoryDTO convertToDo(Category category);
+    List<ResCategoryDTO> getCategories();
 }

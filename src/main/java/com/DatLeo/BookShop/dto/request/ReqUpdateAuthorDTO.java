@@ -15,5 +15,5 @@ public class ReqUpdateAuthorDTO {
     String description;
     String address;
     String type;
-    MultipartFile imageUrl;
+    String imageUrl;
 }

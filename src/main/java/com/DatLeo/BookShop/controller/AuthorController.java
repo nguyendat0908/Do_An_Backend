@@ -17,6 +17,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 
@@ -32,34 +33,31 @@ public class AuthorController {
 
     @PostMapping("/authors")
     @CustomAnnotation("Thêm mới tác giả thành công.")
-    public ResponseEntity<ResAuthorDTO> createAuthor(@Valid @ModelAttribute ReqCreateAuthorDTO req, BindingResult bindingResult) throws IOException, StorageException {
+    public ResponseEntity<?> createAuthor(@Valid @ModelAttribute ReqCreateAuthorDTO req, BindingResult bindingResult) throws IOException, StorageException {
         if (bindingResult.hasErrors()) {
             throw new FieldException(bindingResult);
         }
-        Author newAuthor = this.authorService.handleCreateAuthor(req);
-        return ResponseEntity.ok(this.authorService.convertToRes(newAuthor));
+        return ResponseEntity.ok(this.authorService.handleCreateAuthor(req));
     }
 
     @GetMapping("/authors/{id}")
     @CustomAnnotation("Thông tin chi tiết tác giả.")
-    public ResponseEntity<ResAuthorDTO> getAuthorById(@PathVariable("id") Integer id) {
-        Author author = this.authorService.handleGetAuthorById(id);
-        return ResponseEntity.ok(this.authorService.convertToRes(author));
+    public ResponseEntity<?> getAuthorById(@PathVariable("id") Integer id) {
+        return ResponseEntity.ok(this.authorService.handleGetAuthorById(id));
     }
 
     @PutMapping("/authors")
     @CustomAnnotation("Cập nhật thông tin tác giả thành công.")
-    public ResponseEntity<ResAuthorDTO> updateAuthor(@ModelAttribute ReqUpdateAuthorDTO req, BindingResult bindingResult) throws IOException, StorageException {
+    public ResponseEntity<?> updateAuthor(@Valid @ModelAttribute ReqUpdateAuthorDTO req, BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()) {
             throw new FieldException(bindingResult);
         }
-        Author newAuthor = this.authorService.handleUpdateAuthor(req);
-        return ResponseEntity.ok(this.authorService.convertToRes(newAuthor));
+        return ResponseEntity.ok(this.authorService.handleUpdateAuthor(req));
     }
 
     @GetMapping("/authors")
     @CustomAnnotation("Hiển thị danh sách thông tin tác giả.")
-    public ResponseEntity<ResPaginationDTO> getListAuthors(@Filter Specification<Author> spec, Pageable pageable) {
+    public ResponseEntity<?> getListAuthors(@Filter Specification<Author> spec, Pageable pageable) {
         return ResponseEntity.ok(this.authorService.handleGetAuthors(spec, pageable));
     }
 
@@ -68,5 +66,17 @@ public class AuthorController {
     public ResponseEntity<Void> deleteAuthor(@PathVariable("id") Integer id) {
         this.authorService.handleDeleteAuthor(id);
         return ResponseEntity.ok(null);
+    }
+
+    @PostMapping("/authors/upload")
+    @CustomAnnotation("Upload ảnh thành công.")
+    public ResponseEntity<?> uploadAvatar(@RequestParam("imageUrl") MultipartFile imageUrl) {
+        return ResponseEntity.ok(this.authorService.uploadAvatar(imageUrl));
+    }
+
+    @GetMapping("/list-authors")
+    @CustomAnnotation("Danh sách thông tin tác giả.")
+    public ResponseEntity<?> getAuthors() {
+        return ResponseEntity.ok(this.authorService.getListAuthors());
     }
 }

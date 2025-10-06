@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
-import org.springframework.web.multipart.MultipartFile;
 
 
 @Setter
@@ -21,7 +20,5 @@ public class ReqCreateAuthorDTO {
 
     String address;
     String type;
-
-    @Nullable
-    MultipartFile imageUrl;
+    String imageUrl;
 }
