@@ -33,7 +33,11 @@ public class ReqCreateBookDTO {
     @DateTimeFormat(pattern = "dd-MM-yyyy")
     LocalDate publicationDate;
 
+    @NotNull(message = ApiMessage.AUTHOR_NOT_NULL)
     Integer authorId;
+
+    @NotNull(message = ApiMessage.CATEGORY_NOT_NULL)
     Integer categoryId;
+
     String imageUrl;
 }

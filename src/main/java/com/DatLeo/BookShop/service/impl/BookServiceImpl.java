@@ -101,9 +101,19 @@ public class BookServiceImpl implements BookService {
         currentBook.setPrice(reqUpdateBookDTO.getPrice());
         currentBook.setQuantity(currentBook.getQuantity() + reqUpdateBookDTO.getQuantity());
         currentBook.setDescription(reqUpdateBookDTO.getDescription());
+        currentBook.setPublicationDate(reqUpdateBookDTO.getPublicationDate());
 
         String oldImage = currentBook.getImageUrl();
         String newImage = reqUpdateBookDTO.getImageUrl();
+
+        Author author = this.authorRepository.findById(reqUpdateBookDTO.getAuthorId()).orElseThrow(() -> new ApiException(ApiMessage.AUTHOR_NOT_EXIST));
+        if (author != null) {
+            currentBook.setAuthor(author);
+        }
+        Category category = this.categoryService.handleGetCategoryById(reqUpdateBookDTO.getCategoryId());
+        if (category != null) {
+            currentBook.setCategory(category);
+        }
 
         if ((newImage == null || newImage.isBlank()) && oldImage != null && !oldImage.isBlank()) {
             minioService.deleteFromMinio(bucketProduct, oldImage);

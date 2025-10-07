@@ -38,6 +38,8 @@ public class ApiMessage {
     public static final String RECEIVER_ADDRESS_NOT_NULL = "Địa chỉ người nhận hàng không được để trống.";
     public static final String RECEIVER_PHONE_NOT_NULL = "Số điện thoại người nhận hàng không được để trống.";
     public static final String PHONE_NUMBER_FORMAT = "Số điện thoại phải có 10 chữ số.";
+    public static final String AUTHOR_NOT_NULL = "Tác giả không được để trống.";
+    public static final String CATEGORY_NOT_NULL = "Danh mục không được để trống.";
 
     // Upload file
     public static final String FILE_EMPTY = "File tải lên trống.";
