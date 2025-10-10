@@ -1,24 +1,25 @@
 package com.DatLeo.BookShop.entity;
 
 import com.DatLeo.BookShop.exception.ApiMessage;
+import com.DatLeo.BookShop.util.constant.ApplyDiscountType;
 import com.DatLeo.BookShop.util.constant.DiscountType;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.Instant;
 import java.time.LocalDate;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_discounts")
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -38,8 +39,18 @@ public class Discount {
     @Column(name = "type")
     DiscountType type;
 
-    @Column(name = "value")
-    Double value;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "apply")
+    ApplyDiscountType apply;
+
+    @Column(name = "value_cash")
+    Double valueCash;
+
+    @Column(name = "value_percent")
+    Integer valuePercent;
+
+    @Column(name = "active")
+    Boolean active;
 
     @Column(name = "min_value")
     Double minValue = 0.0;
@@ -61,6 +72,15 @@ public class Discount {
 
     @OneToMany(mappedBy = "discount", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     List<Order> orders;
+
+    @ManyToMany
+    @JoinTable(
+            name = "tb_discount_category",
+            joinColumns = @JoinColumn(name = "discount_id"),
+            inverseJoinColumns = @JoinColumn(name = "category_id")
+    )
+    Set<Category> categories = new HashSet<>();
+
     Instant createdAt;
     Instant updatedAt;
 

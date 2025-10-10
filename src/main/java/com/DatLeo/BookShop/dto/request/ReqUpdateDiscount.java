@@ -17,6 +17,8 @@ public class ReqUpdateDiscount {
     @NotNull(message = ApiMessage.DISCOUNT_END_DATE)
     LocalDate endDate;
 
-    @NotBlank(message = ApiMessage.DISCOUNT_COUNT_NOT_NULL)
+    @NotNull(message = ApiMessage.DISCOUNT_COUNT_NOT_NULL)
     Integer usageLimit;
+
+    Boolean active;
 }

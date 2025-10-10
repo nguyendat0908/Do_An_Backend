@@ -1,5 +1,6 @@
 package com.DatLeo.BookShop.controller;
 
+import com.DatLeo.BookShop.dto.request.ReqDiscountDTO;
 import com.DatLeo.BookShop.dto.request.ReqUpdateDiscount;
 import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
 import com.DatLeo.BookShop.entity.Discount;
@@ -7,6 +8,7 @@ import com.DatLeo.BookShop.service.DiscountService;
 import com.DatLeo.BookShop.util.annotation.CustomAnnotation;
 import com.DatLeo.BookShop.util.constant.ApiConstants;
 import com.turkraft.springfilter.boot.Filter;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
@@ -24,13 +26,13 @@ public class DiscountController {
 
     @PostMapping("/discounts")
     @CustomAnnotation("Tạo mã giảm giá thành công.")
-    public ResponseEntity<Discount> createDiscount(@RequestBody Discount discount){
-        return ResponseEntity.ok(this.discountService.handleCreateDiscount(discount));
+    public ResponseEntity<?> createDiscount(@Valid @RequestBody ReqDiscountDTO reqDiscountDTO){
+        return ResponseEntity.ok(this.discountService.handleCreateDiscount(reqDiscountDTO));
     }
 
     @GetMapping("/discounts/{id}")
     @CustomAnnotation("Thông tin chi tiết mã giảm giá.")
-    public ResponseEntity<Discount> getDiscountById(@PathVariable("id") Integer id){
+    public ResponseEntity<?> getDiscountById(@PathVariable("id") Integer id){
         return ResponseEntity.ok(this.discountService.handleGetDiscountById(id));
     }
 
@@ -42,7 +44,7 @@ public class DiscountController {
 
     @PutMapping("/discounts")
     @CustomAnnotation("Cập nhật mã giảm giá thành công.")
-    public ResponseEntity<Discount> updateDiscount(@RequestBody ReqUpdateDiscount discount){
+    public ResponseEntity<?> updateDiscount(@Valid @RequestBody ReqUpdateDiscount discount){
         return ResponseEntity.ok(this.discountService.handleUpdateDiscount(discount));
     }
 

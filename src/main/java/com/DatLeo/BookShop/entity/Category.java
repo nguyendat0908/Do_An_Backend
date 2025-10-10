@@ -3,16 +3,17 @@ package com.DatLeo.BookShop.entity;
 import com.DatLeo.BookShop.exception.ApiMessage;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.Instant;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_categories")
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 public class Category {
@@ -31,6 +32,9 @@ public class Category {
 
     @OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     List<Book> books;
+
+    @ManyToMany(mappedBy = "categories")
+    private Set<Discount> discounts = new HashSet<>();
 
     Instant createdAt;
     Instant updatedAt;

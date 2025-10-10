@@ -1,12 +1,18 @@
 package com.DatLeo.BookShop.service.impl;
 
+import com.DatLeo.BookShop.dto.request.ReqDiscountDTO;
 import com.DatLeo.BookShop.dto.request.ReqUpdateDiscount;
+import com.DatLeo.BookShop.dto.response.ResDiscountDTO;
 import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
+import com.DatLeo.BookShop.entity.Category;
 import com.DatLeo.BookShop.entity.Discount;
 import com.DatLeo.BookShop.exception.ApiException;
 import com.DatLeo.BookShop.exception.ApiMessage;
+import com.DatLeo.BookShop.repository.CategoryRepository;
 import com.DatLeo.BookShop.repository.DiscountRepository;
 import com.DatLeo.BookShop.service.DiscountService;
+import com.DatLeo.BookShop.util.constant.ApplyDiscountType;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -14,52 +20,95 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 @Slf4j
+@RequiredArgsConstructor
 public class DiscountServiceImpl implements DiscountService {
 
     private final DiscountRepository discountRepository;
-
-    public DiscountServiceImpl(DiscountRepository discountRepository) {
-        this.discountRepository = discountRepository;
-    }
+    private final CategoryRepository categoryRepository;
 
     @Override
-    public Discount handleCreateDiscount(Discount discount) {
-        boolean isCheckDiscountExist = this.discountRepository.existsByCode(discount.getCode());
+    public ResDiscountDTO handleCreateDiscount(ReqDiscountDTO reqDiscountDTO) {
+        boolean isCheckDiscountExist = this.discountRepository.existsByCode(reqDiscountDTO.getCode());
         if (isCheckDiscountExist) {
             log.error("Tạo mã giảm giá không thành công {}", ApiMessage.DISCOUNT_CODE_EXISTED);
             throw new ApiException(ApiMessage.DISCOUNT_CODE_EXISTED);
         }
-        return this.discountRepository.save(discount);
+
+        Discount discount = buildDiscount(reqDiscountDTO);
+        discountRepository.save(discount);
+
+        return convertToDTO(discount);
     }
 
-    @Override
-    public Discount handleGetDiscountById(Integer id) {
-        Optional<Discount> discountOptional = this.discountRepository.findById(id);
-        if (discountOptional == null) {
-            log.error("Mã giảm giá không tồn tại với ID = {}", id);
-            throw new ApiException(ApiMessage.DISCOUNT_NOT_EXIST);
+    private Discount buildDiscount(ReqDiscountDTO reqDiscountDTO) {
+        Discount discount = new Discount();
+        discount.setCode(reqDiscountDTO.getCode());
+        discount.setType(reqDiscountDTO.getType());
+        discount.setApply(reqDiscountDTO.getApply());
+        discount.setValueCash(reqDiscountDTO.getValueCash());
+        discount.setValuePercent(reqDiscountDTO.getValuePercent());
+        discount.setActive(true);
+        discount.setMinValue(reqDiscountDTO.getMinValue());
+        discount.setStartDate(reqDiscountDTO.getStartDate());
+        discount.setEndDate(reqDiscountDTO.getEndDate());
+        discount.setUsageLimit(reqDiscountDTO.getUsageLimit());
+
+        if (reqDiscountDTO.getApply() == ApplyDiscountType.PRODUCT_CATEGORY && reqDiscountDTO.getCategoryIds() != null
+        && !reqDiscountDTO.getCategoryIds().isEmpty()) {
+            Set<Category> categories = new HashSet<>(categoryRepository.findAllById(reqDiscountDTO.getCategoryIds()));
+            discount.setCategories(categories);
         }
-        return discountOptional.get();
+
+        return discount;
     }
 
     @Override
-    public Discount handleUpdateDiscount(ReqUpdateDiscount discount) {
-        Discount currentDiscount = this.handleGetDiscountById(discount.getId());
-        currentDiscount.setUsageLimit(discount.getUsageLimit());
+    @Transactional(readOnly = true)
+    public ResDiscountDTO handleGetDiscountById(Integer id) {
+        Discount discount = discountRepository.findById(id)
+                .orElseThrow(() -> new ApiException(ApiMessage.DISCOUNT_NOT_EXIST));
+
+        if (discount.getApply() == ApplyDiscountType.PRODUCT_CATEGORY) {
+            discount = discountRepository.findByIdWithCategories(id)
+                    .orElseThrow(() -> new ApiException(ApiMessage.DISCOUNT_NOT_EXIST));
+        }
+
+        return convertToDTO(discount);
+    }
+
+    @Override
+    @Transactional
+    public ResDiscountDTO handleUpdateDiscount(ReqUpdateDiscount discount) {
+        Discount currentDiscount = discountRepository.findById(discount.getId())
+                .orElseThrow(() -> new ApiException(ApiMessage.DISCOUNT_NOT_EXIST));
+
+        Integer currentCount = currentDiscount.getUsageLimit();
+        currentDiscount.setUsageLimit(currentCount + discount.getUsageLimit());
+
+        if (discount.getEndDate().isBefore(currentDiscount.getEndDate())) {
+            throw new ApiException(ApiMessage.DISCOUNT_END_DATE_ERROR);
+        }
         currentDiscount.setEndDate(discount.getEndDate());
+        if (discount.getActive() == false) {
+            currentDiscount.setUsageLimit(0);
+        }
+        currentDiscount.setActive(discount.getActive());
+        discountRepository.save(currentDiscount);
         log.info("Cập nhật mã giảm giá thành công với ID = {}", discount.getId());
-        return this.discountRepository.save(currentDiscount);
+        return convertToDTO(currentDiscount);
     }
 
     @Override
     public void handleDeleteDiscountById(Integer id) {
-        Discount discount = this.handleGetDiscountById(id);
+        Discount discount = discountRepository.findById(id)
+                .orElseThrow(() -> new ApiException(ApiMessage.DISCOUNT_NOT_EXIST));
         this.discountRepository.deleteById(discount.getId());
         log.info("Xóa mã giảm giá thành công với ID = {}", id);
     }
@@ -81,8 +130,41 @@ public class DiscountServiceImpl implements DiscountService {
 
         resPaginationDTO.setMeta(meta);
         List<Discount> listDiscount = pageDiscount.getContent();
-        resPaginationDTO.setResult(listDiscount);
+        List<ResDiscountDTO> resDiscountDTO = listDiscount.stream().map(item -> convertToDTO(item)).toList();
+        resPaginationDTO.setResult(resDiscountDTO);
 
         return resPaginationDTO;
+    }
+
+    private ResDiscountDTO convertToDTO(Discount discount) {
+        Set<ResDiscountDTO.CategoryDTO> categoryDTOs = null;
+
+        if (discount.getApply() == ApplyDiscountType.PRODUCT_CATEGORY && discount.getCategories() != null) {
+            categoryDTOs = discount.getCategories().stream()
+                    .map(c -> new ResDiscountDTO.CategoryDTO(c.getId(), c.getName()))
+                    .collect(Collectors.toSet());
+        }
+
+        return ResDiscountDTO.builder()
+                .id(discount.getId())
+                .code(discount.getCode())
+                .type(discount.getType())
+                .apply(discount.getApply())
+                .value(
+                        Optional.ofNullable(discount.getValueCash())
+                                .orElseGet(() -> Optional.ofNullable(discount.getValuePercent())
+                                        .map(Double::valueOf)
+                                        .orElse(null))
+                )
+                .active(discount.getActive())
+                .minValue(discount.getMinValue())
+                .startDate(discount.getStartDate())
+                .endDate(discount.getEndDate())
+                .usageLimit(discount.getUsageLimit())
+                .usedCount(discount.getUsedCount())
+                .createdAt(discount.getCreatedAt())
+                .updatedAt(discount.getUpdatedAt())
+                .categories(categoryDTOs)
+                .build();
     }
 }
