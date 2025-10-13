@@ -59,7 +59,7 @@ public class BookController {
 
     @DeleteMapping("/books/{id}")
     @CustomAnnotation("Xóa sách thành công.")
-    public ResponseEntity<Void> deleteBook(@PathVariable("id") Integer id) {
+    public ResponseEntity<Void> deleteBook(@PathVariable("id") Integer id) throws Exception {
         this.bookService.handleDeleteBookById(id);
         return ResponseEntity.ok(null);
     }

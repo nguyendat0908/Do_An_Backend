@@ -36,7 +36,6 @@ import java.util.stream.Collectors;
 public class BookServiceImpl implements BookService {
 
     private final BookRepository bookRepository;
-    private final FileService fileService;
     private final AuthorRepository authorRepository;
     private final CategoryService categoryService;
     private final MinioService  minioService;
@@ -132,10 +131,10 @@ public class BookServiceImpl implements BookService {
     }
 
     @Override
-    public void handleDeleteBookById(Integer id) {
+    public void handleDeleteBookById(Integer id) throws Exception {
         Book currentBook = this.bookRepository.findById(id).orElseThrow(() ->  new ApiException(ApiMessage.BOOK_NOT_EXIST));
         if (currentBook.getImageUrl() != null && !currentBook.getImageUrl().isBlank()) {
-            this.fileService.deleteImage(currentBook.getImageUrl());
+            minioService.deleteFromMinio(bucketProduct, currentBook.getImageUrl());
         }
         this.bookRepository.deleteById(id);
         log.info("Xóa sách thành công với ID {}", id);

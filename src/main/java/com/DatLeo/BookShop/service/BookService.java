@@ -22,7 +22,7 @@ public interface BookService {
 
     ResBookDTO handleUpdateBook(ReqUpdateBookDTO reqUpdateBookDTO) throws Exception;
 
-    void handleDeleteBookById(Integer id);
+    void handleDeleteBookById(Integer id) throws Exception;
 
     ResPaginationDTO handleGetAllBooks(Specification<Book> spec, Pageable pageable);
 
