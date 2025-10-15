@@ -10,6 +10,7 @@ public class ResLoginDTO {
 
     UserLogin userLogin;
     String accessToken;
+    String refreshToken;
 
     @Setter
     @Getter

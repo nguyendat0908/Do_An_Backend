@@ -1,5 +1,6 @@
 package com.DatLeo.BookShop.service;
 
+import com.DatLeo.BookShop.dto.request.ReqChangePasswordDTO;
 import com.DatLeo.BookShop.dto.request.ReqLoginDTO;
 import com.DatLeo.BookShop.dto.request.ReqRegisterDTO;
 import com.DatLeo.BookShop.dto.response.ResLoginDTO;
@@ -11,8 +12,9 @@ public interface AuthService {
     ResLoginDTO handleLogin(ReqLoginDTO reqLoginDTO);
     ResLoginDTO.UserLogin handleGetAccount();
     ResLoginDTO getRefreshToken(String refreshToken);
-    ResLoginDTO handleLogout();
+    void handleLogout();
     ResRegisterDTO handleRegister(ReqRegisterDTO reqRegisterDTO);
-    ResUserDTO activeAccountRegister(String email, String code);
-    ResRegisterDTO handleResetPassword(String email);
+    ResUserDTO activeAccountRegister(String username, String email, String code);
+    ResRegisterDTO handleForgotPassword(String email);
+    ResRegisterDTO handleChangePassword(ReqChangePasswordDTO reqChangePasswordDTO);
 }

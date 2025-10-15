@@ -46,7 +46,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResUserDTO handleCreateUser(ReqCreateUserDTO reqCreateUserDTO) {
-        log.info("Lưu người dùng thành công!");
         boolean isCheckEmail = this.handleCheckEmailExisted(reqCreateUserDTO.getEmail());
         if (isCheckEmail){
             log.error("Không lưu người dùng thành công! {}", ApiMessage.EMAIL_EXISTED);
@@ -65,7 +64,7 @@ public class UserServiceImpl implements UserService {
         user.setActive(reqCreateUserDTO.getActive() != null ? reqCreateUserDTO.getActive() : false);
 
         this.userRepository.save(user);
-
+        log.info("Lưu người dùng thành công!");
         return convertToResUserDTO(user);
     }
 
@@ -185,5 +184,29 @@ public class UserServiceImpl implements UserService {
         }
 
         return minioService.uploadToMinio(imageUrl, bucketAvatar, folderPath);
+    }
+
+    @Override
+    public void handleUpdateUserAddRefreshToken(String email, String refreshToken) {
+        User user = this.userRepository.findByEmail(email);
+        if (user != null) {
+            user.setRefreshToken(refreshToken);
+            this.userRepository.save(user);
+        }
+    }
+
+    @Override
+    public User handleGetUserByUsername(String email) {
+        return this.userRepository.findByEmail(email);
+    }
+
+    @Override
+    public User handleGetUserByRefreshTokenAndEmail(String refreshToken, String email) {
+        return userRepository.findByRefreshTokenAndEmail(refreshToken, email);
+    }
+
+    @Override
+    public boolean handleCheckExistByEmail(String email) {
+        return this.userRepository.existsByEmail(email);
     }
 }

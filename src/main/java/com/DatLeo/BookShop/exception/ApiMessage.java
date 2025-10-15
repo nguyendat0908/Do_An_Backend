@@ -2,6 +2,14 @@ package com.DatLeo.BookShop.exception;
 
 public class ApiMessage {
 
+    // Auth
+    public  static final String NOT_REFRESH_TOKEN_COOKIE = "Không có refresh_token ở cookie.";
+    public static final String ERROR_REFRESH_TOKEN = "Refresh token không tồn tại hoặc không hợp lệ.";
+    public static final String ERROR_OTP = "Mã OTP không hợp lệ hoặc đã hết hạn. Vui lòng kiểm tra lại.";
+    public static final String USER_INACTIVE = "Người dùng chưa được kích hoạt tài khoản.";
+    public static final String OLD_PASSWORD = "Mật khẩu không chính xác.";
+    public static final String ERROR_CHANGE_PASSWORD = "Mật khẩu xác nhận không trùng khớp.";
+
     // User
     public static final String EMAIL_EXISTED = "Email người dùng đã tồn tại vui lòng chọn email khác.";
     public static final String ID_USER_NOT_EXIST = "Người dùng không tồn tại, vui lòng kiểm tra lại.";

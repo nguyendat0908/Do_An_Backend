@@ -29,4 +29,12 @@ public interface UserService {
     ResPaginationDTO handleGetUsers(Specification<User> spec, Pageable pageable);
 
     ResUploadDTO uploadAvatar(MultipartFile imageUrl);
+
+    void handleUpdateUserAddRefreshToken(String email, String refreshToken);
+
+    User handleGetUserByUsername(String email);
+
+    User handleGetUserByRefreshTokenAndEmail(String refreshToken, String email);
+
+    boolean handleCheckExistByEmail(String email);
 }
