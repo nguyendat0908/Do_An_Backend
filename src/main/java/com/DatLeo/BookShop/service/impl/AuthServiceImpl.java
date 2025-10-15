@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -45,6 +46,8 @@ public class AuthServiceImpl implements AuthService {
 
         // Create token
         String accessToken = securityUtil.createAccessToken(reqLoginDTO.getEmail(), resLoginDTOUserLogin);
+
+        SecurityContextHolder.getContext().setAuthentication(authentication);
 
         ResLoginDTO resLoginDTO = new ResLoginDTO();
         resLoginDTO.setAccessToken(accessToken);
