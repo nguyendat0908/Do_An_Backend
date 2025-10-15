@@ -1,15 +1,14 @@
 package com.DatLeo.BookShop.dto.response;
 
+
 import lombok.AccessLevel;
-import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.experimental.FieldDefaults;
 
-@Data
-@Builder
+@Setter
+@Getter
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class ResCategoryDTO {
-    Integer id;
-    String name;
-    String description;
+public class ResRegisterDTO {
+    String message;
 }
