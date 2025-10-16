@@ -37,5 +37,5 @@ public class ReqCreateUserDTO {
 
     Boolean active;
 
-    Role role;
+    Integer roleId;
 }

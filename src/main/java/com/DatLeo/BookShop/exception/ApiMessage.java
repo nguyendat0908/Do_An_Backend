@@ -34,6 +34,10 @@ public class ApiMessage {
     public static final String DISCOUNT_START_DATE = "Ngày bắt đầu không được để trống.";
     public static final String DISCOUNT_END_DATE_ERROR = "Ngày kết thúc phải sau ngày kết thúc hiện tại.";
 
+    // Role
+    public static final String ROLE_NAME_EXISTED = "Tên vai trò đã tồn tại, vui lòng chọn tên khác.";
+    public static final String ROLE_NOT_EXIST = "Vai trò không tồn tại, vui lòng kiểm tra lại.";
+
     // Filed message
     public static final String NAME_NOT_NULL = "Tên không được để trống.";
     public static final String EMAIL_NOT_NULL = "Email không được để trống.";

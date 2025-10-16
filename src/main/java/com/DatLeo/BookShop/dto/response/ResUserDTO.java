@@ -24,6 +24,7 @@ public class ResUserDTO {
     String phone;
     String imageUrl;
     String ssoID;
+    String roleName;
     GenderEnum gender;
     SsoTypeEnum ssoType;
     Boolean active;

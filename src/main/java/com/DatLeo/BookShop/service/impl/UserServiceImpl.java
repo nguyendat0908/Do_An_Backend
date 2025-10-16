@@ -4,9 +4,11 @@ import com.DatLeo.BookShop.dto.request.ReqCreateUserDTO;
 import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
 import com.DatLeo.BookShop.dto.response.ResUploadDTO;
 import com.DatLeo.BookShop.dto.response.ResUserDTO;
+import com.DatLeo.BookShop.entity.Role;
 import com.DatLeo.BookShop.entity.User;
 import com.DatLeo.BookShop.exception.ApiException;
 import com.DatLeo.BookShop.exception.ApiMessage;
+import com.DatLeo.BookShop.repository.RoleRepository;
 import com.DatLeo.BookShop.repository.UserRepository;
 import com.DatLeo.BookShop.service.MinioService;
 import com.DatLeo.BookShop.service.UserService;
@@ -34,6 +36,7 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
     private final MinioService minioService;
+    private final RoleRepository roleRepository;
 
     @Value("${minio.bucket-avatar}")
     private String bucketAvatar;
@@ -51,8 +54,19 @@ public class UserServiceImpl implements UserService {
             log.error("Không lưu người dùng thành công! {}", ApiMessage.EMAIL_EXISTED);
             throw new ApiException(ApiMessage.EMAIL_EXISTED);
         }
-        String hashPassword = this.passwordEncoder.encode(reqCreateUserDTO.getPassword());
+        String hashPassword = passwordEncoder.encode(reqCreateUserDTO.getPassword());
         reqCreateUserDTO.setPassword(hashPassword);
+
+        User user = buildUser(reqCreateUserDTO);
+
+        log.info("Lưu người dùng thành công!");
+        return convertToResUserDTO(user);
+    }
+
+    private User buildUser(ReqCreateUserDTO reqCreateUserDTO) {
+
+        Role role = roleRepository.findById(reqCreateUserDTO.getRoleId())
+                .orElseThrow(() -> new ApiException("Role không tồn tại!"));
 
         User user = new User();
         user.setName(reqCreateUserDTO.getName());
@@ -62,10 +76,9 @@ public class UserServiceImpl implements UserService {
         user.setPhone(reqCreateUserDTO.getPhone());
         user.setImageUrl(reqCreateUserDTO.getImageUrl());
         user.setActive(reqCreateUserDTO.getActive() != null ? reqCreateUserDTO.getActive() : false);
+        user.setRole(role);
 
-        this.userRepository.save(user);
-        log.info("Lưu người dùng thành công!");
-        return convertToResUserDTO(user);
+        return userRepository.save(user);
     }
 
     @Override
@@ -134,6 +147,7 @@ public class UserServiceImpl implements UserService {
                 .address(user.getAddress())
                 .phone(user.getPhone())
                 .imageUrl(imageUrl)
+                .roleName(user.getRole().getName())
                 .ssoID(user.getSsoID())
                 .gender(user.getGender())
                 .ssoType(user.getSsoType())
