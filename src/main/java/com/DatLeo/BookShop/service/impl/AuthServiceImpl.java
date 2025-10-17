@@ -2,22 +2,25 @@ package com.DatLeo.BookShop.service.impl;
 
 import com.DatLeo.BookShop.dto.OTPData;
 import com.DatLeo.BookShop.dto.request.ReqChangePasswordDTO;
-import com.DatLeo.BookShop.dto.request.ReqCreateUserDTO;
 import com.DatLeo.BookShop.dto.request.ReqLoginDTO;
 import com.DatLeo.BookShop.dto.request.ReqRegisterDTO;
 import com.DatLeo.BookShop.dto.response.ResLoginDTO;
 import com.DatLeo.BookShop.dto.response.ResRegisterDTO;
 import com.DatLeo.BookShop.dto.response.ResUserDTO;
+import com.DatLeo.BookShop.entity.Role;
 import com.DatLeo.BookShop.entity.User;
 import com.DatLeo.BookShop.exception.ApiException;
 import com.DatLeo.BookShop.exception.ApiMessage;
+import com.DatLeo.BookShop.repository.RoleRepository;
 import com.DatLeo.BookShop.repository.UserRepository;
 import com.DatLeo.BookShop.service.AuthService;
 import com.DatLeo.BookShop.service.EmailService;
+import com.DatLeo.BookShop.service.MinioService;
 import com.DatLeo.BookShop.service.UserService;
 import com.DatLeo.BookShop.util.SecurityUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.core.Authentication;
@@ -36,6 +39,11 @@ import java.util.concurrent.ConcurrentHashMap;
 @RequiredArgsConstructor
 public class AuthServiceImpl implements AuthService {
 
+    @Value("${minio.bucket-avatar}")
+    private String bucketAvatar;
+
+    private static final String ROLE_USER = "USER";
+
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private final SecurityUtil securityUtil;
     private final UserService  userService;
@@ -43,6 +51,8 @@ public class AuthServiceImpl implements AuthService {
     private final ConcurrentHashMap<String, OTPData> otpStorage = new ConcurrentHashMap<String, OTPData>();
     private final PasswordEncoder passwordEncoder;
     private final UserRepository userRepository;
+    private final MinioService minioService;
+    private final RoleRepository roleRepository;
 
     Map<String, ReqRegisterDTO> tempNewUser = new ConcurrentHashMap<>();
 
@@ -63,7 +73,20 @@ public class AuthServiceImpl implements AuthService {
         resLoginDTOUserLogin.setEmail(user.getEmail());
         resLoginDTOUserLogin.setId(user.getId());
         resLoginDTOUserLogin.setName(user.getName());
-        resLoginDTOUserLogin.setRole(user.getRole() != null ? user.getRole().toString() : "USER");
+        resLoginDTOUserLogin.setRole(user.getRole() != null ? user.getRole().getName() : "USER");
+
+        String imageUrl = null;
+
+        if (user.getImageUrl() != null && !user.getImageUrl().isBlank()){
+            try {
+                imageUrl = minioService.getUrlFromMinio(bucketAvatar, user.getImageUrl());
+
+            } catch (Exception e) {
+                log.error("Lỗi khi tạo presigned URL cho avatar user {}", user.getId(), e);
+            }
+        }
+
+        resLoginDTOUserLogin.setImageUrl(imageUrl);
 
         if (!user.getActive()) {
             throw new ApiException(ApiMessage.USER_INACTIVE);
@@ -163,7 +186,7 @@ public class AuthServiceImpl implements AuthService {
         String otp = handleGenerateOTP(reqRegisterDTO.getEmail());
         emailService.sendEmailActiveAccount(reqRegisterDTO.getEmail(), "Kích hoạt tài khoản.", "email", otp);
         ResRegisterDTO resRegisterDTO = new ResRegisterDTO();
-        resRegisterDTO.setMessage("Làm ơn kiểm tra email của bạn để kích hoạt tài khoản!");
+        resRegisterDTO.setMessage("Làm ơn kiểm tra email của bạn để kích hoạt tài khoản.");
 
         return resRegisterDTO;
     }
@@ -171,6 +194,9 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public ResUserDTO activeAccountRegister(String username, String email, String code) {
         boolean isPass = handleVerifyOTP(email, code);
+
+        Role role = roleRepository.findByName(ROLE_USER);
+
         if (isPass) {
             ReqRegisterDTO reqRegisterDTO = handleGetTempUser(email);
             String hashPassword = passwordEncoder.encode(reqRegisterDTO.getPassword());
@@ -178,6 +204,7 @@ public class AuthServiceImpl implements AuthService {
             user.setEmail(email);
             user.setName(username);
             user.setPassword(hashPassword);
+            user.setRole(role);
             user.setActive(true);
             userRepository.save(user);
 
@@ -192,7 +219,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public ResRegisterDTO handleForgotPassword(String email) {
 
-        User user = userService.handleGetUserByUsername(email);
+        User user = userService.handleGetUserByEmailAndActive(email);
         if (user == null) {
             throw new ApiException(ApiMessage.ID_USER_NOT_EXIST);
         }
@@ -204,7 +231,7 @@ public class AuthServiceImpl implements AuthService {
         userService.handleUpdateUser(user);
 
         ResRegisterDTO resRegisterDTO = new ResRegisterDTO();
-        resRegisterDTO.setMessage("Vui lòng kiểm tra email của bạn để nhận mật khẩu mới!");
+        resRegisterDTO.setMessage("Vui lòng kiểm tra email của bạn để nhận mật khẩu mới.");
 
         return resRegisterDTO;
     }
@@ -235,7 +262,7 @@ public class AuthServiceImpl implements AuthService {
 
     public String handleGenerateOTP(String email) {
         String otp = String.format("%06d", new Random().nextInt(1000000));
-        otpStorage.put(email, new OTPData(otp, 10));
+        otpStorage.put(email, new OTPData(otp, 2));
         return otp;
     }
 

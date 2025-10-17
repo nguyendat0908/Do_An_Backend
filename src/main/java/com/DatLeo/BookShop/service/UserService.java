@@ -34,6 +34,8 @@ public interface UserService {
 
     User handleGetUserByUsername(String email);
 
+    User handleGetUserByEmailAndActive(String email);
+
     User handleGetUserByRefreshTokenAndEmail(String refreshToken, String email);
 
     boolean handleCheckExistByEmail(String email);

@@ -211,7 +211,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User handleGetUserByUsername(String email) {
-        return this.userRepository.findByEmail(email);
+        return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public User handleGetUserByEmailAndActive(String email) {
+        return userRepository.findActiveUserByEmail(email);
     }
 
     @Override

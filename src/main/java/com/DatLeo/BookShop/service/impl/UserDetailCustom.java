@@ -24,7 +24,7 @@ public class UserDetailCustom implements UserDetailsService {
         User user = this.userRepository.findByEmail(username);
 
         if (user == null) {
-            throw new UsernameNotFoundException("Username/password không đúng. Vui lòng kiểm tra lại!");
+            throw new UsernameNotFoundException("Username/password không đúng. Vui lòng kiểm tra lại.");
         }
 
         return new CustomUserDetails(user);

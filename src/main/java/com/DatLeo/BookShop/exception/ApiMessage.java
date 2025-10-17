@@ -12,7 +12,7 @@ public class ApiMessage {
 
     // User
     public static final String EMAIL_EXISTED = "Email người dùng đã tồn tại vui lòng chọn email khác.";
-    public static final String ID_USER_NOT_EXIST = "Người dùng không tồn tại, vui lòng kiểm tra lại.";
+    public static final String ID_USER_NOT_EXIST = "Người dùng không tồn tại hoặc chưa kích hoạt, vui lòng kiểm tra lại.";
 
     // Author
     public static final String AUTHOR_NAME_EXISTED = "Tên tác giả đã tồn tại, vui lòng chọn tên khác.";

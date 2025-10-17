@@ -43,7 +43,7 @@ public class GlobalExceptionHandler {
         ResponseDTO<Object> res = new ResponseDTO<Object>();
         res.setCode(HttpStatus.UNAUTHORIZED.value());
         res.setError(ex.getMessage());
-        res.setMessage("Tên người dùng hoặc mật khẩu không đúng!");
+        res.setMessage("Tên người dùng hoặc mật khẩu không đúng.");
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(res);
     }
 
