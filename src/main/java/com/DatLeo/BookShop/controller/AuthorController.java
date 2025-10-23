@@ -55,7 +55,7 @@ public class AuthorController {
         return ResponseEntity.ok(this.authorService.handleUpdateAuthor(req));
     }
 
-    @GetMapping("/authors")
+    @GetMapping("/admins/authors")
     @CustomAnnotation("Hiển thị danh sách thông tin tác giả.")
     public ResponseEntity<?> getListAuthors(@Filter Specification<Author> spec, Pageable pageable) {
         return ResponseEntity.ok(this.authorService.handleGetAuthors(spec, pageable));

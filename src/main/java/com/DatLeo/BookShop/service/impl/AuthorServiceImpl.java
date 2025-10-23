@@ -6,6 +6,7 @@ import com.DatLeo.BookShop.dto.response.ResAuthorDTO;
 import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
 import com.DatLeo.BookShop.dto.response.ResUploadDTO;
 import com.DatLeo.BookShop.entity.Author;
+import com.DatLeo.BookShop.entity.Book;
 import com.DatLeo.BookShop.exception.ApiException;
 import com.DatLeo.BookShop.exception.ApiMessage;
 import com.DatLeo.BookShop.exception.StorageException;
@@ -111,7 +112,11 @@ public class AuthorServiceImpl implements AuthorService {
                 log.error("Lỗi khi tạo presigned URL cho avatar author {}", currentAuthor.getId(), e);
             }
         }
-        this.authorRepository.deleteById(id);
+
+        List<Book> books = currentAuthor.getBooks();
+        bookRepository.deleteAll(books);
+
+        authorRepository.deleteById(id);
         log.info("Xóa tác giả thành công với ID {}", id);
     }
 

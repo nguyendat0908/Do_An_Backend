@@ -42,7 +42,7 @@ public class CategoryController {
         return ResponseEntity.ok(categoryService.convertToDo(categoryService.handleUpdateCategory(category)));
     }
 
-    @GetMapping("/categories")
+    @GetMapping("/admins/categories")
     @CustomAnnotation("Hiển thị danh sách thông tin danh mục.")
     public ResponseEntity<ResPaginationDTO> getListCategories(@Filter Specification<Category> spec, Pageable pageable) {
         return ResponseEntity.ok(this.categoryService.handleGetCategories(spec, pageable));

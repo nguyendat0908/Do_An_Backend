@@ -6,6 +6,7 @@ import com.nimbusds.jose.util.Base64;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.NimbusJwtDecoder;
@@ -15,6 +16,8 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtGra
 
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
+import java.util.List;
+import java.util.Map;
 
 @Configuration
 public class JwtConfig {
@@ -28,14 +31,34 @@ public class JwtConfig {
     // Khi decode thành công
     @Bean
     public JwtAuthenticationConverter jwtAuthenticationConverter() {
-        JwtGrantedAuthoritiesConverter grantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
-        grantedAuthoritiesConverter.setAuthorityPrefix("");
-        grantedAuthoritiesConverter.setAuthoritiesClaimName("permission");
+        JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
 
-        JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
-        jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(grantedAuthoritiesConverter);
-        return jwtAuthenticationConverter;
+        converter.setJwtGrantedAuthoritiesConverter(jwt -> {
+            Map<String, Object> user = jwt.getClaim("user");
+            String role = null;
+            if (user != null && user.get("role") != null) {
+                role = (String) user.get("role");
+            }
+
+            if (role != null) {
+                return List.of(new SimpleGrantedAuthority("ROLE_" + role));
+            } else {
+                return List.of();
+            }
+        });
+
+        return converter;
     }
+//    @Bean
+//    public JwtAuthenticationConverter jwtAuthenticationConverter() {
+//        JwtGrantedAuthoritiesConverter grantedAuthoritiesConverter = new JwtGrantedAuthoritiesConverter();
+//        grantedAuthoritiesConverter.setAuthorityPrefix("");
+//        grantedAuthoritiesConverter.setAuthoritiesClaimName("permission");
+//
+//        JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
+//        jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(grantedAuthoritiesConverter);
+//        return jwtAuthenticationConverter;
+//    }
 
     @Bean
     public JwtEncoder jwtEncoder() {

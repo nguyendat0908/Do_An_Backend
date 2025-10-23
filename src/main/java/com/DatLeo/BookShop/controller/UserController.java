@@ -44,7 +44,7 @@ public class UserController {
         return ResponseEntity.ok(this.userService.handleGetUserById(id));
     }
 
-    @GetMapping("/users")
+    @GetMapping("/admins/users")
     @CustomAnnotation("Hiển thị danh sách thông tin người dùng.")
     public ResponseEntity<?> getListUsers(@Filter Specification<User> spec, Pageable pageable) {
         return ResponseEntity.ok(this.userService.handleGetUsers(spec, pageable));

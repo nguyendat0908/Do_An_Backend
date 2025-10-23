@@ -8,6 +8,7 @@ import com.DatLeo.BookShop.dto.response.ResLoginDTO;
 import com.DatLeo.BookShop.service.AuthService;
 import com.DatLeo.BookShop.util.annotation.CustomAnnotation;
 import com.DatLeo.BookShop.util.constant.ApiConstants;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
@@ -25,7 +26,7 @@ public class AuthController {
 
     @PostMapping("/auth/login")
     @CustomAnnotation("Đăng nhập thành công.")
-    public ResponseEntity<?> login(@RequestBody ReqLoginDTO reqLoginDTO) {
+    public ResponseEntity<?> login(@Valid @RequestBody ReqLoginDTO reqLoginDTO) {
 
         ResLoginDTO resLoginDTO = authService.handleLogin(reqLoginDTO);
         String refreshToken = resLoginDTO.getRefreshToken();
@@ -68,13 +69,13 @@ public class AuthController {
 
     @PostMapping("/auth/logout")
     @CustomAnnotation("Đăng xuất thành công.")
-    public ResponseEntity<?> logout() {
+    public ResponseEntity<Void> logout() {
         authService.handleLogout();
         ResponseCookie deleteCookie = ResponseCookie.from("refresh_token", null)
                 .httpOnly(true)
                 .secure(false)
                 .path("/")
-                .maxAge(86400)
+                .maxAge(0)
                 .build();
 
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, deleteCookie.toString())

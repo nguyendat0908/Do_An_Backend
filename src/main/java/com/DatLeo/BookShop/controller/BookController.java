@@ -42,7 +42,7 @@ public class BookController {
         return ResponseEntity.ok(this.bookService.handleGetBookById(id));
     }
 
-    @GetMapping("/books")
+    @GetMapping("/admins/books")
     @CustomAnnotation("Hiển thị danh sách thông tin sách.")
     public ResponseEntity<?> getBooks(@Filter Specification<Book> spec, Pageable pageable) {
         return ResponseEntity.ok(this.bookService.handleGetAllBooks(spec, pageable));

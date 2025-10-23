@@ -34,7 +34,7 @@ public class RoleController {
         return ResponseEntity.ok(roleService.handleGetRoleById(roleId));
     }
 
-    @GetMapping("/roles")
+    @GetMapping("/admins/roles")
     @CustomAnnotation("Hiển thị danh sách vai trò.")
     public ResponseEntity<?> getRoles() {
         return ResponseEntity.ok(roleService.handleGetAllRoles());
