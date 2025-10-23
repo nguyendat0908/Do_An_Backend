@@ -38,4 +38,14 @@ public class PhotoHomeController {
     public ResponseEntity<?> getPhotoSlider() throws Exception {
         return ResponseEntity.ok(photoHomeService.getSliderImages());
     }
+
+    @GetMapping("/upload/photo-main")
+    public ResponseEntity<?> getPhotoMainByUser() throws Exception {
+        return ResponseEntity.ok(photoHomeService.getMainImage());
+    }
+
+    @GetMapping("/upload/photo-sliders")
+    public ResponseEntity<?> getPhotoSliderByUser() throws Exception {
+        return ResponseEntity.ok(photoHomeService.getSliderImages());
+    }
 }
