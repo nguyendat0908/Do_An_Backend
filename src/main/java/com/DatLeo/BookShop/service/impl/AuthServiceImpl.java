@@ -18,6 +18,12 @@ import com.DatLeo.BookShop.service.EmailService;
 import com.DatLeo.BookShop.service.MinioService;
 import com.DatLeo.BookShop.service.UserService;
 import com.DatLeo.BookShop.util.SecurityUtil;
+import com.DatLeo.BookShop.util.constant.SsoTypeEnum;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken.Payload;
+import com.google.api.client.json.jackson2.JacksonFactory;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -29,6 +35,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 
+import java.util.Collections;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
@@ -41,6 +48,9 @@ public class AuthServiceImpl implements AuthService {
 
     @Value("${minio.bucket-avatar}")
     private String bucketAvatar;
+
+    @Value("${spring.security.oauth2.client.registration.google.client-id}")
+    private String clientId;
 
     private static final String ROLE_USER = "USER";
 
@@ -109,6 +119,81 @@ public class AuthServiceImpl implements AuthService {
         resLoginDTO.setUserLogin(resLoginDTOUserLogin);
 
         return resLoginDTO;
+    }
+
+    @Override
+    public ResLoginDTO handleLoginWithGoogle(Map<String, String> request) {
+        try {
+            String idTokenString = request.get("idToken");
+            if (idTokenString == null || idTokenString.isBlank()) {
+                throw new ApiException("Thiếu idToken từ Google.");
+            }
+
+            GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(
+                    new NetHttpTransport(),
+                    new JacksonFactory()
+            ).setAudience(Collections.singletonList(clientId))
+                    .build();
+
+            GoogleIdToken idToken = verifier.verify(idTokenString);
+            if (idToken == null) {
+                throw new ApiException("Token Google không hợp lệ hoặc hết hạn.");
+            }
+
+            Payload payload = idToken.getPayload();
+            String email = payload.getEmail();
+            String name = (String) payload.get("name");
+            String googleId = payload.getSubject();
+
+            User user = userService.handleGetUserByEmailAndActive(email);
+            if (user == null) {
+                Role role = roleRepository.findByName("USER");
+                if (role == null) {
+                    throw new ApiException(ApiMessage.ROLE_NOT_EXIST);
+                }
+
+                user = new User();
+                user.setEmail(email);
+                user.setName(name);
+                user.setActive(true);
+                user.setSsoType(SsoTypeEnum.GOOGLE);
+                user.setSsoID(googleId);
+                user.setRole(role);
+                user.setPassword(passwordEncoder.encode(UUID.randomUUID().toString()));
+                userRepository.save(user);
+            }
+
+            ResLoginDTO.UserLogin userLogin = new ResLoginDTO.UserLogin();
+            userLogin.setEmail(user.getEmail());
+            userLogin.setId(user.getId());
+            userLogin.setName(user.getName());
+            userLogin.setRole(user.getRole() != null ? user.getRole().getName() : "USER");
+
+            String imageUrl = null;
+            if (user.getImageUrl() != null && !user.getImageUrl().isBlank()) {
+                try {
+                    imageUrl = minioService.getUrlFromMinio(bucketAvatar, user.getImageUrl());
+                } catch (Exception e) {
+                    log.error("Lỗi khi tạo presigned URL cho avatar user {}", user.getId(), e);
+                }
+            }
+            userLogin.setImageUrl(imageUrl);
+
+            String accessToken = securityUtil.createAccessToken(user.getEmail(), userLogin);
+            String refreshToken = securityUtil.createRefreshToken(user.getEmail(), userLogin);
+
+            userService.handleUpdateUserAddRefreshToken(user.getEmail(), refreshToken);
+
+            ResLoginDTO res = new ResLoginDTO();
+            res.setAccessToken(accessToken);
+            res.setRefreshToken(refreshToken);
+            res.setUserLogin(userLogin);
+
+            return res;
+        } catch (Exception e) {
+            log.error("Lỗi đăng nhập Google: ", e);
+            throw new ApiException("Đăng nhập Google thất bại: " + e.getMessage());
+        }
     }
 
     @Override

@@ -42,6 +42,12 @@ public class AuthController {
         return ResponseEntity.ok().header(HttpHeaders.SET_COOKIE, cookie.toString()).body(resLoginDTO);
     }
 
+    @PostMapping("/auth/login/google")
+    @CustomAnnotation("Đăng nhập thành công.")
+    public ResponseEntity<?> loginGoogle(@RequestBody Map<String, String> request) {
+        return ResponseEntity.ok(authService.handleLoginWithGoogle(request));
+    }
+
     // Get account when f5 website
     @GetMapping("/auth/account")
     @CustomAnnotation("Lấy thông tin tài khoản người dùng hiện tại thành công.")
