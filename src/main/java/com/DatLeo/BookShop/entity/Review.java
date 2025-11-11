@@ -22,7 +22,6 @@ public class Review {
 
     Integer star;
     String comment;
-    Integer quantity;
     Boolean isVerified;
 
     @ManyToOne

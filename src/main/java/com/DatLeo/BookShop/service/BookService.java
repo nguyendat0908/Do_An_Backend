@@ -29,4 +29,7 @@ public interface BookService {
     ResBookDTO convertToResBookDTO(Book book);
 
     ResUploadDTO uploadAvatar(MultipartFile imageUrl);
+
+    ResPaginationDTO handleGetCategoryBook(Integer id, Integer page, Integer size,
+                                           String sort, Double minPrice, Double maxPrice);
 }

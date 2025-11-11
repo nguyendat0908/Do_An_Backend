@@ -1,6 +1,7 @@
 package com.DatLeo.BookShop.controller;
 
 import com.DatLeo.BookShop.dto.request.ReqCreateUserDTO;
+import com.DatLeo.BookShop.dto.request.ReqUpdateInfoUser;
 import com.DatLeo.BookShop.entity.User;
 import com.DatLeo.BookShop.exception.FieldException;
 import com.DatLeo.BookShop.exception.StorageException;
@@ -9,6 +10,7 @@ import com.DatLeo.BookShop.util.annotation.CustomAnnotation;
 import com.DatLeo.BookShop.util.constant.ApiConstants;
 import com.turkraft.springfilter.boot.Filter;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.ResponseEntity;
@@ -19,13 +21,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping(ApiConstants.API_MAPPING_PREFIX)
+@RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
-
-    private UserController(UserService userService) {
-        this.userService = userService;
-    }
 
     @PostMapping("/users")
     @CustomAnnotation("Thêm mới người dùng thành công.")
@@ -35,25 +34,25 @@ public class UserController {
         if (bindingResult.hasErrors()) {
             throw new FieldException(bindingResult);
         }
-        return ResponseEntity.ok(this.userService.handleCreateUser(reqCreateUserDTO));
+        return ResponseEntity.ok(userService.handleCreateUser(reqCreateUserDTO));
     }
 
     @GetMapping("/users/{id}")
     @CustomAnnotation("Thông tin chi tiết người dùng.")
     public ResponseEntity<?> getUserById(@PathVariable("id") Integer id) {
-        return ResponseEntity.ok(this.userService.handleGetUserById(id));
+        return ResponseEntity.ok(userService.handleGetUserById(id));
     }
 
     @GetMapping("/admins/users")
     @CustomAnnotation("Hiển thị danh sách thông tin người dùng.")
     public ResponseEntity<?> getListUsers(@Filter Specification<User> spec, Pageable pageable) {
-        return ResponseEntity.ok(this.userService.handleGetUsers(spec, pageable));
+        return ResponseEntity.ok(userService.handleGetUsers(spec, pageable));
     }
 
     @PutMapping("/users")
     @CustomAnnotation("Cập nhật thông tin người dùng thành công.")
     public ResponseEntity<?> updateUser(@RequestBody User user) {
-        return ResponseEntity.ok(this.userService.handleUpdateUser(user));
+        return ResponseEntity.ok(userService.handleUpdateUser(user));
     }
 
     @DeleteMapping("/users/{id}")
@@ -66,6 +65,21 @@ public class UserController {
     @PostMapping("/users/upload")
     @CustomAnnotation("Upload ảnh thành công.")
     public ResponseEntity<?> uploadAvatar(@RequestParam("imageUrl") MultipartFile imageUrl) {
-        return  ResponseEntity.ok(this.userService.uploadAvatar(imageUrl));
+        return  ResponseEntity.ok(userService.uploadAvatar(imageUrl));
+    }
+
+    @GetMapping("/users/info")
+    @CustomAnnotation("Thông tin chi tiết người dùng.")
+    public ResponseEntity<?> getCurrentUser() {
+        return ResponseEntity.ok(userService.handleGetCurrentUser());
+    }
+
+    @PutMapping("/users/update-info")
+    @CustomAnnotation("Chỉnh sửa thông tin cá nhân.")
+    public ResponseEntity<?> updateUserInfo(@ModelAttribute ReqUpdateInfoUser reqUpdateInfoUser, BindingResult bindingResult) throws Exception {
+        if (bindingResult.hasErrors()) {
+            throw new FieldException(bindingResult);
+        }
+        return ResponseEntity.ok(userService.handleUpdateInfoUser(reqUpdateInfoUser));
     }
 }

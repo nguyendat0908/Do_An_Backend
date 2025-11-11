@@ -2,6 +2,7 @@ package com.DatLeo.BookShop.controller;
 
 import com.DatLeo.BookShop.dto.request.ReqCreateBookDTO;
 import com.DatLeo.BookShop.dto.request.ReqUpdateBookDTO;
+import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
 import com.DatLeo.BookShop.entity.Book;
 import com.DatLeo.BookShop.exception.FieldException;
 import com.DatLeo.BookShop.service.BookService;
@@ -48,6 +49,12 @@ public class BookController {
         return ResponseEntity.ok(this.bookService.handleGetAllBooks(spec, pageable));
     }
 
+    @GetMapping("/users/books")
+    @CustomAnnotation("Hiển thị danh sách thông tin sách.")
+    public ResponseEntity<?> getBooksUser(@Filter Specification<Book> spec, Pageable pageable) {
+        return ResponseEntity.ok(this.bookService.handleGetAllBooks(spec, pageable));
+    }
+
     @PutMapping("/books")
     @CustomAnnotation("Cập nhật thông tin sách thành công.")
     public ResponseEntity<?> updateBook(@Valid @ModelAttribute ReqUpdateBookDTO req, BindingResult bindingResult) throws Exception {
@@ -68,5 +75,17 @@ public class BookController {
     @CustomAnnotation("Upload ảnh thành công.")
     public ResponseEntity<?> uploadAvatar(@RequestParam("imageUrl") MultipartFile imageUrl) {
         return  ResponseEntity.ok(this.bookService.uploadAvatar(imageUrl));
+    }
+
+    @GetMapping("/books/category/{id}")
+    @CustomAnnotation("Danh sách sách theo danh mục.")
+    public ResponseEntity<?> getBooksByCategory(
+            @PathVariable Integer id,
+            @RequestParam(defaultValue = "1") Integer page,
+            @RequestParam(defaultValue = "10") Integer size,
+            @RequestParam(defaultValue = "all") String sort,
+            @RequestParam(required = false) Double minPrice,
+            @RequestParam(required = false) Double maxPrice) {
+        return ResponseEntity.ok(bookService.handleGetCategoryBook(id, page, size, sort, minPrice, maxPrice));
     }
 }

@@ -10,6 +10,9 @@ public class ApiMessage {
     public static final String OLD_PASSWORD = "Mật khẩu không chính xác.";
     public static final String ERROR_CHANGE_PASSWORD = "Mật khẩu xác nhận không trùng khớp.";
 
+    // Cart
+    public  static final String NOT_CART = "Thông tin ID sách trong giỏ hàng không tồn tại.";
+
     // User
     public static final String EMAIL_EXISTED = "Email người dùng đã tồn tại vui lòng chọn email khác.";
     public static final String ID_USER_NOT_EXIST = "Người dùng không tồn tại hoặc chưa kích hoạt, vui lòng kiểm tra lại.";

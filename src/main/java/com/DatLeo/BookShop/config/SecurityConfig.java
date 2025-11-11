@@ -29,6 +29,8 @@ public class SecurityConfig {
                 "/api/v1/list-categories",
                 "/api/v1/upload/photo-main",
                 "/api/v1/upload/photo-sliders",
+                "/api/v1/users/books/**",
+                "/api/v1/carts",
                 "/api/v1/email/**",
                 "/api/v1/auth/active",
                 "/api/v1/auth/forgot-password",

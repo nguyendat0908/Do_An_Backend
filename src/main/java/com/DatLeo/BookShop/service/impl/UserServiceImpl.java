@@ -1,6 +1,7 @@
 package com.DatLeo.BookShop.service.impl;
 
 import com.DatLeo.BookShop.dto.request.ReqCreateUserDTO;
+import com.DatLeo.BookShop.dto.request.ReqUpdateInfoUser;
 import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
 import com.DatLeo.BookShop.dto.response.ResUploadDTO;
 import com.DatLeo.BookShop.dto.response.ResUserDTO;
@@ -12,6 +13,7 @@ import com.DatLeo.BookShop.repository.RoleRepository;
 import com.DatLeo.BookShop.repository.UserRepository;
 import com.DatLeo.BookShop.service.MinioService;
 import com.DatLeo.BookShop.service.UserService;
+import com.DatLeo.BookShop.util.SecurityUtil;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +39,7 @@ public class UserServiceImpl implements UserService {
     private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
     private final MinioService minioService;
     private final RoleRepository roleRepository;
+    private final SecurityUtil securityUtil;
 
     @Value("${minio.bucket-avatar}")
     private String bucketAvatar;
@@ -227,5 +230,40 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean handleCheckExistByEmail(String email) {
         return this.userRepository.existsByEmail(email);
+    }
+
+    @Override
+    public ResUserDTO handleGetCurrentUser() {
+        Integer userId = securityUtil.getIdCurrentUserLogin();
+        ResUserDTO res = handleGetUserById(userId);
+        return res;
+    }
+
+    @Override
+    public ResUserDTO handleUpdateInfoUser(ReqUpdateInfoUser reqUpdateInfoUser) throws Exception {
+        User currentUser = userRepository.findById(reqUpdateInfoUser.getId())
+                .orElseThrow(() -> new ApiException(ApiMessage.ID_USER_NOT_EXIST));
+        currentUser.setName(reqUpdateInfoUser.getName());
+        currentUser.setAddress(reqUpdateInfoUser.getAddress());
+        currentUser.setPhone(reqUpdateInfoUser.getPhone());
+        currentUser.setGender(reqUpdateInfoUser.getGender());
+
+        String oldImage = currentUser.getImageUrl();
+        String newImage = reqUpdateInfoUser.getImageUrl();
+
+        if ((newImage == null || newImage.isBlank()) && oldImage != null && !oldImage.isBlank()) {
+            minioService.deleteFromMinio(bucketAvatar, oldImage);
+            currentUser.setImageUrl(null);
+        }
+        else if (newImage != null && !newImage.isBlank() && !newImage.equals(oldImage)) {
+            if (oldImage != null && !oldImage.isBlank()) {
+                minioService.deleteFromMinio(bucketAvatar, oldImage);
+            }
+            currentUser.setImageUrl(newImage);
+        }
+
+        userRepository.save(currentUser);
+
+        return convertToResUserDTO(currentUser);
     }
 }

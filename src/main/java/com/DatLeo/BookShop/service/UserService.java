@@ -1,6 +1,7 @@
 package com.DatLeo.BookShop.service;
 
 import com.DatLeo.BookShop.dto.request.ReqCreateUserDTO;
+import com.DatLeo.BookShop.dto.request.ReqUpdateInfoUser;
 import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
 import com.DatLeo.BookShop.dto.response.ResUploadDTO;
 import com.DatLeo.BookShop.dto.response.ResUserDTO;
@@ -39,4 +40,8 @@ public interface UserService {
     User handleGetUserByRefreshTokenAndEmail(String refreshToken, String email);
 
     boolean handleCheckExistByEmail(String email);
+
+    ResUserDTO handleGetCurrentUser();
+
+    ResUserDTO handleUpdateInfoUser (ReqUpdateInfoUser reqUpdateInfoUser) throws Exception;
 }
