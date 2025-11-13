@@ -17,6 +17,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping(ApiConstants.API_MAPPING_PREFIX)
@@ -87,5 +89,19 @@ public class BookController {
             @RequestParam(required = false) Double minPrice,
             @RequestParam(required = false) Double maxPrice) {
         return ResponseEntity.ok(bookService.handleGetCategoryBook(id, page, size, sort, minPrice, maxPrice));
+    }
+
+    @GetMapping("/books/search")
+    @CustomAnnotation("Tìm kiếm sách theo từ khóa.")
+    public ResponseEntity<?> searchBooks(
+            @RequestParam(required = false) List<Integer> categoryIds,
+            @RequestParam(required = false) List<Integer> authorIds,
+            @RequestParam(required = false) Double minPrice,
+            @RequestParam(required = false) Double maxPrice,
+            @RequestParam(required = false) String keyword,
+            @RequestParam(defaultValue = "all") String sort,
+            @RequestParam(defaultValue = "1") Integer page,
+            @RequestParam(defaultValue = "25") Integer size) {
+        return ResponseEntity.ok(bookService.handleSearchBook(categoryIds, authorIds, minPrice, maxPrice, keyword, sort, page, size));
     }
 }

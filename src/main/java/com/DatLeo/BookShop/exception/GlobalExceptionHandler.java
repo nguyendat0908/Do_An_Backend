@@ -41,10 +41,10 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<ResponseDTO<Object>> handleBadCredentials(BadCredentialsException ex) {
         ResponseDTO<Object> res = new ResponseDTO<Object>();
-        res.setCode(HttpStatus.UNAUTHORIZED.value());
+        res.setCode(HttpStatus.BAD_REQUEST.value());
         res.setError(ex.getMessage());
         res.setMessage("Tên người dùng hoặc mật khẩu không đúng.");
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(res);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(res);
     }
 
     // Handle 404 exception
