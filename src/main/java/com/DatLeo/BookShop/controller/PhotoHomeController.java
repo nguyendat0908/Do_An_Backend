@@ -29,13 +29,23 @@ public class PhotoHomeController {
         return ResponseEntity.ok(photoHomeService.uploadPhotoSlider(files));
     }
 
-    @GetMapping("/upload/photo-main")
+    @GetMapping("/admins/upload/photo-main")
     public ResponseEntity<?> getPhotoMain() throws Exception {
         return ResponseEntity.ok(photoHomeService.getMainImage());
     }
 
-    @GetMapping("/upload/photo-sliders")
+    @GetMapping("/admins/upload/photo-sliders")
     public ResponseEntity<?> getPhotoSlider() throws Exception {
+        return ResponseEntity.ok(photoHomeService.getSliderImages());
+    }
+
+    @GetMapping("/upload/photo-main")
+    public ResponseEntity<?> getPhotoMainByUser() throws Exception {
+        return ResponseEntity.ok(photoHomeService.getMainImage());
+    }
+
+    @GetMapping("/upload/photo-sliders")
+    public ResponseEntity<?> getPhotoSliderByUser() throws Exception {
         return ResponseEntity.ok(photoHomeService.getSliderImages());
     }
 }

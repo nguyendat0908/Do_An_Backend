@@ -218,4 +218,93 @@ public class BookServiceImpl implements BookService {
 
         return minioService.uploadToMinio(imageUrl, bucketProduct, folderPath);
     }
+
+    @Override
+    public ResPaginationDTO handleGetCategoryBook(Integer id, Integer page, Integer size,
+                                                  String sort, Double minPrice, Double maxPrice) {
+        Category category = categoryService.handleGetCategoryById(id);
+        if (category == null) {
+            log.error("Danh mục không tồn tại với ID {}", id);
+            throw new ApiException(ApiMessage.CATEGORY_NOT_EXIST);
+        }
+
+        Sort sortOption = Sort.unsorted();
+        switch (sort) {
+            case "sold":
+                sortOption = Sort.by(Sort.Direction.DESC, "sold");
+                break;
+            case "new":
+                sortOption = Sort.by(Sort.Direction.DESC, "publicationDate");
+                break;
+            case "priceAsc":
+                sortOption = Sort.by(Sort.Direction.ASC, "price");
+                break;
+            case "priceDesc":
+                sortOption = Sort.by(Sort.Direction.DESC, "price");
+                break;
+            default:
+                sortOption = Sort.by(Sort.Direction.DESC, "id");
+        }
+
+        Pageable pageable = PageRequest.of(page - 1, size, sortOption);
+        Page<Book> bookPage = bookRepository.findByCategoryIdAndPriceRange(id, minPrice, maxPrice, pageable);
+
+        ResPaginationDTO resPaginationDTO = new ResPaginationDTO();
+        ResPaginationDTO.Meta meta = new ResPaginationDTO.Meta();
+
+        meta.setPage(pageable.getPageNumber() + 1);
+        meta.setPageSize(pageable.getPageSize());
+        meta.setPages(bookPage.getTotalPages());
+        meta.setTotal(bookPage.getTotalElements());
+
+        List<ResBookDTO> resBookDTOS = bookPage.getContent().stream().map(item -> convertToResBookDTO(item)).toList();
+
+        resPaginationDTO.setMeta(meta);
+        resPaginationDTO.setResult(resBookDTOS);
+
+        return resPaginationDTO;
+    }
+
+    @Override
+    public ResPaginationDTO handleSearchBook(List<Integer> categoryIds,
+                                             List<Integer> authorIds,
+                                             Double minPrice,
+                                             Double maxPrice,
+                                             String keyword,
+                                             String sort,
+                                             Integer page, Integer size) {
+        if (categoryIds != null && categoryIds.isEmpty()) categoryIds = null;
+        if (authorIds != null && authorIds.isEmpty()) authorIds = null;
+        if (keyword != null && keyword.trim().isEmpty()) keyword = null;
+
+        Sort sortOption = Sort.unsorted();
+        switch (sort) {
+            case "priceAsc":
+                sortOption = Sort.by(Sort.Direction.ASC, "price");
+                break;
+            case "priceDesc":
+                sortOption = Sort.by(Sort.Direction.DESC, "price");
+                break;
+            default:
+                sortOption = Sort.by(Sort.Direction.DESC, "id");
+        }
+
+        Pageable pageable = PageRequest.of(page - 1, size, sortOption);
+        Page<Book> bookPage = bookRepository.findByFilters(categoryIds, authorIds, minPrice, maxPrice, keyword, pageable);
+
+        ResPaginationDTO resPaginationDTO = new ResPaginationDTO();
+        ResPaginationDTO.Meta meta = new ResPaginationDTO.Meta();
+
+        meta.setPage(pageable.getPageNumber() + 1);
+        meta.setPageSize(pageable.getPageSize());
+        meta.setPages(bookPage.getTotalPages());
+        meta.setTotal(bookPage.getTotalElements());
+
+        List<ResBookDTO> resBookDTOS = bookPage.getContent().stream().map(item -> convertToResBookDTO(item)).toList();
+
+        resPaginationDTO.setMeta(meta);
+        resPaginationDTO.setResult(resBookDTOS);
+
+        return resPaginationDTO;
+    }
 }

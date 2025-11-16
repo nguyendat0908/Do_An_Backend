@@ -1,6 +1,7 @@
 package com.DatLeo.BookShop.entity;
 
 import com.DatLeo.BookShop.exception.ApiMessage;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -31,7 +32,9 @@ public class Role {
     String description;
 
     @OneToMany(mappedBy = "role", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JsonIgnore
     List<User> users;
+
     Instant createdAt;
     Instant updatedAt;
 

@@ -1,15 +1,19 @@
 package com.DatLeo.BookShop.service.impl;
 
 import com.DatLeo.BookShop.dto.request.ReqCreateUserDTO;
+import com.DatLeo.BookShop.dto.request.ReqUpdateInfoUser;
 import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
 import com.DatLeo.BookShop.dto.response.ResUploadDTO;
 import com.DatLeo.BookShop.dto.response.ResUserDTO;
+import com.DatLeo.BookShop.entity.Role;
 import com.DatLeo.BookShop.entity.User;
 import com.DatLeo.BookShop.exception.ApiException;
 import com.DatLeo.BookShop.exception.ApiMessage;
+import com.DatLeo.BookShop.repository.RoleRepository;
 import com.DatLeo.BookShop.repository.UserRepository;
 import com.DatLeo.BookShop.service.MinioService;
 import com.DatLeo.BookShop.service.UserService;
+import com.DatLeo.BookShop.util.SecurityUtil;
 import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,6 +38,8 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private static final Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
     private final MinioService minioService;
+    private final RoleRepository roleRepository;
+    private final SecurityUtil securityUtil;
 
     @Value("${minio.bucket-avatar}")
     private String bucketAvatar;
@@ -46,14 +52,24 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public ResUserDTO handleCreateUser(ReqCreateUserDTO reqCreateUserDTO) {
-        log.info("Lưu người dùng thành công!");
         boolean isCheckEmail = this.handleCheckEmailExisted(reqCreateUserDTO.getEmail());
         if (isCheckEmail){
             log.error("Không lưu người dùng thành công! {}", ApiMessage.EMAIL_EXISTED);
             throw new ApiException(ApiMessage.EMAIL_EXISTED);
         }
-        String hashPassword = this.passwordEncoder.encode(reqCreateUserDTO.getPassword());
+        String hashPassword = passwordEncoder.encode(reqCreateUserDTO.getPassword());
         reqCreateUserDTO.setPassword(hashPassword);
+
+        User user = buildUser(reqCreateUserDTO);
+
+        log.info("Lưu người dùng thành công!");
+        return convertToResUserDTO(user);
+    }
+
+    private User buildUser(ReqCreateUserDTO reqCreateUserDTO) {
+
+        Role role = roleRepository.findById(reqCreateUserDTO.getRoleId())
+                .orElseThrow(() -> new ApiException("Role không tồn tại!"));
 
         User user = new User();
         user.setName(reqCreateUserDTO.getName());
@@ -63,10 +79,9 @@ public class UserServiceImpl implements UserService {
         user.setPhone(reqCreateUserDTO.getPhone());
         user.setImageUrl(reqCreateUserDTO.getImageUrl());
         user.setActive(reqCreateUserDTO.getActive() != null ? reqCreateUserDTO.getActive() : false);
+        user.setRole(role);
 
-        this.userRepository.save(user);
-
-        return convertToResUserDTO(user);
+        return userRepository.save(user);
     }
 
     @Override
@@ -135,6 +150,7 @@ public class UserServiceImpl implements UserService {
                 .address(user.getAddress())
                 .phone(user.getPhone())
                 .imageUrl(imageUrl)
+                .roleName(user.getRole().getName())
                 .ssoID(user.getSsoID())
                 .gender(user.getGender())
                 .ssoType(user.getSsoType())
@@ -185,5 +201,69 @@ public class UserServiceImpl implements UserService {
         }
 
         return minioService.uploadToMinio(imageUrl, bucketAvatar, folderPath);
+    }
+
+    @Override
+    public void handleUpdateUserAddRefreshToken(String email, String refreshToken) {
+        User user = this.userRepository.findByEmail(email);
+        if (user != null) {
+            user.setRefreshToken(refreshToken);
+            this.userRepository.save(user);
+        }
+    }
+
+    @Override
+    public User handleGetUserByUsername(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public User handleGetUserByEmailAndActive(String email) {
+        return userRepository.findActiveUserByEmail(email);
+    }
+
+    @Override
+    public User handleGetUserByRefreshTokenAndEmail(String refreshToken, String email) {
+        return userRepository.findByRefreshTokenAndEmail(refreshToken, email);
+    }
+
+    @Override
+    public boolean handleCheckExistByEmail(String email) {
+        return this.userRepository.existsByEmail(email);
+    }
+
+    @Override
+    public ResUserDTO handleGetCurrentUser() {
+        Integer userId = securityUtil.getIdCurrentUserLogin();
+        ResUserDTO res = handleGetUserById(userId);
+        return res;
+    }
+
+    @Override
+    public ResUserDTO handleUpdateInfoUser(ReqUpdateInfoUser reqUpdateInfoUser) throws Exception {
+        User currentUser = userRepository.findById(reqUpdateInfoUser.getId())
+                .orElseThrow(() -> new ApiException(ApiMessage.ID_USER_NOT_EXIST));
+        currentUser.setName(reqUpdateInfoUser.getName());
+        currentUser.setAddress(reqUpdateInfoUser.getAddress());
+        currentUser.setPhone(reqUpdateInfoUser.getPhone());
+        currentUser.setGender(reqUpdateInfoUser.getGender());
+
+        String oldImage = currentUser.getImageUrl();
+        String newImage = reqUpdateInfoUser.getImageUrl();
+
+        if ((newImage == null || newImage.isBlank()) && oldImage != null && !oldImage.isBlank()) {
+            minioService.deleteFromMinio(bucketAvatar, oldImage);
+            currentUser.setImageUrl(null);
+        }
+        else if (newImage != null && !newImage.isBlank() && !newImage.equals(oldImage)) {
+            if (oldImage != null && !oldImage.isBlank()) {
+                minioService.deleteFromMinio(bucketAvatar, oldImage);
+            }
+            currentUser.setImageUrl(newImage);
+        }
+
+        userRepository.save(currentUser);
+
+        return convertToResUserDTO(currentUser);
     }
 }

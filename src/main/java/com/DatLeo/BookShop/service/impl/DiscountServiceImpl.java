@@ -22,6 +22,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -89,19 +90,34 @@ public class DiscountServiceImpl implements DiscountService {
         Discount currentDiscount = discountRepository.findById(discount.getId())
                 .orElseThrow(() -> new ApiException(ApiMessage.DISCOUNT_NOT_EXIST));
 
-        Integer currentCount = currentDiscount.getUsageLimit();
-        currentDiscount.setUsageLimit(currentCount + discount.getUsageLimit());
+        if (Boolean.FALSE.equals(discount.getActive())) {
+            if (currentDiscount.getEndDate().isAfter(LocalDate.now())) {
+                if (currentDiscount.getOrders() != null && !currentDiscount.getOrders().isEmpty()) {
+                    throw new ApiException(ApiMessage.DISCOUNT_ALREADY_USED);
+                }
+            }
+            currentDiscount.setUsageLimit(0);
+        } else {
+            Integer currentCount = currentDiscount.getUsageLimit();
+            currentDiscount.setUsageLimit(currentCount + discount.getUsageLimit());
+        }
 
         if (discount.getEndDate().isBefore(currentDiscount.getEndDate())) {
             throw new ApiException(ApiMessage.DISCOUNT_END_DATE_ERROR);
         }
-        currentDiscount.setEndDate(discount.getEndDate());
-        if (discount.getActive() == false) {
-            currentDiscount.setUsageLimit(0);
+
+        if (discount.getEndDate().isBefore(LocalDate.now())) {
+            throw new ApiException("Ngày kết thúc không thể ở quá khứ.");
         }
+
+        currentDiscount.setEndDate(discount.getEndDate());
         currentDiscount.setActive(discount.getActive());
+
         discountRepository.save(currentDiscount);
-        log.info("Cập nhật mã giảm giá thành công với ID = {}", discount.getId());
+
+        log.info("Cập nhật mã giảm giá thành công (ID = {}, code = {})",
+                discount.getId(), currentDiscount.getCode());
+
         return convertToDTO(currentDiscount);
     }
 
@@ -143,6 +159,10 @@ public class DiscountServiceImpl implements DiscountService {
             categoryDTOs = discount.getCategories().stream()
                     .map(c -> new ResDiscountDTO.CategoryDTO(c.getId(), c.getName()))
                     .collect(Collectors.toSet());
+        }
+
+        if (discount.getEndDate().isBefore(LocalDate.now())) {
+            discount.setActive(false);
         }
 
         return ResDiscountDTO.builder()

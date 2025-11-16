@@ -23,8 +23,8 @@ public class ResUserDTO {
     String address;
     String phone;
     String imageUrl;
-    String imagePublicId;
     String ssoID;
+    String roleName;
     GenderEnum gender;
     SsoTypeEnum ssoType;
     Boolean active;

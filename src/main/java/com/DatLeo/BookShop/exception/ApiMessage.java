@@ -2,9 +2,20 @@ package com.DatLeo.BookShop.exception;
 
 public class ApiMessage {
 
+    // Auth
+    public  static final String NOT_REFRESH_TOKEN_COOKIE = "Không có refresh_token ở cookie.";
+    public static final String ERROR_REFRESH_TOKEN = "Refresh token không tồn tại hoặc không hợp lệ.";
+    public static final String ERROR_OTP = "Mã OTP không hợp lệ hoặc đã hết hạn. Vui lòng kiểm tra lại.";
+    public static final String USER_INACTIVE = "Người dùng chưa được kích hoạt tài khoản.";
+    public static final String OLD_PASSWORD = "Mật khẩu không chính xác.";
+    public static final String ERROR_CHANGE_PASSWORD = "Mật khẩu xác nhận không trùng khớp.";
+
+    // Cart
+    public  static final String NOT_CART = "Thông tin ID sách trong giỏ hàng không tồn tại.";
+
     // User
     public static final String EMAIL_EXISTED = "Email người dùng đã tồn tại vui lòng chọn email khác.";
-    public static final String ID_USER_NOT_EXIST = "Người dùng không tồn tại, vui lòng kiểm tra lại.";
+    public static final String ID_USER_NOT_EXIST = "Người dùng không tồn tại hoặc chưa kích hoạt, vui lòng kiểm tra lại.";
 
     // Author
     public static final String AUTHOR_NAME_EXISTED = "Tên tác giả đã tồn tại, vui lòng chọn tên khác.";
@@ -25,6 +36,11 @@ public class ApiMessage {
     public static final String DISCOUNT_END_DATE = "Ngày kết thúc không được để trống.";
     public static final String DISCOUNT_START_DATE = "Ngày bắt đầu không được để trống.";
     public static final String DISCOUNT_END_DATE_ERROR = "Ngày kết thúc phải sau ngày kết thúc hiện tại.";
+    public static final String DISCOUNT_ALREADY_USED = "Không thể vô hiệu hóa mã giảm giá đang được sử dụng trong đơn hàng.";
+
+    // Role
+    public static final String ROLE_NAME_EXISTED = "Tên vai trò đã tồn tại, vui lòng chọn tên khác.";
+    public static final String ROLE_NOT_EXIST = "Vai trò không tồn tại, vui lòng kiểm tra lại.";
 
     // Filed message
     public static final String NAME_NOT_NULL = "Tên không được để trống.";

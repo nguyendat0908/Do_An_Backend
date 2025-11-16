@@ -1,6 +1,7 @@
 package com.DatLeo.BookShop.service;
 
 import com.DatLeo.BookShop.dto.request.ReqCreateUserDTO;
+import com.DatLeo.BookShop.dto.request.ReqUpdateInfoUser;
 import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
 import com.DatLeo.BookShop.dto.response.ResUploadDTO;
 import com.DatLeo.BookShop.dto.response.ResUserDTO;
@@ -29,4 +30,18 @@ public interface UserService {
     ResPaginationDTO handleGetUsers(Specification<User> spec, Pageable pageable);
 
     ResUploadDTO uploadAvatar(MultipartFile imageUrl);
+
+    void handleUpdateUserAddRefreshToken(String email, String refreshToken);
+
+    User handleGetUserByUsername(String email);
+
+    User handleGetUserByEmailAndActive(String email);
+
+    User handleGetUserByRefreshTokenAndEmail(String refreshToken, String email);
+
+    boolean handleCheckExistByEmail(String email);
+
+    ResUserDTO handleGetCurrentUser();
+
+    ResUserDTO handleUpdateInfoUser (ReqUpdateInfoUser reqUpdateInfoUser) throws Exception;
 }

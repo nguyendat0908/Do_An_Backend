@@ -2,10 +2,7 @@ package com.DatLeo.BookShop.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.Instant;
@@ -13,7 +10,8 @@ import java.util.List;
 
 @Entity
 @Table(name = "tb_carts")
-@Data
+@Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -23,12 +21,11 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
-    Integer quantity;
-
     Instant createdAt;
     Instant updatedAt;
 
-    @OneToOne(mappedBy = "cart")
+    @OneToOne
+    @JoinColumn(name = "user_id")
     User user;
 
     @OneToMany(mappedBy = "cart", fetch = FetchType.LAZY, cascade = CascadeType.ALL)

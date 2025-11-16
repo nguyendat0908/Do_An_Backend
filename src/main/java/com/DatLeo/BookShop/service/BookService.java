@@ -13,6 +13,7 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
 
 public interface BookService {
 
@@ -29,4 +30,15 @@ public interface BookService {
     ResBookDTO convertToResBookDTO(Book book);
 
     ResUploadDTO uploadAvatar(MultipartFile imageUrl);
+
+    ResPaginationDTO handleGetCategoryBook(Integer id, Integer page, Integer size,
+                                           String sort, Double minPrice, Double maxPrice);
+
+    ResPaginationDTO handleSearchBook(List<Integer> categoryIds,
+                                      List<Integer> authorIds,
+                                      Double minPrice,
+                                      Double maxPrice,
+                                      String keyword,
+                                      String sort,
+                                      Integer page, Integer size);
 }

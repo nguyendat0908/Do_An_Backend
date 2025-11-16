@@ -3,6 +3,7 @@ package com.DatLeo.BookShop.exception;
 import com.DatLeo.BookShop.dto.response.ResponseDTO;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -32,8 +33,17 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ResponseDTO<Object>> handleIdException(Exception ex) {
         ResponseDTO<Object> res = new ResponseDTO<Object>();
         res.setCode(HttpStatus.BAD_REQUEST.value());
-        res.setError("Xảy ra ngoại lệ...");
+        res.setError("Xảy ra ngoại lệ ...");
         res.setMessage(ex.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(res);
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<ResponseDTO<Object>> handleBadCredentials(BadCredentialsException ex) {
+        ResponseDTO<Object> res = new ResponseDTO<Object>();
+        res.setCode(HttpStatus.BAD_REQUEST.value());
+        res.setError(ex.getMessage());
+        res.setMessage("Tên người dùng hoặc mật khẩu không đúng.");
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(res);
     }
 

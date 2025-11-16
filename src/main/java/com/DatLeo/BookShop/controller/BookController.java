@@ -2,6 +2,7 @@ package com.DatLeo.BookShop.controller;
 
 import com.DatLeo.BookShop.dto.request.ReqCreateBookDTO;
 import com.DatLeo.BookShop.dto.request.ReqUpdateBookDTO;
+import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
 import com.DatLeo.BookShop.entity.Book;
 import com.DatLeo.BookShop.exception.FieldException;
 import com.DatLeo.BookShop.service.BookService;
@@ -15,6 +16,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 
 @RestController
@@ -42,9 +45,15 @@ public class BookController {
         return ResponseEntity.ok(this.bookService.handleGetBookById(id));
     }
 
-    @GetMapping("/books")
+    @GetMapping("/admins/books")
     @CustomAnnotation("Hiển thị danh sách thông tin sách.")
     public ResponseEntity<?> getBooks(@Filter Specification<Book> spec, Pageable pageable) {
+        return ResponseEntity.ok(this.bookService.handleGetAllBooks(spec, pageable));
+    }
+
+    @GetMapping("/users/books")
+    @CustomAnnotation("Hiển thị danh sách thông tin sách.")
+    public ResponseEntity<?> getBooksUser(@Filter Specification<Book> spec, Pageable pageable) {
         return ResponseEntity.ok(this.bookService.handleGetAllBooks(spec, pageable));
     }
 
@@ -68,5 +77,31 @@ public class BookController {
     @CustomAnnotation("Upload ảnh thành công.")
     public ResponseEntity<?> uploadAvatar(@RequestParam("imageUrl") MultipartFile imageUrl) {
         return  ResponseEntity.ok(this.bookService.uploadAvatar(imageUrl));
+    }
+
+    @GetMapping("/books/category/{id}")
+    @CustomAnnotation("Danh sách sách theo danh mục.")
+    public ResponseEntity<?> getBooksByCategory(
+            @PathVariable Integer id,
+            @RequestParam(defaultValue = "1") Integer page,
+            @RequestParam(defaultValue = "10") Integer size,
+            @RequestParam(defaultValue = "all") String sort,
+            @RequestParam(required = false) Double minPrice,
+            @RequestParam(required = false) Double maxPrice) {
+        return ResponseEntity.ok(bookService.handleGetCategoryBook(id, page, size, sort, minPrice, maxPrice));
+    }
+
+    @GetMapping("/books/search")
+    @CustomAnnotation("Tìm kiếm sách theo từ khóa.")
+    public ResponseEntity<?> searchBooks(
+            @RequestParam(required = false) List<Integer> categoryIds,
+            @RequestParam(required = false) List<Integer> authorIds,
+            @RequestParam(required = false) Double minPrice,
+            @RequestParam(required = false) Double maxPrice,
+            @RequestParam(required = false) String keyword,
+            @RequestParam(defaultValue = "all") String sort,
+            @RequestParam(defaultValue = "1") Integer page,
+            @RequestParam(defaultValue = "25") Integer size) {
+        return ResponseEntity.ok(bookService.handleSearchBook(categoryIds, authorIds, minPrice, maxPrice, keyword, sort, page, size));
     }
 }

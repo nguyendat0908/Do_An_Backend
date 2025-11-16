@@ -36,7 +36,7 @@ public class DiscountController {
         return ResponseEntity.ok(this.discountService.handleGetDiscountById(id));
     }
 
-    @GetMapping("/discounts")
+    @GetMapping("/admins/discounts")
     @CustomAnnotation("Hiển thị danh sách thông tin mã giảm giá.")
     public ResponseEntity<ResPaginationDTO> getAllDiscounts(@Filter Specification<Discount> spec, Pageable pageable){
         return ResponseEntity.ok(this.discountService.handleGetDiscounts(spec, pageable));

@@ -8,14 +8,17 @@ import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
 import java.util.Set;
 
 @Setter
 @Getter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class ReqDiscountDTO {
 
     @NotBlank(message = ApiMessage.CODE_NOT_NULL)
