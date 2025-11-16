@@ -1,5 +1,15 @@
-2025-11-14 00:55:28 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
-2025-11-14 00:55:28 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
-2025-11-14 00:55:28 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
-2025-11-14 00:55:28 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-17 - Shutdown initiated...
-2025-11-14 00:55:28 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-17 - Shutdown completed.
+2025-11-17 00:01:23 INFO  [http-nio-8888-exec-4] c.D.B.service.impl.AuthorServiceImpl - Lưu tác giả thành công với tên George Samuel Clason
+2025-11-17 00:02:59 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.BookServiceImpl - Thêm sách mới thành công với ID 38
+2025-11-17 00:03:21 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.AuthorServiceImpl - Cập nhật tác giả thành công com.DatLeo.BookShop.entity.Author@352fda80
+2025-11-17 00:03:43 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.AuthorServiceImpl - Cập nhật tác giả thành công com.DatLeo.BookShop.entity.Author@3075f951
+2025-11-17 00:13:36 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.AuthorServiceImpl - Lưu tác giả thành công với tên Linda Yueh
+2025-11-17 00:14:43 INFO  [http-nio-8888-exec-3] c.D.B.service.impl.BookServiceImpl - Thêm sách mới thành công với ID 39
+2025-11-17 00:25:26 INFO  [http-nio-8888-exec-7] c.D.B.service.impl.AuthorServiceImpl - Lưu tác giả thành công với tên TS. Lê Hồng Nhung
+2025-11-17 00:27:23 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.BookServiceImpl - Thêm sách mới thành công với ID 40
+2025-11-17 00:29:36 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.AuthorServiceImpl - Lưu tác giả thành công với tên JL Collins
+2025-11-17 00:30:51 INFO  [http-nio-8888-exec-5] c.D.B.service.impl.BookServiceImpl - Thêm sách mới thành công với ID 41
+2025-11-17 00:43:10 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-17 00:43:10 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-17 00:43:10 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-17 00:43:10 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-17 00:43:10 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.

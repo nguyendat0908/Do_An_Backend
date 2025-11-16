@@ -1,0 +1,8 @@
+2025-11-15 01:09:54 INFO  [http-nio-8888-exec-10] c.D.B.service.impl.AuthorServiceImpl - Lưu tác giả thành công với tên Đoàn Giỏi
+2025-11-15 01:12:09 INFO  [http-nio-8888-exec-2] c.D.B.service.impl.BookServiceImpl - Thêm sách mới thành công với ID 26
+2025-11-15 01:14:09 INFO  [http-nio-8888-exec-8] c.D.B.service.impl.BookServiceImpl - Thêm sách mới thành công với ID 27
+2025-11-15 01:16:43 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-15 01:16:43 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-15 01:16:43 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-15 01:16:43 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-11-15 01:16:43 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
