@@ -20,6 +20,7 @@ public class ResBookDTO {
     String description;
     Integer sold = 0;
     Integer quantity;
+    Integer viewCount;
     Double price;
     LocalDate publicationDate;
     String imageUrl;

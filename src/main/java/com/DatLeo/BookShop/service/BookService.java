@@ -41,4 +41,10 @@ public interface BookService {
                                       String keyword,
                                       String sort,
                                       Integer page, Integer size);
+
+    List<ResBookDTO> handleGetBooksMaxView();
+
+    List<ResBookDTO> handleGetBooksMaxSold();
+
+    List<ResBookDTO> handleGetBooksNewPubDate();
 }

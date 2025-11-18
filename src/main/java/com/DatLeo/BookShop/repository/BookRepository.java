@@ -47,4 +47,12 @@ public interface BookRepository extends JpaRepository<Book, Integer>, JpaSpecifi
                              @Param("maxPrice") Double maxPrice,
                              @Param("keyword") String keyword,
                              Pageable pageable);
+
+    @Query(value = "SELECT b FROM Book b ORDER BY b.viewCount DESC LIMIT 6")
+    List<Book> findTop6ByViewCount();
+
+    @Query(value = "SELECT b FROM Book b ORDER BY b.sold DESC LIMIT 6")
+    List<Book> findTop6BySold();
+
+    List<Book> findTop6ByOrderByPublicationDateDesc();
 }

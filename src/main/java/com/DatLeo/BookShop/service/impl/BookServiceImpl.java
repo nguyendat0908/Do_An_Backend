@@ -26,6 +26,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -81,6 +82,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public ResBookDTO handleGetBookById(Integer id) {
         Book book = this.bookRepository.findById(id).orElseThrow(() -> new ApiException(ApiMessage.BOOK_NOT_EXIST));
+
+        book.setViewCount(book.getViewCount() + 1);
+        bookRepository.save(book);
+
         ResBookDTO resBookDTO = convertToResBookDTO(book);
         return resBookDTO;
     }
@@ -188,6 +193,7 @@ public class BookServiceImpl implements BookService {
         resBookDTO.setPrice(book.getPrice());
         resBookDTO.setPublicationDate(book.getPublicationDate());
         resBookDTO.setImageUrl(imageUrl);
+        resBookDTO.setViewCount(book.getViewCount());
 
         ResBookDTO.AuthorDTO authorDTO = new ResBookDTO.AuthorDTO();
         authorDTO.setName(book.getAuthor().getName());
@@ -306,5 +312,23 @@ public class BookServiceImpl implements BookService {
         resPaginationDTO.setResult(resBookDTOS);
 
         return resPaginationDTO;
+    }
+
+    @Override
+    public List<ResBookDTO> handleGetBooksMaxView() {
+        List<Book> books = bookRepository.findTop6ByViewCount();
+        return books.stream().map(book -> convertToResBookDTO(book)).toList();
+    }
+
+    @Override
+    public List<ResBookDTO> handleGetBooksMaxSold() {
+        List<Book> books = bookRepository.findTop6BySold();
+        return books.stream().map(book -> convertToResBookDTO(book)).toList();
+    }
+
+    @Override
+    public List<ResBookDTO> handleGetBooksNewPubDate() {
+        List<Book> books = bookRepository.findTop6ByOrderByPublicationDateDesc();
+        return books.stream().map(book -> convertToResBookDTO(book)).toList();
     }
 }

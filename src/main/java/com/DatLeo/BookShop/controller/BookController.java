@@ -104,4 +104,22 @@ public class BookController {
             @RequestParam(defaultValue = "25") Integer size) {
         return ResponseEntity.ok(bookService.handleSearchBook(categoryIds, authorIds, minPrice, maxPrice, keyword, sort, page, size));
     }
+
+    @GetMapping("/books/top-view")
+    @CustomAnnotation("Hiển thị danh sách sách có lượt xem cao nhất.")
+    public ResponseEntity<?> getBooksByMaxView() {
+        return ResponseEntity.ok(bookService.handleGetBooksMaxView());
+    }
+
+    @GetMapping("/books/top-sold")
+    @CustomAnnotation("Hiển thị danh sách sách có lượt mua cao nhất.")
+    public ResponseEntity<?> getBooksByMaxSold() {
+        return ResponseEntity.ok(bookService.handleGetBooksMaxSold());
+    }
+
+    @GetMapping("/books/new-pub-date")
+    @CustomAnnotation("Hiển thị danh sách sách mới nhất.")
+    public ResponseEntity<?> getBooksByNewPubDate() {
+        return ResponseEntity.ok(bookService.handleGetBooksNewPubDate());
+    }
 }

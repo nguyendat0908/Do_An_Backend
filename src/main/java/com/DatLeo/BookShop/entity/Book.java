@@ -53,6 +53,9 @@ public class Book {
     @Column(name = "image")
     String imageUrl;
 
+    @Column(name = "view_count")
+    Integer viewCount = 0;
+
     @ManyToOne
     @JoinColumn(name = "author_id")
     Author author;
