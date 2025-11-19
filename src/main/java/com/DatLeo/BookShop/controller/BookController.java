@@ -122,4 +122,10 @@ public class BookController {
     public ResponseEntity<?> getBooksByNewPubDate() {
         return ResponseEntity.ok(bookService.handleGetBooksNewPubDate());
     }
+
+    @GetMapping("/books/suggest")
+    @CustomAnnotation("Hiển thị gợi ý danh sách sách.")
+    public ResponseEntity<?> getBooksSuggest(@RequestParam("authorId") Integer authorId) {
+        return ResponseEntity.ok(bookService.handleGetBooksByAuthorIdAndView(authorId));
+    }
 }

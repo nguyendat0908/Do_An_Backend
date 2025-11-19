@@ -331,4 +331,10 @@ public class BookServiceImpl implements BookService {
         List<Book> books = bookRepository.findTop6ByOrderByPublicationDateDesc();
         return books.stream().map(book -> convertToResBookDTO(book)).toList();
     }
+
+    @Override
+    public List<ResBookDTO> handleGetBooksByAuthorIdAndView(Integer authorId) {
+        List<Book> books = bookRepository.findTop6ByAuthorIdOrderByViewCountDesc(authorId);
+        return books.stream().map(book -> convertToResBookDTO(book)).toList();
+    }
 }

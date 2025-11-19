@@ -47,4 +47,6 @@ public interface BookService {
     List<ResBookDTO> handleGetBooksMaxSold();
 
     List<ResBookDTO> handleGetBooksNewPubDate();
+
+    List<ResBookDTO> handleGetBooksByAuthorIdAndView(Integer authorId);
 }

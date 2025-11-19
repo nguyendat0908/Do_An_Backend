@@ -221,3 +221,418 @@ Caused by: java.lang.ClassNotFoundException: com.DatLeo.BookShop.repository.Book
 2025-11-19 00:03:13 INFO  [http-nio-8888-exec-2] o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
 2025-11-19 00:03:13 INFO  [http-nio-8888-exec-2] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
 2025-11-19 00:03:13 INFO  [http-nio-8888-exec-2] o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-11-19 00:18:07 WARN  [http-nio-8888-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource api/v1/api/v1/books/new-pub-date.]
+2025-11-19 00:18:07 WARN  [http-nio-8888-exec-1] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource api/v1/api/v1/books/top-sold.]
+2025-11-19 00:18:07 WARN  [http-nio-8888-exec-9] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource api/v1/api/v1/books/top-view.]
+2025-11-19 00:18:39 WARN  [http-nio-8888-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource api/v1/api/v1/books/top-sold.]
+2025-11-19 00:18:39 WARN  [http-nio-8888-exec-2] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource api/v1/api/v1/books/new-pub-date.]
+2025-11-19 00:18:44 WARN  [http-nio-8888-exec-4] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource api/v1/api/v1/books/new-pub-date.]
+2025-11-19 00:40:16 INFO  [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2025-11-19 00:40:16 INFO  [Thread-50] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-19 00:40:17 INFO  [tomcat-shutdown] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:40:17 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-19 00:40:17 INFO  [Thread-50] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:40:17 INFO  [Thread-50] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 00:40:17 INFO  [Thread-50] com.zaxxer.hikari.HikariDataSource - HikariPool-13 - Shutdown initiated...
+2025-11-19 00:40:17 INFO  [Thread-50] com.zaxxer.hikari.HikariDataSource - HikariPool-13 - Shutdown completed.
+2025-11-19 00:40:17 INFO  [restartedMain] c.D.BookShop.BookShopApplication - Starting BookShopApplication using Java 22 with PID 30264 (D:\Do_An\BACK-END\BookShop\target\classes started by nguye in D:\Do_An\BACK-END\BookShop)
+2025-11-19 00:40:17 DEBUG [restartedMain] c.D.BookShop.BookShopApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-11-19 00:40:17 INFO  [restartedMain] c.D.BookShop.BookShopApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-19 00:40:18 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-19 00:40:18 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 33 ms. Found 8 JPA repository interfaces.
+2025-11-19 00:40:18 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8888 (http)
+2025-11-19 00:40:18 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:40:18 INFO  [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-19 00:40:18 INFO  [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-11-19 00:40:18 INFO  [restartedMain] o.a.c.c.C.[Tomcat-1].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-19 00:40:18 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1144 ms
+2025-11-19 00:40:18 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-19 00:40:18 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-19 00:40:18 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-19 00:40:18 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-14 - Starting...
+2025-11-19 00:40:18 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-14 - Added connection com.mysql.cj.jdbc.ConnectionImpl@52ba1c77
+2025-11-19 00:40:18 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-14 - Start completed.
+2025-11-19 00:40:18 INFO  [restartedMain] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-14)']
+	Database driver: undefined/unknown
+	Database version: 9.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-19 00:40:19 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-19 00:40:19 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 00:40:19 WARN  [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'authorController' defined in file [D:\Do_An\BACK-END\BookShop\target\classes\com\DatLeo\BookShop\controller\AuthorController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'authorServiceImpl' defined in file [D:\Do_An\BACK-END\BookShop\target\classes\com\DatLeo\BookShop\service\impl\AuthorServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 1: No qualifying bean of type 'com.DatLeo.BookShop.repository.BookRepository' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {}
+2025-11-19 00:40:19 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 00:40:19 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-14 - Shutdown initiated...
+2025-11-19 00:40:19 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-14 - Shutdown completed.
+2025-11-19 00:40:19 INFO  [restartedMain] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-11-19 00:40:19 INFO  [restartedMain] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-19 00:40:19 ERROR [restartedMain] o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Parameter 1 of constructor in com.DatLeo.BookShop.service.impl.AuthorServiceImpl required a bean of type 'com.DatLeo.BookShop.repository.BookRepository' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.DatLeo.BookShop.repository.BookRepository' in your configuration.
+
+2025-11-19 00:40:21 INFO  [restartedMain] c.D.BookShop.BookShopApplication - Starting BookShopApplication using Java 22 with PID 30264 (D:\Do_An\BACK-END\BookShop\target\classes started by nguye in D:\Do_An\BACK-END\BookShop)
+2025-11-19 00:40:21 DEBUG [restartedMain] c.D.BookShop.BookShopApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-11-19 00:40:21 INFO  [restartedMain] c.D.BookShop.BookShopApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-19 00:40:21 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-19 00:40:21 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 56 ms. Found 9 JPA repository interfaces.
+2025-11-19 00:40:21 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8888 (http)
+2025-11-19 00:40:21 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:40:21 INFO  [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-19 00:40:21 INFO  [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-11-19 00:40:21 INFO  [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-19 00:40:21 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 775 ms
+2025-11-19 00:40:21 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-19 00:40:21 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-19 00:40:21 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-19 00:40:21 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-15 - Starting...
+2025-11-19 00:40:21 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-15 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7b7d571a
+2025-11-19 00:40:21 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-15 - Start completed.
+2025-11-19 00:40:21 INFO  [restartedMain] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-15)']
+	Database driver: undefined/unknown
+	Database version: 9.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-19 00:40:22 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-19 00:40:22 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 00:40:22 WARN  [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-19 00:40:22 INFO  [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2025-11-19 00:40:22 INFO  [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-11-19 00:40:22 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:40:22 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8888 (http) with context path '/'
+2025-11-19 00:40:22 INFO  [restartedMain] c.D.BookShop.BookShopApplication - Started BookShopApplication in 1.402 seconds (process running for 3282.648)
+2025-11-19 00:40:22 INFO  [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-11-19 00:41:23 INFO  [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 2 class path changes (0 additions, 2 deletions, 0 modifications)
+2025-11-19 00:41:23 INFO  [Thread-54] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-19 00:41:23 INFO  [tomcat-shutdown] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:41:23 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-19 00:41:23 INFO  [Thread-54] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:41:23 INFO  [Thread-54] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 00:41:23 INFO  [Thread-54] com.zaxxer.hikari.HikariDataSource - HikariPool-15 - Shutdown initiated...
+2025-11-19 00:41:23 INFO  [Thread-54] com.zaxxer.hikari.HikariDataSource - HikariPool-15 - Shutdown completed.
+2025-11-19 00:41:23 INFO  [restartedMain] c.D.BookShop.BookShopApplication - Starting BookShopApplication using Java 22 with PID 30264 (D:\Do_An\BACK-END\BookShop\target\classes started by nguye in D:\Do_An\BACK-END\BookShop)
+2025-11-19 00:41:23 DEBUG [restartedMain] c.D.BookShop.BookShopApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-11-19 00:41:23 INFO  [restartedMain] c.D.BookShop.BookShopApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-19 00:41:23 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-19 00:41:24 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 38 ms. Found 9 JPA repository interfaces.
+2025-11-19 00:41:24 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8888 (http)
+2025-11-19 00:41:24 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:41:24 INFO  [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-19 00:41:24 INFO  [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-11-19 00:41:24 INFO  [restartedMain] o.a.c.c.C.[Tomcat-2].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-19 00:41:24 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 606 ms
+2025-11-19 00:41:24 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-19 00:41:24 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-19 00:41:24 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-19 00:41:24 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-16 - Starting...
+2025-11-19 00:41:24 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-16 - Added connection com.mysql.cj.jdbc.ConnectionImpl@44a21e3e
+2025-11-19 00:41:24 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-16 - Start completed.
+2025-11-19 00:41:24 INFO  [restartedMain] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-16)']
+	Database driver: undefined/unknown
+	Database version: 9.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-19 00:41:24 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-19 00:41:24 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 00:41:24 WARN  [restartedMain] o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'bookController': Resolution of declared constructors on bean Class [com.DatLeo.BookShop.controller.BookController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@658f95b6] failed
+2025-11-19 00:41:24 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 00:41:24 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-16 - Shutdown initiated...
+2025-11-19 00:41:24 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-16 - Shutdown completed.
+2025-11-19 00:41:24 INFO  [restartedMain] o.a.catalina.core.StandardService - Stopping service [Tomcat]
+2025-11-19 00:41:25 INFO  [restartedMain] o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2025-11-19 00:41:25 ERROR [restartedMain] o.s.boot.SpringApplication - Application run failed
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'bookController': Resolution of declared constructors on bean Class [com.DatLeo.BookShop.controller.BookController] from ClassLoader [org.springframework.boot.devtools.restart.classloader.RestartClassLoader@658f95b6] failed
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:384)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.determineConstructorsFromBeanPostProcessors(AbstractAutowireCapableBeanFactory.java:1334)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1229)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1188)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1123)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:753)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1362)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1351)
+	at com.DatLeo.BookShop.BookShopApplication.main(BookShopApplication.java:14)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.lang.NoClassDefFoundError: com/DatLeo/BookShop/service/BookService
+	at java.base/java.lang.Class.getDeclaredConstructors0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredConstructors(Class.java:3572)
+	at java.base/java.lang.Class.getDeclaredConstructors(Class.java:2737)
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.determineCandidateConstructors(AutowiredAnnotationBeanPostProcessor.java:379)
+	... 23 common frames omitted
+Caused by: java.lang.ClassNotFoundException: com.DatLeo.BookShop.service.BookService
+	at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:641)
+	at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:188)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	at java.base/java.lang.Class.forName0(Native Method)
+	at java.base/java.lang.Class.forName(Class.java:529)
+	at java.base/java.lang.Class.forName(Class.java:508)
+	at org.springframework.boot.devtools.restart.classloader.RestartClassLoader.loadClass(RestartClassLoader.java:121)
+	at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:525)
+	... 27 common frames omitted
+2025-11-19 00:41:27 INFO  [restartedMain] c.D.BookShop.BookShopApplication - Starting BookShopApplication using Java 22 with PID 30264 (D:\Do_An\BACK-END\BookShop\target\classes started by nguye in D:\Do_An\BACK-END\BookShop)
+2025-11-19 00:41:27 DEBUG [restartedMain] c.D.BookShop.BookShopApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-11-19 00:41:27 INFO  [restartedMain] c.D.BookShop.BookShopApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-19 00:41:27 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-19 00:41:27 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 47 ms. Found 9 JPA repository interfaces.
+2025-11-19 00:41:27 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8888 (http)
+2025-11-19 00:41:27 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:41:27 INFO  [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-19 00:41:27 INFO  [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-11-19 00:41:28 INFO  [restartedMain] o.a.c.c.C.[Tomcat-3].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-19 00:41:28 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 495 ms
+2025-11-19 00:41:28 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-19 00:41:28 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-19 00:41:28 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-19 00:41:28 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-17 - Starting...
+2025-11-19 00:41:28 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-17 - Added connection com.mysql.cj.jdbc.ConnectionImpl@26a7f3a2
+2025-11-19 00:41:28 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-17 - Start completed.
+2025-11-19 00:41:28 INFO  [restartedMain] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-17)']
+	Database driver: undefined/unknown
+	Database version: 9.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-19 00:41:28 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-19 00:41:28 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 00:41:28 WARN  [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-19 00:41:28 INFO  [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2025-11-19 00:41:29 INFO  [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-11-19 00:41:29 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:41:29 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8888 (http) with context path '/'
+2025-11-19 00:41:29 INFO  [restartedMain] c.D.BookShop.BookShopApplication - Started BookShopApplication in 1.796 seconds (process running for 3349.517)
+2025-11-19 00:41:29 INFO  [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-11-19 00:42:00 INFO  [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2025-11-19 00:42:00 INFO  [Thread-61] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-19 00:42:00 INFO  [tomcat-shutdown] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:42:00 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-19 00:42:00 INFO  [Thread-61] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:42:00 INFO  [Thread-61] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 00:42:00 INFO  [Thread-61] com.zaxxer.hikari.HikariDataSource - HikariPool-17 - Shutdown initiated...
+2025-11-19 00:42:00 INFO  [Thread-61] com.zaxxer.hikari.HikariDataSource - HikariPool-17 - Shutdown completed.
+2025-11-19 00:42:00 INFO  [restartedMain] c.D.BookShop.BookShopApplication - Starting BookShopApplication using Java 22 with PID 30264 (D:\Do_An\BACK-END\BookShop\target\classes started by nguye in D:\Do_An\BACK-END\BookShop)
+2025-11-19 00:42:00 DEBUG [restartedMain] c.D.BookShop.BookShopApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-11-19 00:42:00 INFO  [restartedMain] c.D.BookShop.BookShopApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-19 00:42:01 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-19 00:42:01 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 50 ms. Found 9 JPA repository interfaces.
+2025-11-19 00:42:01 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8888 (http)
+2025-11-19 00:42:01 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:42:01 INFO  [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-19 00:42:01 INFO  [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-11-19 00:42:01 INFO  [restartedMain] o.a.c.c.C.[Tomcat-3].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-19 00:42:01 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 614 ms
+2025-11-19 00:42:01 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-19 00:42:01 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-19 00:42:01 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-19 00:42:01 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-18 - Starting...
+2025-11-19 00:42:01 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-18 - Added connection com.mysql.cj.jdbc.ConnectionImpl@76f3b856
+2025-11-19 00:42:01 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-18 - Start completed.
+2025-11-19 00:42:01 INFO  [restartedMain] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-18)']
+	Database driver: undefined/unknown
+	Database version: 9.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-19 00:42:01 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-19 00:42:01 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 00:42:02 WARN  [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-19 00:42:02 INFO  [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2025-11-19 00:42:02 INFO  [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-11-19 00:42:02 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:42:02 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8888 (http) with context path '/'
+2025-11-19 00:42:02 INFO  [restartedMain] c.D.BookShop.BookShopApplication - Started BookShopApplication in 1.329 seconds (process running for 3382.407)
+2025-11-19 00:42:02 INFO  [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-11-19 00:44:55 INFO  [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2025-11-19 00:44:55 INFO  [Thread-68] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-19 00:44:55 INFO  [tomcat-shutdown] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:44:55 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-19 00:44:55 INFO  [Thread-68] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:44:55 INFO  [Thread-68] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 00:44:55 INFO  [Thread-68] com.zaxxer.hikari.HikariDataSource - HikariPool-18 - Shutdown initiated...
+2025-11-19 00:44:55 INFO  [Thread-68] com.zaxxer.hikari.HikariDataSource - HikariPool-18 - Shutdown completed.
+2025-11-19 00:44:55 INFO  [restartedMain] c.D.BookShop.BookShopApplication - Starting BookShopApplication using Java 22 with PID 30264 (D:\Do_An\BACK-END\BookShop\target\classes started by nguye in D:\Do_An\BACK-END\BookShop)
+2025-11-19 00:44:55 DEBUG [restartedMain] c.D.BookShop.BookShopApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-11-19 00:44:55 INFO  [restartedMain] c.D.BookShop.BookShopApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-19 00:44:55 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-19 00:44:55 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 28 ms. Found 9 JPA repository interfaces.
+2025-11-19 00:44:55 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8888 (http)
+2025-11-19 00:44:55 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:44:55 INFO  [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-19 00:44:55 INFO  [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-11-19 00:44:55 INFO  [restartedMain] o.a.c.c.C.[Tomcat-3].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-19 00:44:55 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 496 ms
+2025-11-19 00:44:55 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-19 00:44:55 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-19 00:44:55 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-19 00:44:55 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-19 - Starting...
+2025-11-19 00:44:55 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-19 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2566a01
+2025-11-19 00:44:55 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-19 - Start completed.
+2025-11-19 00:44:55 INFO  [restartedMain] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-19)']
+	Database driver: undefined/unknown
+	Database version: 9.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-19 00:44:56 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-19 00:44:56 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 00:44:56 WARN  [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-19 00:44:56 INFO  [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2025-11-19 00:44:56 INFO  [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-11-19 00:44:56 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:44:56 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8888 (http) with context path '/'
+2025-11-19 00:44:56 INFO  [restartedMain] c.D.BookShop.BookShopApplication - Started BookShopApplication in 1.249 seconds (process running for 3556.681)
+2025-11-19 00:44:56 INFO  [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-11-19 00:47:30 INFO  [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat-3].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-19 00:47:30 INFO  [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-11-19 00:47:30 INFO  [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2025-11-19 00:53:29 INFO  [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (0 additions, 1 deletion, 0 modifications)
+2025-11-19 00:53:29 INFO  [Thread-72] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-19 00:53:29 INFO  [tomcat-shutdown] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:53:29 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-19 00:53:29 INFO  [Thread-72] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:53:29 INFO  [Thread-72] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 00:53:29 INFO  [Thread-72] com.zaxxer.hikari.HikariDataSource - HikariPool-19 - Shutdown initiated...
+2025-11-19 00:53:29 INFO  [Thread-72] com.zaxxer.hikari.HikariDataSource - HikariPool-19 - Shutdown completed.
+2025-11-19 00:53:29 INFO  [restartedMain] c.D.BookShop.BookShopApplication - Starting BookShopApplication using Java 22 with PID 30264 (D:\Do_An\BACK-END\BookShop\target\classes started by nguye in D:\Do_An\BACK-END\BookShop)
+2025-11-19 00:53:29 DEBUG [restartedMain] c.D.BookShop.BookShopApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-11-19 00:53:29 INFO  [restartedMain] c.D.BookShop.BookShopApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-19 00:53:30 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-19 00:53:30 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 40 ms. Found 9 JPA repository interfaces.
+2025-11-19 00:53:30 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8888 (http)
+2025-11-19 00:53:30 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:53:30 INFO  [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-19 00:53:30 INFO  [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-11-19 00:53:30 INFO  [restartedMain] o.a.c.c.C.[Tomcat-3].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-19 00:53:30 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 615 ms
+2025-11-19 00:53:30 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-19 00:53:30 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-19 00:53:30 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-19 00:53:30 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-20 - Starting...
+2025-11-19 00:53:30 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-20 - Added connection com.mysql.cj.jdbc.ConnectionImpl@5318f959
+2025-11-19 00:53:30 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-20 - Start completed.
+2025-11-19 00:53:30 INFO  [restartedMain] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-20)']
+	Database driver: undefined/unknown
+	Database version: 9.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-19 00:53:30 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-19 00:53:30 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 00:53:31 WARN  [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-19 00:53:31 INFO  [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2025-11-19 00:53:31 INFO  [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-11-19 00:53:31 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:53:31 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8888 (http) with context path '/'
+2025-11-19 00:53:31 INFO  [restartedMain] c.D.BookShop.BookShopApplication - Started BookShopApplication in 1.838 seconds (process running for 4071.714)
+2025-11-19 00:53:31 INFO  [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-11-19 00:53:32 INFO  [File Watcher] o.s.b.d.a.LocalDevToolsAutoConfiguration$RestartingClassPathChangeChangedEventListener - Restarting due to 1 class path change (1 addition, 0 deletions, 0 modifications)
+2025-11-19 00:53:32 INFO  [Thread-76] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-19 00:53:32 INFO  [tomcat-shutdown] o.a.coyote.http11.Http11NioProtocol - Pausing ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:53:32 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-19 00:53:32 INFO  [Thread-76] o.a.coyote.http11.Http11NioProtocol - Stopping ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:53:32 INFO  [Thread-76] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 00:53:32 INFO  [Thread-76] com.zaxxer.hikari.HikariDataSource - HikariPool-20 - Shutdown initiated...
+2025-11-19 00:53:32 INFO  [Thread-76] com.zaxxer.hikari.HikariDataSource - HikariPool-20 - Shutdown completed.
+2025-11-19 00:53:33 INFO  [restartedMain] c.D.BookShop.BookShopApplication - Starting BookShopApplication using Java 22 with PID 30264 (D:\Do_An\BACK-END\BookShop\target\classes started by nguye in D:\Do_An\BACK-END\BookShop)
+2025-11-19 00:53:33 DEBUG [restartedMain] c.D.BookShop.BookShopApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-11-19 00:53:33 INFO  [restartedMain] c.D.BookShop.BookShopApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-19 00:53:33 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-19 00:53:33 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 38 ms. Found 9 JPA repository interfaces.
+2025-11-19 00:53:33 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8888 (http)
+2025-11-19 00:53:33 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:53:33 INFO  [restartedMain] o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-11-19 00:53:33 INFO  [restartedMain] o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.41]
+2025-11-19 00:53:33 INFO  [restartedMain] o.a.c.c.C.[Tomcat-3].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-11-19 00:53:33 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 514 ms
+2025-11-19 00:53:33 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-19 00:53:33 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-11-19 00:53:33 INFO  [restartedMain] o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-11-19 00:53:33 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-21 - Starting...
+2025-11-19 00:53:33 INFO  [restartedMain] com.zaxxer.hikari.pool.HikariPool - HikariPool-21 - Added connection com.mysql.cj.jdbc.ConnectionImpl@404e18ca
+2025-11-19 00:53:33 INFO  [restartedMain] com.zaxxer.hikari.HikariDataSource - HikariPool-21 - Start completed.
+2025-11-19 00:53:33 INFO  [restartedMain] o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-21)']
+	Database driver: undefined/unknown
+	Database version: 9.1
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-11-19 00:53:34 INFO  [restartedMain] o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-11-19 00:53:34 INFO  [restartedMain] o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 00:53:34 WARN  [restartedMain] o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-11-19 00:53:34 INFO  [restartedMain] o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name userDetailsService
+2025-11-19 00:53:34 INFO  [restartedMain] o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2025-11-19 00:53:34 INFO  [restartedMain] o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8888"]
+2025-11-19 00:53:34 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8888 (http) with context path '/'
+2025-11-19 00:53:34 INFO  [restartedMain] c.D.BookShop.BookShopApplication - Started BookShopApplication in 1.498 seconds (process running for 4074.731)
+2025-11-19 00:53:34 INFO  [restartedMain] o.s.b.d.a.ConditionEvaluationDeltaLoggingListener - Condition evaluation unchanged
+2025-11-19 00:54:43 INFO  [http-nio-8888-exec-1] o.a.c.c.C.[Tomcat-3].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-11-19 00:54:43 INFO  [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-11-19 00:54:43 INFO  [http-nio-8888-exec-1] o.s.web.servlet.DispatcherServlet - Completed initialization in 10 ms
+2025-11-19 00:54:45 WARN  [http-nio-8888-exec-10] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'authorId': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "null"]
+2025-11-19 00:55:04 WARN  [http-nio-8888-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'authorId': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "null"]
+2025-11-19 01:00:32 WARN  [http-nio-8888-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'authorId': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "null"]
+2025-11-19 01:00:58 WARN  [http-nio-8888-exec-3] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'authorId': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "null"]
+2025-11-19 01:01:03 WARN  [http-nio-8888-exec-6] o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Method parameter 'authorId': Failed to convert value of type 'java.lang.String' to required type 'java.lang.Integer'; For input string: "null"]
+2025-11-19 01:26:43 INFO  [SpringApplicationShutdownHook] o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-11-19 01:26:43 INFO  [tomcat-shutdown] o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-11-19 01:26:43 INFO  [SpringApplicationShutdownHook] o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-11-19 01:26:43 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-21 - Shutdown initiated...
+2025-11-19 01:26:43 INFO  [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource - HikariPool-21 - Shutdown completed.
+2025-11-19 13:51:05 INFO  [background-preinit] o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.2.Final
+2025-11-19 13:51:06 INFO  [restartedMain] c.D.BookShop.BookShopApplication - Starting BookShopApplication using Java 22 with PID 17780 (D:\Do_An\BACK-END\BookShop\target\classes started by nguye in D:\Do_An\BACK-END\BookShop)
+2025-11-19 13:51:06 DEBUG [restartedMain] c.D.BookShop.BookShopApplication - Running with Spring Boot v3.5.0, Spring v6.2.7
+2025-11-19 13:51:06 INFO  [restartedMain] c.D.BookShop.BookShopApplication - No active profile set, falling back to 1 default profile: "default"
+2025-11-19 13:51:06 INFO  [restartedMain] o.s.b.d.restart.ChangeableUrls - The Class-Path manifest attribute in C:\Users\nguye\.m2\repository\io\github\cdimascio\java-dotenv\5.2.2\java-dotenv-5.2.2.jar referenced one or more files that do not exist: file:/C:/Users/nguye/.m2/repository/io/github/cdimascio/java-dotenv/5.2.2/kotlin-stdlib-1.4.0.jar,file:/C:/Users/nguye/.m2/repository/io/github/cdimascio/java-dotenv/5.2.2/kotlin-stdlib-common-1.4.0.jar,file:/C:/Users/nguye/.m2/repository/io/github/cdimascio/java-dotenv/5.2.2/annotations-13.0.jar
+2025-11-19 13:51:06 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2025-11-19 13:51:06 INFO  [restartedMain] o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2025-11-19 13:51:08 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-11-19 13:51:08 INFO  [restartedMain] o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 149 ms. Found 9 JPA repository interfaces.
+2025-11-19 13:51:09 INFO  [restartedMain] o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8888 (http)
+2025-11-19 13:51:09 INFO  [restartedMain] o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3501 ms
+2025-11-19 13:51:09 INFO  [restartedMain] o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-11-19 13:51:09 INFO  [restartedMain] org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.15.Final
+2025-11-19 13:51:10 INFO  [restartedMain] o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled

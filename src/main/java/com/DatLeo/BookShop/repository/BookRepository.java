@@ -55,4 +55,6 @@ public interface BookRepository extends JpaRepository<Book, Integer>, JpaSpecifi
     List<Book> findTop6BySold();
 
     List<Book> findTop6ByOrderByPublicationDateDesc();
+
+    List<Book> findTop6ByAuthorIdOrderByViewCountDesc(Integer authorId);
 }
