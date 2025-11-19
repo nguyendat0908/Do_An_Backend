@@ -128,4 +128,10 @@ public class BookController {
     public ResponseEntity<?> getBooksSuggest(@RequestParam("authorId") Integer authorId) {
         return ResponseEntity.ok(bookService.handleGetBooksByAuthorIdAndView(authorId));
     }
+
+    @GetMapping("/books/view-history")
+    @CustomAnnotation("Hiển thị danh sách sách đã xem gần đây.")
+    public ResponseEntity<?> getViewRecentlyBooks() {
+        return ResponseEntity.ok(bookService.handleGetRecentlyViewBooks());
+    }
 }

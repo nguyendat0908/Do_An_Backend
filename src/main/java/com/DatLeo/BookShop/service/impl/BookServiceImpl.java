@@ -5,15 +5,16 @@ import com.DatLeo.BookShop.dto.request.ReqUpdateBookDTO;
 import com.DatLeo.BookShop.dto.response.ResBookDTO;
 import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
 import com.DatLeo.BookShop.dto.response.ResUploadDTO;
-import com.DatLeo.BookShop.entity.Author;
-import com.DatLeo.BookShop.entity.Book;
-import com.DatLeo.BookShop.entity.Category;
+import com.DatLeo.BookShop.entity.*;
 import com.DatLeo.BookShop.exception.ApiException;
 import com.DatLeo.BookShop.exception.ApiMessage;
 import com.DatLeo.BookShop.exception.StorageException;
 import com.DatLeo.BookShop.repository.AuthorRepository;
 import com.DatLeo.BookShop.repository.BookRepository;
+import com.DatLeo.BookShop.repository.BookViewHistoryRepository;
+import com.DatLeo.BookShop.repository.UserRepository;
 import com.DatLeo.BookShop.service.*;
+import com.DatLeo.BookShop.util.SecurityUtil;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,6 +27,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -40,6 +42,9 @@ public class BookServiceImpl implements BookService {
     private final AuthorRepository authorRepository;
     private final CategoryService categoryService;
     private final MinioService  minioService;
+    private final SecurityUtil securityUtil;
+    private final BookViewHistoryRepository bookViewHistoryRepository;
+    private final UserRepository userRepository;
 
     @Value("${minio.bucket-product}")
     private String bucketProduct;
@@ -82,6 +87,21 @@ public class BookServiceImpl implements BookService {
     @Override
     public ResBookDTO handleGetBookById(Integer id) {
         Book book = this.bookRepository.findById(id).orElseThrow(() -> new ApiException(ApiMessage.BOOK_NOT_EXIST));
+
+        Integer userId = securityUtil.getIdCurrentUserLogin();
+        User user = userRepository.findById(userId).orElse(null);
+        Optional<BookViewHistory> viewBook = bookViewHistoryRepository.findByUserIdAndBookId(userId, book.getId());
+
+        if (viewBook.isPresent()) {
+            BookViewHistory bookViewHistory = viewBook.get();
+            bookViewHistory.setViewedAt(Instant.now());
+            bookViewHistoryRepository.save(bookViewHistory);
+        } else {
+            BookViewHistory bookViewHistory = new BookViewHistory();
+            bookViewHistory.setUser(user);
+            bookViewHistory.setBook(book);
+            bookViewHistoryRepository.save(bookViewHistory);
+        }
 
         book.setViewCount(book.getViewCount() + 1);
         bookRepository.save(book);
@@ -335,6 +355,14 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<ResBookDTO> handleGetBooksByAuthorIdAndView(Integer authorId) {
         List<Book> books = bookRepository.findTop6ByAuthorIdOrderByViewCountDesc(authorId);
+        return books.stream().map(book -> convertToResBookDTO(book)).toList();
+    }
+
+    @Override
+    public List<ResBookDTO> handleGetRecentlyViewBooks() {
+        Integer userId = securityUtil.getIdCurrentUserLogin();
+        List<BookViewHistory> bookViewHistories = bookViewHistoryRepository.findTop6ByUserIdOrderByViewedAtDesc(userId);
+        List<Book> books = bookViewHistories.stream().map(BookViewHistory::getBook).toList();
         return books.stream().map(book -> convertToResBookDTO(book)).toList();
     }
 }
