@@ -13,6 +13,9 @@ public class ApiMessage {
     // Cart
     public  static final String NOT_CART = "Thông tin ID sách trong giỏ hàng không tồn tại.";
 
+    // User Address
+    public  static final String NOT_USER_ADDRESS = "Địa chỉ người dùng không tồn tại.";
+
     // User
     public static final String EMAIL_EXISTED = "Email người dùng đã tồn tại vui lòng chọn email khác.";
     public static final String ID_USER_NOT_EXIST = "Người dùng không tồn tại hoặc chưa kích hoạt, vui lòng kiểm tra lại.";
