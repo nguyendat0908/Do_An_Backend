@@ -54,4 +54,16 @@ public class DiscountController {
         this.discountService.handleDeleteDiscountById(id);
         return ResponseEntity.ok(null);
     }
+
+    @GetMapping("/discounts/type-free-ship")
+    @CustomAnnotation("Danh sách mã giảm giá.")
+    public ResponseEntity<?> getDiscountTypeFreeShip(){
+        return ResponseEntity.ok(discountService.handleGetDiscountTypeFreeShipping());
+    }
+
+    @GetMapping("/discounts/type-cash")
+    @CustomAnnotation("Danh sách mã giảm giá.")
+    public ResponseEntity<?> getDiscountTypeCash(){
+        return ResponseEntity.ok(discountService.handleGetDiscountTypeCash());
+    }
 }

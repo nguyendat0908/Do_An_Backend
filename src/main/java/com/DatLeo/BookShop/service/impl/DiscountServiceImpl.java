@@ -85,6 +85,24 @@ public class DiscountServiceImpl implements DiscountService {
     }
 
     @Override
+    public List<ResDiscountDTO> handleGetDiscountTypeFreeShipping() {
+        List<Discount> discounts = discountRepository.findFreeShippingDiscounts();
+        List<ResDiscountDTO> resDiscountDTOS = discounts.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+        return resDiscountDTOS;
+    }
+
+    @Override
+    public List<ResDiscountDTO> handleGetDiscountTypeCash() {
+        List<Discount> discounts = discountRepository.findCashAndPercentDiscounts();
+        List<ResDiscountDTO> resDiscountDTOS = discounts.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
+        return resDiscountDTOS;
+    }
+
+    @Override
     @Transactional
     public ResDiscountDTO handleUpdateDiscount(ReqUpdateDiscount discount) {
         Discount currentDiscount = discountRepository.findById(discount.getId())

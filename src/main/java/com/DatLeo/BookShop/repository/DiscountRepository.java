@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -17,6 +18,12 @@ public interface DiscountRepository extends JpaRepository<Discount,Integer>, Jpa
 
     @Query("SELECT DISTINCT d FROM Discount d LEFT JOIN FETCH d.categories WHERE d.id = :id")
     Optional<Discount> findByIdWithCategories(@Param("id") Integer id);
+
+    @Query("SELECT d FROM Discount d WHERE d.type = 'FREE_SHIPPING'")
+    List<Discount> findFreeShippingDiscounts();
+
+    @Query("SELECT d FROM Discount d WHERE d.type IN ('CASH', 'PERCENT')")
+    List<Discount> findCashAndPercentDiscounts();
 
     @Modifying
     @Transactional

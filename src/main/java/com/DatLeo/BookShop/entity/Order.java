@@ -32,6 +32,14 @@ public class Order {
     @Enumerated(EnumType.STRING)
     OrderStatusEnum status;
 
+    Double subTotal;
+
+    Double shippingFee;
+
+    Double discountAmount;
+
+    String reasonCancel;
+
     Double totalPrice;
 
     @Enumerated(EnumType.STRING)

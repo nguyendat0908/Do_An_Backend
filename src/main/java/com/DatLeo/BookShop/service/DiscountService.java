@@ -9,6 +9,8 @@ import com.DatLeo.BookShop.entity.Discount;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
 
+import java.util.List;
+
 public interface DiscountService {
 
     ResDiscountDTO handleCreateDiscount(ReqDiscountDTO reqDiscountDTO);
@@ -16,4 +18,6 @@ public interface DiscountService {
     void handleDeleteDiscountById(Integer id);
     ResPaginationDTO handleGetDiscounts(Specification<Discount> spec, Pageable pageable);
     ResDiscountDTO handleGetDiscountById(Integer id);
+    List<ResDiscountDTO> handleGetDiscountTypeFreeShipping();
+    List<ResDiscountDTO> handleGetDiscountTypeCash();
 }
