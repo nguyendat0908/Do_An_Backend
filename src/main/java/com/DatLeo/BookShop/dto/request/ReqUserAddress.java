@@ -28,6 +28,12 @@ public class ReqUserAddress {
 
     String ward;
 
+    Integer provinceId;
+
+    Integer districtId;
+
+    String wardCode;
+
     String detailAddress;
 
     Boolean isDefault = false;

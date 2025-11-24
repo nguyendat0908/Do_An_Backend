@@ -51,6 +51,15 @@ public class UserAddress {
     @Column(name = "is_default")
     Boolean isDefault = false;
 
+    @Column(name = "province_id")
+    Integer provinceId;
+
+    @Column(name = "district_id")
+    Integer districtId;
+
+    @Column(name = "ward_code")
+    String wardCode;
+
     Instant createdAt;
     Instant updatedAt;
 

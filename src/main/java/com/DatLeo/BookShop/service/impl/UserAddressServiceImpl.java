@@ -40,6 +40,9 @@ public class UserAddressServiceImpl implements UserAddressService {
         userAddress.setProvince(reqUserAddress.getProvince());
         userAddress.setDistrict(reqUserAddress.getDistrict());
         userAddress.setIsDefault(reqUserAddress.getIsDefault());
+        userAddress.setProvinceId(reqUserAddress.getProvinceId());
+        userAddress.setDistrictId(reqUserAddress.getDistrictId());
+        userAddress.setWardCode(reqUserAddress.getWardCode());
         userAddressRepository.save(userAddress);
 
         return convert(userAddress);
@@ -55,6 +58,9 @@ public class UserAddressServiceImpl implements UserAddressService {
             userAddress.setDistrict(reqUserAddress.getDistrict());
             userAddress.setDetailAddress(reqUserAddress.getDetailAddress());
             userAddress.setIsDefault(reqUserAddress.getIsDefault());
+            userAddress.setProvinceId(reqUserAddress.getProvinceId());
+            userAddress.setDistrictId(reqUserAddress.getDistrictId());
+            userAddress.setWardCode(reqUserAddress.getWardCode());
             userAddressRepository.save(userAddress);
         }
 
@@ -84,6 +90,9 @@ public class UserAddressServiceImpl implements UserAddressService {
         resUserAddress.setDistrict(userAddress.getDistrict());
         resUserAddress.setIsDefault(userAddress.getIsDefault());
         resUserAddress.setWard(userAddress.getWard());
+        resUserAddress.setDistrictId(userAddress.getDistrictId());
+        resUserAddress.setProvinceId(userAddress.getProvinceId());
+        resUserAddress.setWardCode(userAddress.getWardCode());
         return resUserAddress;
     }
 }

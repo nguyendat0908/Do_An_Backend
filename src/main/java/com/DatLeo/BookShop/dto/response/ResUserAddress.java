@@ -12,8 +12,11 @@ public class ResUserAddress {
     Integer id;
     String receiveName;
     String receivePhone;
+    Integer provinceId;
     String province;
+    Integer districtId;
     String district;
+    String wardCode;
     String ward;
     String detailAddress;
     Boolean isDefault = false;
