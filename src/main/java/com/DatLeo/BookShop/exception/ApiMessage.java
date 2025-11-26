@@ -39,7 +39,9 @@ public class ApiMessage {
     public static final String DISCOUNT_END_DATE = "Ngày kết thúc không được để trống.";
     public static final String DISCOUNT_START_DATE = "Ngày bắt đầu không được để trống.";
     public static final String DISCOUNT_END_DATE_ERROR = "Ngày kết thúc phải sau ngày kết thúc hiện tại.";
-    public static final String DISCOUNT_ALREADY_USED = "Không thể vô hiệu hóa mã giảm giá đang được sử dụng trong đơn hàng.";
+    public static final String DISCOUNT_IS_EXPIRED = "Mã giảm giá không còn hiệu lực.";
+    public static final String DISCOUNT_LIMIT_REACHED = "Mã giảm giá đã hết lượt sử dụng.";
+    public static final String DISCOUNT_CONDITION = "Đơn hàng chưa đủ điều kiện để áp dụng.";
 
     // Role
     public static final String ROLE_NAME_EXISTED = "Tên vai trò đã tồn tại, vui lòng chọn tên khác.";

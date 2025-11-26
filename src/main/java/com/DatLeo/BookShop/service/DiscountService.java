@@ -1,7 +1,9 @@
 package com.DatLeo.BookShop.service;
 
+import com.DatLeo.BookShop.dto.request.ReqApplyDiscount;
 import com.DatLeo.BookShop.dto.request.ReqDiscountDTO;
 import com.DatLeo.BookShop.dto.request.ReqUpdateDiscount;
+import com.DatLeo.BookShop.dto.response.ResApplyDiscount;
 import com.DatLeo.BookShop.dto.response.ResDiscountDTO;
 import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
 import com.DatLeo.BookShop.entity.Category;
@@ -20,4 +22,5 @@ public interface DiscountService {
     ResDiscountDTO handleGetDiscountById(Integer id);
     List<ResDiscountDTO> handleGetDiscountTypeFreeShipping();
     List<ResDiscountDTO> handleGetDiscountTypeCash();
+    ResApplyDiscount handleApplyDiscount(ReqApplyDiscount reqApplyDiscount);
 }

@@ -1,5 +1,6 @@
 package com.DatLeo.BookShop.controller;
 
+import com.DatLeo.BookShop.dto.request.ReqApplyDiscount;
 import com.DatLeo.BookShop.dto.request.ReqDiscountDTO;
 import com.DatLeo.BookShop.dto.request.ReqUpdateDiscount;
 import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
@@ -65,5 +66,11 @@ public class DiscountController {
     @CustomAnnotation("Danh sách mã giảm giá.")
     public ResponseEntity<?> getDiscountTypeCash(){
         return ResponseEntity.ok(discountService.handleGetDiscountTypeCash());
+    }
+
+    @PostMapping("/apply-discounts")
+    @CustomAnnotation("Áp dụng mã giảm giá thành công.")
+    public ResponseEntity<?> applyDiscount(@RequestBody ReqApplyDiscount reqApplyDiscount) {
+        return ResponseEntity.ok(discountService.handleApplyDiscount(reqApplyDiscount));
     }
 }

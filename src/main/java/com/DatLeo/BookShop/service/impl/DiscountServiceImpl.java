@@ -1,17 +1,23 @@
 package com.DatLeo.BookShop.service.impl;
 
+import com.DatLeo.BookShop.dto.request.ReqApplyDiscount;
 import com.DatLeo.BookShop.dto.request.ReqDiscountDTO;
 import com.DatLeo.BookShop.dto.request.ReqUpdateDiscount;
+import com.DatLeo.BookShop.dto.response.ResApplyDiscount;
 import com.DatLeo.BookShop.dto.response.ResDiscountDTO;
 import com.DatLeo.BookShop.dto.response.ResPaginationDTO;
+import com.DatLeo.BookShop.entity.Book;
 import com.DatLeo.BookShop.entity.Category;
 import com.DatLeo.BookShop.entity.Discount;
 import com.DatLeo.BookShop.exception.ApiException;
 import com.DatLeo.BookShop.exception.ApiMessage;
+import com.DatLeo.BookShop.repository.BookRepository;
 import com.DatLeo.BookShop.repository.CategoryRepository;
 import com.DatLeo.BookShop.repository.DiscountRepository;
+import com.DatLeo.BookShop.service.BookService;
 import com.DatLeo.BookShop.service.DiscountService;
 import com.DatLeo.BookShop.util.constant.ApplyDiscountType;
+import com.DatLeo.BookShop.util.constant.DiscountType;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
@@ -33,6 +39,7 @@ public class DiscountServiceImpl implements DiscountService {
 
     private final DiscountRepository discountRepository;
     private final CategoryRepository categoryRepository;
+    private final BookRepository bookRepository;
 
     @Override
     public ResDiscountDTO handleCreateDiscount(ReqDiscountDTO reqDiscountDTO) {
@@ -103,21 +110,82 @@ public class DiscountServiceImpl implements DiscountService {
     }
 
     @Override
+    public ResApplyDiscount handleApplyDiscount(ReqApplyDiscount reqApplyDiscount) {
+        Discount discount = discountRepository.findByCode(reqApplyDiscount.getCode())
+                .orElseThrow(() -> new ApiException(ApiMessage.DISCOUNT_NOT_EXIST));
+
+        validateDiscount(reqApplyDiscount, discount);
+
+        ResApplyDiscount res = new ResApplyDiscount();
+        res.setFeeShip(reqApplyDiscount.getFeeShip());
+
+        Double discountAmount = 0.0;
+
+        switch (discount.getType()) {
+            case CASH:
+                discountAmount = discount.getValueCash();
+                break;
+            case PERCENT:
+                discountAmount = reqApplyDiscount.getSubTotal() * discount.getValuePercent() / 100.0;
+                break;
+            case FREE_SHIPPING:
+                res.setFeeShip(0.0);
+                discountAmount = 0.0;
+                break;
+
+        }
+        res.setDiscountAmount(discountAmount);
+        res.setNewTotal(reqApplyDiscount.getSubTotal() - discountAmount - reqApplyDiscount.getFeeShip());
+
+        return res;
+    }
+
+    private void validateDiscount(ReqApplyDiscount reqApplyDiscount, Discount discount) {
+
+        // Check is active?
+        if (!discount.getActive()) {
+            throw new ApiException(ApiMessage.DISCOUNT_NOT_EXIST);
+        }
+
+        // Check due date
+        LocalDate now = LocalDate.now();
+        if (now.isBefore(discount.getStartDate()) ||  now.isAfter(discount.getEndDate())) {
+            throw new ApiException(ApiMessage.DISCOUNT_IS_EXPIRED);
+        }
+
+        // Check usage limit
+        if (discount.getUsedCount() >= discount.getUsageLimit()) {
+            throw new ApiException(ApiMessage.DISCOUNT_LIMIT_REACHED);
+        }
+
+        // Check min value
+        if (reqApplyDiscount.getSubTotal() < discount.getMinValue()){
+            throw new ApiException(ApiMessage.DISCOUNT_CONDITION);
+        }
+
+        // Check condition
+        if (discount.getApply() == ApplyDiscountType.PRODUCT_CATEGORY) {
+            Set<Category> discountCategories = discount.getCategories();
+            for (Integer id : reqApplyDiscount.getBookIds()) {
+                Book book = bookRepository.findById(id).orElseThrow(() -> new ApiException(ApiMessage.BOOK_NOT_EXIST));
+                if (!discountCategories.contains(book.getCategory())) {
+                    throw new ApiException(ApiMessage.DISCOUNT_CONDITION);
+                }
+            }
+        }
+    }
+
+    @Override
     @Transactional
     public ResDiscountDTO handleUpdateDiscount(ReqUpdateDiscount discount) {
         Discount currentDiscount = discountRepository.findById(discount.getId())
                 .orElseThrow(() -> new ApiException(ApiMessage.DISCOUNT_NOT_EXIST));
 
         if (Boolean.FALSE.equals(discount.getActive())) {
-            if (currentDiscount.getEndDate().isAfter(LocalDate.now())) {
-                if (currentDiscount.getOrders() != null && !currentDiscount.getOrders().isEmpty()) {
-                    throw new ApiException(ApiMessage.DISCOUNT_ALREADY_USED);
-                }
-            }
+            currentDiscount.setActive(false);
             currentDiscount.setUsageLimit(0);
-        } else {
-            Integer currentCount = currentDiscount.getUsageLimit();
-            currentDiscount.setUsageLimit(currentCount + discount.getUsageLimit());
+            discountRepository.save(currentDiscount);
+            return convertToDTO(currentDiscount);
         }
 
         if (discount.getEndDate().isBefore(currentDiscount.getEndDate())) {
@@ -128,8 +196,12 @@ public class DiscountServiceImpl implements DiscountService {
             throw new ApiException("Ngày kết thúc không thể ở quá khứ.");
         }
 
+        currentDiscount.setUsageLimit(
+                currentDiscount.getUsageLimit() + discount.getUsageLimit()
+        );
+
         currentDiscount.setEndDate(discount.getEndDate());
-        currentDiscount.setActive(discount.getActive());
+        currentDiscount.setActive(true);
 
         discountRepository.save(currentDiscount);
 

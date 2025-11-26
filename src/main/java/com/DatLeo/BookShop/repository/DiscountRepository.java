@@ -29,4 +29,6 @@ public interface DiscountRepository extends JpaRepository<Discount,Integer>, Jpa
     @Transactional
     @Query(value = "DELETE FROM tb_discount_category WHERE category_id = :categoryId", nativeQuery = true)
     void deleteDiscountCategory(@Param("categoryId") Integer categoryId);
+
+    Optional<Discount> findByCode(String code);
 }
